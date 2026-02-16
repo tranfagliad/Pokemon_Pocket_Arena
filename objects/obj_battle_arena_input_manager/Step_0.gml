@@ -1,17 +1,7 @@
-// Find Gamepad
-if (active_gamepad == -1)
-{
-    for (var i = 0; i < 8; i++)
-	{
-        if (gamepad_is_connected(i))
-		{
-            active_gamepad = i;
-            gamepad_set_axis_deadzone(i, deadzone);
-            break;
-        }
-    }
-}
-
+// Reset buttons just in case
+key_zoom_in  = false;
+key_zoom_out = false;
+//key_select   = false;
 
 
 // Keyboard Inputs

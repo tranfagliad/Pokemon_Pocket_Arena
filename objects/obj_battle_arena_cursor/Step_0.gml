@@ -17,5 +17,5 @@ if (_x_move != 0 || _y_move != 0)
 
 
 // Prevent the cursor from leaving the room
-x = clamp(x, half_cursor_size, room_width - half_cursor_size);
-y = clamp(y, half_cursor_size, room_height - half_cursor_size);
+x = clamp(x, CENTER_TILE, room_width - CENTER_TILE);
+y = clamp(y, CENTER_TILE, room_height - CENTER_TILE);

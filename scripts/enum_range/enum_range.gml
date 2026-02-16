@@ -1,0 +1,9 @@
+
+enum Range {
+	NONE,
+	STRAIGHT,
+	DIAGONAL,
+	MATRIX,
+	SELF,
+	AREA
+}
