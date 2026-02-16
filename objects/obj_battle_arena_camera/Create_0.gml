@@ -1,0 +1,20 @@
+// Camera Dimensions
+camera_width = BASE_CAMERA_WIDTH;
+camera_height = BASE_CAMERA_HEIGHT;
+
+
+// Smooth Camera follow speed
+follow_speed = 0.08;
+
+
+
+if (instance_exists(obj_battle_arena_cursor)) {
+    x = obj_battle_arena_cursor.x;
+    y = obj_battle_arena_cursor.y;
+}
+
+// OFFSET: Subtract half the width/height to center the view
+var _start_x = x - (camera_width / 2);
+var _start_y = y - (camera_height / 2);
+
+camera_set_view_pos(view_camera[0], _start_x, _start_y);
