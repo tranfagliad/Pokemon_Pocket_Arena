@@ -1,3 +1,9 @@
+// Controller
+deadzone = 0.3;
+active_gp = -1;
+
+
+
 // Half sprite size
 half_cursor_size = sprite_width / 2;
 

@@ -41,6 +41,7 @@
     {"id":{"name":"obj_display_manager","path":"objects/obj_display_manager/obj_display_manager.yy",},},
     {"id":{"name":"rm_battle_arena","path":"rooms/rm_battle_arena/rm_battle_arena.yy",},},
     {"id":{"name":"enum_datatype","path":"scripts/enum_datatype/enum_datatype.yy",},},
+    {"id":{"name":"enum_pokemon_type","path":"scripts/enum_pokemon_type/enum_pokemon_type.yy",},},
     {"id":{"name":"MACROS","path":"scripts/MACROS/MACROS.yy",},},
     {"id":{"name":"scr_debugging","path":"scripts/scr_debugging/scr_debugging.yy",},},
     {"id":{"name":"spr_battle_arena_cursor","path":"sprites/spr_battle_arena_cursor/spr_battle_arena_cursor.yy",},},

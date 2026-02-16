@@ -7,7 +7,7 @@ draw_set_font(fnt_debugging);
 // Draw text
 draw_text(10, 60, "Camera X: "+string(x));
 draw_text(10, 75, "Camera Y: "+string(y));
-draw_text(10, 95, "Camera Zoom: "+string(zoom_level));
+draw_text(10, 90, "Camera Zoom: "+string(zoom_level));
 
 
 

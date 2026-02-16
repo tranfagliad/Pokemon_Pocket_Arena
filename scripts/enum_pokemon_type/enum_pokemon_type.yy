@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"enum_pokemon_type",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"enum_pokemon_type",
+  "parent":{
+    "name":"enums",
+    "path":"folders/scripts/enums.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
