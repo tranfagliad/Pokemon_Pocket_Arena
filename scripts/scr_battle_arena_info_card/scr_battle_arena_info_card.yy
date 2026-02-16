@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_battle_arena_ui",
+  "%Name":"scr_battle_arena_info_card",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_battle_arena_ui",
+  "name":"scr_battle_arena_info_card",
   "parent":{
     "name":"drawing",
     "path":"folders/scripts/drawing.yy",

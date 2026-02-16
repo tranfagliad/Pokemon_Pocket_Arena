@@ -2,7 +2,6 @@
 function draw_info_card (_unit, _fade_alpha)
 {
 	if (!instance_exists(_unit)) { return; }
-	
 	var _info = _unit.stats;
 	var _team = _unit.team;
 	
@@ -13,7 +12,7 @@ function draw_info_card (_unit, _fade_alpha)
 	// Draw the background
 	draw_info_card_background(_card_x, _card_y, _team, _fade_alpha);
     
-    // Reset color and alpha
+    // Set color and fade alpha
     draw_set_alpha(_fade_alpha);
     draw_set_color(c_white);
 	
@@ -21,16 +20,32 @@ function draw_info_card (_unit, _fade_alpha)
 	draw_sprite(spr_unit_display_frame, 0, _card_x, _card_y + 30);
 	// TODO: Draw the info sprite
 	
+	// Healthbar
+	draw_info_card_healthbar(_info.curr_hp, _info.max_hp, _card_x, _card_y+190);
+	
 	// Name
 	draw_set_font(fnt_unit_name);
 	draw_text(_card_x, _card_y, _info.name);
 	
-	// Level
+	// Level & Stats
 	draw_set_font(fnt_unit_info);
 	draw_text(_card_x+150, _card_y+10, "Lvl: "+string(_info.level));
+	draw_text(_card_x+150, _card_y+30, "Atk: "+string(_info.attack));
+	draw_text(_card_x+150, _card_y+50, "Def: "+string(_info.defense));
 	
-	// Healthbar
-	draw_info_card_healthbar(_info.curr_hp, _info.max_hp, _card_x, _card_y+180);
+	// Types
+	draw_sprite_ext(spr_type, _info.type_1, _card_x+150, _card_y+80, 0.5, 0.5, 0, c_white, _fade_alpha);
+	draw_sprite_ext(spr_type, _info.type_2, _card_x+260, _card_y+80, 0.5, 0.5, 0, c_white, _fade_alpha);
+	
+	// Movement Range
+	draw_text(_card_x+150, _card_y+110, "Move");
+	draw_sprite_ext(spr_range, _info.movement_type, _card_x+150, _card_y+130, 0.5, 0.5, 0, c_white, _fade_alpha);
+	draw_text(_card_x+200, _card_y+140, string(_info.movement_distance));
+	
+	// Attack Range
+	draw_text(_card_x+250, _card_y+110, "Attack");
+	draw_sprite_ext(spr_range, _info.attack_type, _card_x+250, _card_y+130, 0.5, 0.5, 0, c_white, _fade_alpha);
+	draw_text(_card_x+300, _card_y+140, string(_info.attack_distance));
 	
 	// Reset font and alpha
 	draw_set_alpha(1);

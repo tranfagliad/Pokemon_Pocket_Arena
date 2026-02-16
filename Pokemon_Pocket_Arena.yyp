@@ -52,7 +52,7 @@
     {"id":{"name":"enum_pokemon_type","path":"scripts/enum_pokemon_type/enum_pokemon_type.yy",},},
     {"id":{"name":"enum_range","path":"scripts/enum_range/enum_range.yy",},},
     {"id":{"name":"MACROS","path":"scripts/MACROS/MACROS.yy",},},
-    {"id":{"name":"scr_battle_arena_ui","path":"scripts/scr_battle_arena_ui/scr_battle_arena_ui.yy",},},
+    {"id":{"name":"scr_battle_arena_info_card","path":"scripts/scr_battle_arena_info_card/scr_battle_arena_info_card.yy",},},
     {"id":{"name":"scr_debugging","path":"scripts/scr_debugging/scr_debugging.yy",},},
     {"id":{"name":"spr_battle_arena_cursor","path":"sprites/spr_battle_arena_cursor/spr_battle_arena_cursor.yy",},},
     {"id":{"name":"spr_placeholder_map_cell","path":"sprites/spr_placeholder_map_cell/spr_placeholder_map_cell.yy",},},

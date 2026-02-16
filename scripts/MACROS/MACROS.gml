@@ -31,5 +31,5 @@
 #macro ASSET_LAYER "Assets"
 #macro BACKGROUND_LAYER "Background"
 
-#macro INFO_CARD_WIDTH 480
+#macro INFO_CARD_WIDTH 400
 #macro INFO_CARD_HEIGHT 240

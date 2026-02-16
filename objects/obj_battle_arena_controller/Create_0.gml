@@ -19,7 +19,7 @@ team_one = [
 		movement_type: Range.STRAIGHT,
 		movement_distance: 2,
 		attack_type: Range.STRAIGHT,
-		attack_range: 2
+		attack_distance: 2
 	},
 	{
 		name: "Magmar",
@@ -33,7 +33,7 @@ team_one = [
 		movement_type: Range.STRAIGHT,
 		movement_distance: 2,
 		attack_type: Range.STRAIGHT,
-		attack_range: 3
+		attack_distance: 3
 	},
 	{
 		name: "Electabuzz",
@@ -47,7 +47,7 @@ team_one = [
 		movement_type: Range.STRAIGHT,
 		movement_distance: 2,
 		attack_type: Range.DIAGONAL,
-		attack_range: 3
+		attack_distance: 3
 	}
 ];
 
@@ -67,7 +67,7 @@ team_two = [
 		movement_type: Range.STRAIGHT,
 		movement_distance: 2,
 		attack_type: Range.STRAIGHT,
-		attack_range: 2
+		attack_distance: 2
 	},
 	{
 		name: "Magmar",
@@ -81,7 +81,7 @@ team_two = [
 		movement_type: Range.STRAIGHT,
 		movement_distance: 2,
 		attack_type: Range.STRAIGHT,
-		attack_range: 3
+		attack_distance: 3
 	},
 	{
 		name: "Electabuzz",
@@ -95,7 +95,7 @@ team_two = [
 		movement_type: Range.STRAIGHT,
 		movement_distance: 2,
 		attack_type: Range.DIAGONAL,
-		attack_range: 3
+		attack_distance: 3
 	}
 ];
 
