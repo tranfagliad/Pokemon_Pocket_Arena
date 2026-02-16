@@ -3,6 +3,14 @@ camera_width = BASE_CAMERA_WIDTH;
 camera_height = BASE_CAMERA_HEIGHT;
 
 
+
+// Camera Zoom
+zoom_level = 1;
+zoom_target = 1;
+zoom_speed = 0.08
+
+
+
 // Smooth Camera follow speed
 follow_speed = 0.08;
 
