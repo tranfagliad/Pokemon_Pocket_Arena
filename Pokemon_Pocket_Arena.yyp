@@ -38,6 +38,7 @@
     {"id":{"name":"fnt_debugging","path":"fonts/fnt_debugging/fnt_debugging.yy",},},
     {"id":{"name":"obj_battle_arena_camera","path":"objects/obj_battle_arena_camera/obj_battle_arena_camera.yy",},},
     {"id":{"name":"obj_battle_arena_cursor","path":"objects/obj_battle_arena_cursor/obj_battle_arena_cursor.yy",},},
+    {"id":{"name":"obj_battle_arena_input_manager","path":"objects/obj_battle_arena_input_manager/obj_battle_arena_input_manager.yy",},},
     {"id":{"name":"obj_display_manager","path":"objects/obj_display_manager/obj_display_manager.yy",},},
     {"id":{"name":"rm_battle_arena","path":"rooms/rm_battle_arena/rm_battle_arena.yy",},},
     {"id":{"name":"enum_datatype","path":"scripts/enum_datatype/enum_datatype.yy",},},

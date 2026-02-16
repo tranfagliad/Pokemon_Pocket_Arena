@@ -9,6 +9,7 @@
     {"name":"inst_69FC0200","path":"rooms/rm_battle_arena/rm_battle_arena.yy",},
     {"name":"inst_259EAD41","path":"rooms/rm_battle_arena/rm_battle_arena.yy",},
     {"name":"inst_725FCFB0","path":"rooms/rm_battle_arena/rm_battle_arena.yy",},
+    {"name":"inst_7527152C","path":"rooms/rm_battle_arena/rm_battle_arena.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -17,6 +18,7 @@
         {"$GMRInstance":"v4","%Name":"inst_69FC0200","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_69FC0200","objectId":{"name":"obj_display_manager","path":"objects/obj_display_manager/obj_display_manager.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":3.0,"scaleY":3.0,"x":864.0,"y":32.0,},
         {"$GMRInstance":"v4","%Name":"inst_259EAD41","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_259EAD41","objectId":{"name":"obj_battle_arena_cursor","path":"objects/obj_battle_arena_cursor/obj_battle_arena_cursor.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":832.0,"y":832.0,},
         {"$GMRInstance":"v4","%Name":"inst_725FCFB0","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_725FCFB0","objectId":{"name":"obj_battle_arena_camera","path":"objects/obj_battle_arena_camera/obj_battle_arena_camera.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":3.0,"scaleY":3.0,"x":1536.0,"y":32.0,},
+        {"$GMRInstance":"v4","%Name":"inst_7527152C","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_7527152C","objectId":{"name":"obj_battle_arena_input_manager","path":"objects/obj_battle_arena_input_manager/obj_battle_arena_input_manager.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":3.0,"scaleY":3.0,"x":1536.0,"y":96.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRAssetLayer":"","%Name":"Assets","assets":[
         {"$GMRSpriteGraphic":"v1","%Name":"graphic_4C47C6F2","animationSpeed":1.0,"colour":4294967295,"frozen":false,"headPosition":0.0,"ignore":false,"inheritedItemId":null,"inheritItemSettings":false,"name":"graphic_4C47C6F2","resourceType":"GMRSpriteGraphic","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"spriteId":{"name":"spr_placeholder_map_cell","path":"sprites/spr_placeholder_map_cell/spr_placeholder_map_cell.yy",},"x":0.0,"y":0.0,},

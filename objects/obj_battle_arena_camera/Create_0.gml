@@ -8,6 +8,8 @@ camera_height = BASE_CAMERA_HEIGHT;
 zoom_level = 1;
 zoom_target = 1;
 zoom_speed = 0.08
+MIN_ZOOM = 1;
+MAX_ZOOM = 1.5;
 
 
 

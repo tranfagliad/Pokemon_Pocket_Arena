@@ -1,6 +1,6 @@
 // Zoom Input
-if (keyboard_check_pressed(ord("O"))){ zoom_target = 1.5; }    // Zoom Out
-if (keyboard_check_pressed(ord("I"))) { zoom_target = 1.0; }   // Zoom In
+if (obj_battle_arena_input_manager.key_zoom_out) { zoom_target = MAX_ZOOM; }
+if (obj_battle_arena_input_manager.key_zoom_in)  { zoom_target = MIN_ZOOM; }
 
 
 // Smoothly adjust camera zoom level
