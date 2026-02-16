@@ -1,8 +1,6 @@
-
-
-
-
-function draw_info_card (_unit) {
+// Draw the full info card of a unit during battle
+function draw_info_card (_unit, _fade_alpha)
+{
 	if (!instance_exists(_unit)) { return; }
 	
 	var _info = _unit.stats;
@@ -17,7 +15,7 @@ function draw_info_card (_unit) {
 	var _card_y = display_get_gui_height() - _card_height;
 	
 	// Determine background color depending on team
-	var _bg_color = (_team == 0) ? c_blue : c_red;
+	var _bg_color = (_team == TEAM_ONE) ? c_blue : c_red;
 	
 	// Create a Surface for the background
     static ui_surf = -1;
@@ -36,11 +34,11 @@ function draw_info_card (_unit) {
     if (_team == TEAM_ONE) { draw_rectangle(0, 0, _radius, _radius, false); }
 	else { draw_rectangle(_card_width - _radius, 0, _card_width, _radius, false); }
     surface_reset_target();
-    draw_set_alpha(0.7);
+    draw_set_alpha(0.7 * _fade_alpha);
     draw_surface(ui_surf, _card_x, _card_y);
     
     // Reset color and alpha
-    draw_set_alpha(1.0);
+    draw_set_alpha(_fade_alpha);
     draw_set_color(c_white);
 	
 	// Info Sprite
@@ -52,10 +50,6 @@ function draw_info_card (_unit) {
 	
 	
 	
-	
-	
+	draw_set_alpha(1);
+	draw_set_font(-1);
 }
-
-
-
-
