@@ -29,5 +29,4 @@ camera_set_view_size(_camera, BASE_RESOLUTION_WIDTH, BASE_RESOLUTION_HEIGHT);
 
 
 // Center the game window on the screen
-
 window_center();
