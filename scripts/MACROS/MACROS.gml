@@ -32,4 +32,4 @@
 #macro BACKGROUND_LAYER "Background"
 
 #macro INFO_CARD_WIDTH 400
-#macro INFO_CARD_HEIGHT 240
+#macro INFO_CARD_HEIGHT 280

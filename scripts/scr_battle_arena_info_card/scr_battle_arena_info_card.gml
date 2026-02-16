@@ -8,6 +8,7 @@ function draw_info_card (_unit, _fade_alpha)
 	// Draw on the left or right of the screen depending on team
 	var _card_x = (_team == TEAM_ONE) ? 0 : (display_get_gui_width() - INFO_CARD_WIDTH);
 	var _card_y = display_get_gui_height() - INFO_CARD_HEIGHT;
+	var _info_x = (_team == TEAM_ONE) ? _card_x : _card_x + 30;
 	
 	// Draw the background
 	draw_info_card_background(_card_x, _card_y, _team, _fade_alpha);
@@ -16,36 +17,36 @@ function draw_info_card (_unit, _fade_alpha)
     draw_set_alpha(_fade_alpha);
     draw_set_color(c_white);
 	
+	// Name
+	draw_set_font(fnt_unit_name);
+	draw_text(_info_x, _card_y, _info.name);
+	
 	// Display Sprite
-	draw_sprite(spr_unit_display_frame, 0, _card_x, _card_y + 30);
+	draw_sprite(spr_unit_display_frame, 0, _info_x, _card_y + 30);
 	// TODO: Draw the info sprite
 	
 	// Healthbar
-	draw_info_card_healthbar(_info.curr_hp, _info.max_hp, _card_x, _card_y+190);
-	
-	// Name
-	draw_set_font(fnt_unit_name);
-	draw_text(_card_x, _card_y, _info.name);
+	draw_info_card_healthbar(_info.curr_hp, _info.max_hp, _info_x, _card_y+190);
 	
 	// Level & Stats
 	draw_set_font(fnt_unit_info);
-	draw_text(_card_x+150, _card_y+10, "Lvl: "+string(_info.level));
-	draw_text(_card_x+150, _card_y+30, "Atk: "+string(_info.attack));
-	draw_text(_card_x+150, _card_y+50, "Def: "+string(_info.defense));
+	draw_text(_info_x+150, _card_y+10, "Lvl: "+string(_info.level));
+	draw_text(_info_x+150, _card_y+30, "Atk: "+string(_info.attack));
+	draw_text(_info_x+150, _card_y+50, "Def: "+string(_info.defense));
 	
 	// Types
-	draw_sprite_ext(spr_type, _info.type_1, _card_x+150, _card_y+80, 0.5, 0.5, 0, c_white, _fade_alpha);
-	draw_sprite_ext(spr_type, _info.type_2, _card_x+260, _card_y+80, 0.5, 0.5, 0, c_white, _fade_alpha);
+	draw_sprite_ext(spr_type, _info.type_1, _info_x+150, _card_y+80, 0.5, 0.5, 0, c_white, _fade_alpha);
+	draw_sprite_ext(spr_type, _info.type_2, _info_x+260, _card_y+80, 0.5, 0.5, 0, c_white, _fade_alpha);
 	
 	// Movement Range
-	draw_text(_card_x+150, _card_y+110, "Move");
-	draw_sprite_ext(spr_range, _info.movement_type, _card_x+150, _card_y+130, 0.5, 0.5, 0, c_white, _fade_alpha);
-	draw_text(_card_x+200, _card_y+140, string(_info.movement_distance));
+	draw_text(_info_x+150, _card_y+110, "Move");
+	draw_sprite_ext(spr_range, _info.movement_type, _info_x+150, _card_y+130, 0.5, 0.5, 0, c_white, _fade_alpha);
+	draw_text(_info_x+200, _card_y+140, string(_info.movement_distance));
 	
 	// Attack Range
-	draw_text(_card_x+250, _card_y+110, "Attack");
-	draw_sprite_ext(spr_range, _info.attack_type, _card_x+250, _card_y+130, 0.5, 0.5, 0, c_white, _fade_alpha);
-	draw_text(_card_x+300, _card_y+140, string(_info.attack_distance));
+	draw_text(_info_x+250, _card_y+110, "Attack");
+	draw_sprite_ext(spr_range, _info.attack_type, _info_x+250, _card_y+130, 0.5, 0.5, 0, c_white, _fade_alpha);
+	draw_text(_info_x+300, _card_y+140, string(_info.attack_distance));
 	
 	// Reset font and alpha
 	draw_set_alpha(1);
@@ -57,29 +58,21 @@ function draw_info_card (_unit, _fade_alpha)
 // Draws the background shape of the info card
 function draw_info_card_background(_card_x, _card_y, _team, _fade_alpha)
 {
-    var _radius = 20;
+    var _radius = 30;
     var _bg_color = (_team == TEAM_ONE) ? c_blue : c_red;
+    
+    var _draw_x = _card_x;
+    var _draw_y = _card_y + _radius;
+    
+    if (_team == TEAM_ONE) { _draw_x -= _radius; }
+	else { _draw_x += _radius; }
 
-    static ui_surf = -1;
-    if (!surface_exists(ui_surf)) {
-        ui_surf = surface_create(INFO_CARD_WIDTH, INFO_CARD_HEIGHT);
-    }
-
-    surface_set_target(ui_surf);
-    draw_clear_alpha(c_black, 0);
     draw_set_color(_bg_color);
+    draw_set_alpha(0.6 * _fade_alpha);
+    draw_roundrect_ext(_draw_x, _draw_y - _radius, _draw_x + INFO_CARD_WIDTH, _draw_y + INFO_CARD_HEIGHT, _radius, _radius, false);
+    
+	// Reset alpha
     draw_set_alpha(1.0);
-    
-    draw_roundrect_ext(0, 0, INFO_CARD_WIDTH, INFO_CARD_HEIGHT, _radius, _radius, false);
-    draw_rectangle(0, INFO_CARD_HEIGHT - _radius, _radius, INFO_CARD_HEIGHT, false);
-    draw_rectangle(INFO_CARD_WIDTH - _radius, INFO_CARD_HEIGHT - _radius, INFO_CARD_WIDTH, INFO_CARD_HEIGHT, false);
-    
-    if (_team == TEAM_ONE) { draw_rectangle(0, 0, _radius, _radius, false); }
-    else { draw_rectangle(INFO_CARD_WIDTH - _radius, 0, INFO_CARD_WIDTH, _radius, false); }
-    surface_reset_target();
-    
-    draw_set_alpha(0.7 * _fade_alpha);
-    draw_surface(ui_surf, _card_x, _card_y);
 }
 
 
