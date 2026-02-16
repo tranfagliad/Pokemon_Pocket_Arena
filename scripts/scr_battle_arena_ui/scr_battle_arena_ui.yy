@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_battle_arena_ui",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_battle_arena_ui",
+  "parent":{
+    "name":"drawing",
+    "path":"folders/scripts/drawing.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

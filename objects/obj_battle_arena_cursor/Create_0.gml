@@ -10,6 +10,6 @@ cursor_speed = 5;
 
 
 // Cursor Snap Settings
-cursor_snap = 0.5;
+cursor_snap = 0.7;
 is_snapped = false;
 unit_hovered = noone;

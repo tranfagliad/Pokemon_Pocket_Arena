@@ -68,7 +68,6 @@ for (var i = 0; i < array_length(team_one); i++)
     _inst.team = TEAM_ONE;
     
 	_inst.sprite_index = spr_placeholder_unit_blue;
-
 }
 
 
