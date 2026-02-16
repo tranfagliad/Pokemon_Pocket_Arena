@@ -39,6 +39,7 @@
   "name":"Pokemon_Pocket_Arena",
   "resources":[
     {"id":{"name":"fnt_debugging","path":"fonts/fnt_debugging/fnt_debugging.yy",},},
+    {"id":{"name":"fnt_unit_info","path":"fonts/fnt_unit_info/fnt_unit_info.yy",},},
     {"id":{"name":"fnt_unit_name","path":"fonts/fnt_unit_name/fnt_unit_name.yy",},},
     {"id":{"name":"obj_battle_arena_camera","path":"objects/obj_battle_arena_camera/obj_battle_arena_camera.yy",},},
     {"id":{"name":"obj_battle_arena_controller","path":"objects/obj_battle_arena_controller/obj_battle_arena_controller.yy",},},
@@ -59,6 +60,7 @@
     {"id":{"name":"spr_placeholder_unit_red","path":"sprites/spr_placeholder_unit_red/spr_placeholder_unit_red.yy",},},
     {"id":{"name":"spr_range","path":"sprites/spr_range/spr_range.yy",},},
     {"id":{"name":"spr_type","path":"sprites/spr_type/spr_type.yy",},},
+    {"id":{"name":"spr_unit_display_frame","path":"sprites/spr_unit_display_frame/spr_unit_display_frame.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",

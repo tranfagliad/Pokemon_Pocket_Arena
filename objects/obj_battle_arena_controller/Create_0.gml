@@ -58,7 +58,7 @@ team_two = [
 	{
 		name: "Bulbasaur",
 		level: 10,
-		curr_hp: 32,
+		curr_hp: 26,
 		max_hp: 32,
 		attack: 30,
 		defense: 34,
@@ -72,7 +72,7 @@ team_two = [
 	{
 		name: "Magmar",
 		level: 17,
-		curr_hp: 66,
+		curr_hp: 33,
 		max_hp: 66,
 		attack: 54,
 		defense: 40,
@@ -86,7 +86,7 @@ team_two = [
 	{
 		name: "Electabuzz",
 		level: 20,
-		curr_hp: 56,
+		curr_hp: 10,
 		max_hp: 56,
 		attack: 60,
 		defense: 45,
