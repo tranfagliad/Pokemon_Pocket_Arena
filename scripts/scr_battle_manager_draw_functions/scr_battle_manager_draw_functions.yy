@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_battle_manager_draw_functions",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_battle_manager_draw_functions",
+  "parent":{
+    "name":"drawing",
+    "path":"folders/scripts/drawing.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

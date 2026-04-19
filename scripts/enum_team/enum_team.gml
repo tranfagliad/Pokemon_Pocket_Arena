@@ -1,0 +1,6 @@
+
+enum Team
+{
+	ONE,
+	TWO
+}

@@ -1,21 +1,20 @@
 
-team = 1;
-
+// Map Coordinates
 cell_x = 0;
 cell_y = 0;
 
-max_hp = 100;
+// Team
+team = Team.ONE;
+
+// Unit Stats
+name = (team == Team.ONE) ? "Team1 Unit" : "Team2 Unit";
+level = 1;
+max_hp = 10;
 current_hp = max_hp;
-
-name = (team == 1) ? "Ally Unit" : "Enemy Unit";
-
-
-
-
-
-
-if (instance_exists(obj_battle_manager))
-{
-	if (team == 1) { ds_list_add(obj_battle_manager.team1_units, id); }
-	else { ds_list_add(obj_battle_manager.team2_units, id); }
-}
+attack_stat = 1;
+defense_stat = 1;
+active_type = Type.NONE;
+move_range = Range.NONE;
+move_distance = 0;
+attack_range = Range.NONE;
+attack_distance = 0;

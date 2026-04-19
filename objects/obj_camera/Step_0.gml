@@ -2,7 +2,6 @@
 // Zoom In/Out
 if (obj_input_manager.pressed.zoom_in)  { target_zoom = CAMERA_DEFAULT_ZOOM; }
 if (obj_input_manager.pressed.zoom_out) { target_zoom = CAMERA_ZOOM_OUT; }
-
 current_zoom_level = lerp(current_zoom_level, target_zoom, CAMERA_ZOOM_SPEED);
 var _current_width = VIEW_WIDTH * current_zoom_level;
 var _current_height = VIEW_HEIGHT*current_zoom_level;

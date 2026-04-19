@@ -33,6 +33,7 @@ if (_input_x != 0 || _input_y != 0)
 		x += _input_x * cursor_speed;
 		y += _input_y * cursor_speed;
 	}
+	
 	x = calculate_cursor_position(x);
 	y = calculate_cursor_position(y);
 
@@ -40,4 +41,12 @@ if (_input_x != 0 || _input_y != 0)
 	cell_x = calculate_cell_coordinate(x);
 	cell_y = calculate_cell_coordinate(y);
 	show_debug_message("Cell: ("+string(cell_x)+", "+string(cell_y)+")");
+}
+
+// Cursor snap when hovering over a unit
+if (obj_battle_manager.unit_hovered)
+{
+	var _target_position = get_cell_center(cell_x, cell_y);
+	x = lerp(x, _target_position.x, CURSOR_SNAP_STRENGTH);
+	y = lerp(y, _target_position.y, CURSOR_SNAP_STRENGTH);
 }

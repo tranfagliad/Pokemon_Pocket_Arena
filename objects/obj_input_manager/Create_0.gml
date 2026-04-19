@@ -20,8 +20,8 @@ input = {
 	
 	sprint: [ vk_shift, gp_face3 ],
 	
-	confirm: [ vk_enter,  vk_space, gp_face1 ],   // A on XBox, X on Playstation
-	cancel:  [ vk_escape, gp_face2 ],             // B on XBox, Circle on Playstation
+	confirm: [ vk_space,  gp_face1 ],   // A on XBox, X on Playstation
+	cancel:  [ vk_escape, gp_face2 ],   // B on XBox, Circle on Playstation
 	
 	zoom_in:  [ I_KEY, gp_shoulderl ],
 	zoom_out: [ O_KEY, gp_shoulderr ],
