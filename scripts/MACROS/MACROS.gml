@@ -62,10 +62,10 @@
 #macro OPTIONS_BOX_WIDTH   120
 #macro OPTIONS_BOX_TEAM_ONE_HEIGHT 100
 #macro OPTIONS_BOX_TEAM_TWO_HEIGHT 55
-#macro OPTIONS_BOX_MOVE    "Move"
-#macro OPTIONS_BOX_ATTACK  "Attack"
-#macro OPTIONS_BOX_DETAILS "Details"
-#macro OPTIONS_BOX_CANCEL  "Cancel"
+#macro OPTIONS_BOX_MOVE    { index: 0, text: "Move" }
+#macro OPTIONS_BOX_ATTACK  { index: 1, text: "Attack" }
+#macro OPTIONS_BOX_DETAILS { index: 2, text: "Details" }
+#macro OPTIONS_BOX_CANCEL  { index: 3, text: "Cancel" }
 #macro OPTIONS_BOX_X ((VIEW_WIDTH / 2) - (OPTIONS_BOX_WIDTH / 2))
 #macro OPTIONS_BOX_Y ((VIEW_HEIGHT / 2) + 50)
 
@@ -76,8 +76,3 @@
 #macro DEFAULT_FONT -1
 
 #macro EMPTY_STRING ""
-
-
-
-
-

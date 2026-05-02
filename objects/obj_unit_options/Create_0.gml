@@ -16,7 +16,4 @@ options = (obj_battle_manager.selected_unit.team == Team.ONE) ? _unit_options : 
 options_box_height = (obj_battle_manager.selected_unit.team == Team.ONE) ? OPTIONS_BOX_TEAM_ONE_HEIGHT : OPTIONS_BOX_TEAM_TWO_HEIGHT;
 
 
-option_selected = EMPTY_STRING;
-
-
-
+option_selected = -1;

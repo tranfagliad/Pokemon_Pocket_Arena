@@ -8,7 +8,9 @@ if (obj_battle_manager.unit_hovered)
 }
 
 
-if (obj_battle_state_machine.current_state == BattleState.PLAYER_TURN_FREE)
+if (obj_battle_state_machine.current_state == BattleState.PLAYER_TURN_FREE ||
+	obj_battle_state_machine.current_state == BattleState.PLAYER_TURN_MOVE ||
+	obj_battle_state_machine.current_state == BattleState.PLAYER_TURN_ATTACK)
 {
 
 	// Detect Inputs

@@ -5,6 +5,6 @@ draw_set_colour(c_black);
 for (var _i = 0; _i < array_length(options); _i++)
 {
 	var _option_arrow = (_i == current_option_id) ? "> " : "";
-	draw_text(OPTIONS_BOX_X+12, _i*23+OPTIONS_BOX_Y, _option_arrow+options[_i]);
+	draw_text(OPTIONS_BOX_X+12, (_i*23)+OPTIONS_BOX_Y+2, _option_arrow+options[_i].text);
 }
 draw_set_colour(c_white);
