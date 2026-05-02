@@ -203,6 +203,7 @@
     {"id":{"name":"obj_camera","path":"objects/obj_camera/obj_camera.yy",},},
     {"id":{"name":"obj_cursor","path":"objects/obj_cursor/obj_cursor.yy",},},
     {"id":{"name":"obj_input_manager","path":"objects/obj_input_manager/obj_input_manager.yy",},},
+    {"id":{"name":"obj_unit_options","path":"objects/obj_unit_options/obj_unit_options.yy",},},
     {"id":{"name":"obj_unit","path":"objects/obj_unit/obj_unit.yy",},},
     {"id":{"name":"rm_battle_arena","path":"rooms/rm_battle_arena/rm_battle_arena.yy",},},
     {"id":{"name":"enum_battle_state","path":"scripts/enum_battle_state/enum_battle_state.yy",},},

@@ -1,3 +1,4 @@
+
 var _hovered = unit_hovered ? current_cell.unit : noone;
 var _selected = selected_unit;
 
@@ -16,5 +17,5 @@ if (_hovered != noone) {
         // Selected + hovering over opposite team → show BOTH cards
         draw_unit_info_card(_hovered);
     }
-    // Same team as selected → only show selected (already handled above)
+    // Same team as selected → only show selected
 }
