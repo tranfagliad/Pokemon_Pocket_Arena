@@ -30,8 +30,12 @@ function draw_unit_info_card(_unit)
     // Draw Display Sprite
     draw_set_alpha(DEFAULT_DRAW_ALPHA);
     draw_set_colour(DEFAULT_DRAW_COLOR);
+	// TESTING ----------------------------------------------------------------------------
     draw_sprite(spr_unit_display_frame, 0, _display_x, _display_y);
-    draw_sprite(spr_placeholder_display_sprite, 0, _display_x, _display_y);
+	draw_sprite(global.test_sprite_img, image_index*0.4, _display_x, _display_y);
+	//draw_sprite(spr_placeholder_display_sprite, 0, _display_x, _display_y);
+	// TESTING ----------------------------------------------------------------------------
+    
 
     // Draw Name
     draw_set_font(fnt_unit_name);

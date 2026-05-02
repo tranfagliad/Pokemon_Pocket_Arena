@@ -18,3 +18,7 @@ move_range = Range.NONE;
 move_distance = 0;
 attack_range = Range.NONE;
 attack_distance = 0;
+
+// Unit State
+has_moved = false;
+has_attacked = false;

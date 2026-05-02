@@ -2,7 +2,7 @@
 function create_and_register_unit (_unit_info, _team_list, _map)
 {
 	// Create and initialize the unit
-	var _unit = instance_create_layer(0, 0, "Units", obj_unit);
+	var _unit = instance_create_layer(0, 0, UNITS_LAYER, obj_unit);
 	_unit.team = _unit_info.team;
 	_unit.cell_x = _unit_info.cell_x;
 	_unit.cell_y = _unit_info.cell_y;

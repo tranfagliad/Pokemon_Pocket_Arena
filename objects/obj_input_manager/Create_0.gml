@@ -12,16 +12,18 @@
  */
 
 input = {
-	// Arrow Keys, WASD, gamepad directional buttons
-	up:    [ vk_up,    W_KEY, gp_padu ],
-	down:  [ vk_down,  S_KEY, gp_padd ],
-	left:  [ vk_left,  A_KEY, gp_padl ],
-	right: [ vk_right, D_KEY, gp_padr ],
+	// WASD, gamepad directional buttons
+	up:    [ W_KEY, gp_padu ],
+	down:  [ S_KEY, gp_padd ],
+	left:  [ A_KEY, gp_padl ],
+	right: [ D_KEY, gp_padr ],
 	
 	sprint: [ vk_shift, gp_face3 ],
 	
-	confirm: [ vk_space,  gp_face1 ],   // A on XBox, X on Playstation
-	cancel:  [ vk_escape, gp_face2 ],   // B on XBox, Circle on Playstation
+	select: [ vk_space,  gp_face1 ],   // A on XBox, X on Playstation
+	cancel: [ vk_escape, gp_face2 ],   // B on XBox, Circle on Playstation
+	
+	start: [ vk_enter, gp_start ],
 	
 	zoom_in:  [ I_KEY, gp_shoulderl ],
 	zoom_out: [ O_KEY, gp_shoulderr ],
