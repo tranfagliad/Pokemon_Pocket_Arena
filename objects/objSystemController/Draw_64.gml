@@ -4,10 +4,6 @@
 if (global.showDebugUI)
 {
 	
-	
-	
-	
-	
 }
 
 

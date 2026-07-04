@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scrMainMenuStateMachine",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scrMainMenuStateMachine",
+  "parent":{
+    "name":"StateMachines",
+    "path":"folders/Scripts/StateMachines.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

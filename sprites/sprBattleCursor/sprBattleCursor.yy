@@ -28,8 +28,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"general",
-    "path":"folders/Sprites/BattleArena/general.yy",
+    "name":"BattleArena",
+    "path":"folders/Sprites/BattleArena.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

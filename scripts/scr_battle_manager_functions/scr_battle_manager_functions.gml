@@ -1,5 +1,5 @@
 
-function create_and_register_unit (_unit_info, _team_list, _map)
+function create_and_register_unit_old (_unit_info, _team_list, _map)
 {
 	// Create and initialize the unit
 	var _unit = instance_create_layer(0, 0, UNITS_LAYER, old_obj_unit);

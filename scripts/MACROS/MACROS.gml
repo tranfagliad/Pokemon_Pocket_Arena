@@ -2,9 +2,6 @@
 #macro CELL_SIZE   64
 #macro CENTER_CELL 32
 
-#macro MAP_WIDTH  30
-#macro MAP_HEIGHT 30
-
 #macro W_KEY ord("W")
 #macro A_KEY ord("A")
 #macro S_KEY ord("S")
@@ -22,8 +19,7 @@
 #macro GAMEPAD_LOST         "gamepad lost"
 #macro DEFAULT_DEADZONE     0.2
 
-#macro CURSOR_BASE_SPEED 8
-#macro CURSOR_SPRINT_SPEED (CURSOR_BASE_SPEED*2)
+#macro CURSOR_BASE_SPEED 6
 #macro CURSOR_SNAP_STRENGTH 0.15
 
 #macro FIRST_VIEW 0
@@ -41,9 +37,16 @@
 #macro SYSTEM_LAYER     "System"
 #macro TRANSITION_LAYER "Transition"
 #macro UNITS_LAYER      "Units"
-
-#macro DEFAULT_FONT -1
+#macro CURSOR_LAYER     "Cursor"
 
 #macro MAX_DEPTH -9999
 
+#macro DEFAULT_FONT -1
+
 #macro EMPTY_STRING ""
+
+
+#macro CAMPAIGN    0
+#macro FREE_BATTLE 1
+#macro SETTINGS    2
+
