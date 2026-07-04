@@ -1,4 +1,4 @@
 
-firstRoom = rmSplashScreen;
+//firstRoom = rmSplashScreen;
 //firstRoom = rmMainMenu;
-//firstRoom = rmFreeBattleSelectOpponent;
+firstRoom = rmFreeBattleSelectOpponent;

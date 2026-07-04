@@ -19,7 +19,7 @@
 #macro GAMEPAD_LOST         "gamepad lost"
 #macro DEFAULT_DEADZONE     0.2
 
-#macro CURSOR_BASE_SPEED 6
+#macro CURSOR_BASE_SPEED 7
 #macro CURSOR_SNAP_STRENGTH 0.15
 
 #macro FIRST_VIEW 0

@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"enum_game_mode",
+  "%Name":"enumType",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"enum_game_mode",
+  "name":"enumType",
   "parent":{
-    "name":"enums",
-    "path":"folders/Scripts/old/enums.yy",
+    "name":"Enums",
+    "path":"folders/Scripts/Enums.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

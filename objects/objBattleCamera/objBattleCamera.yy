@@ -9,8 +9,8 @@
   "name":"objBattleCamera",
   "overriddenProperties":[],
   "parent":{
-    "name":"BattleArena",
-    "path":"folders/Objects/BattleArena.yy",
+    "name":"System",
+    "path":"folders/Objects/BattleArena/System.yy",
   },
   "parentObjectId":null,
   "persistent":false,
