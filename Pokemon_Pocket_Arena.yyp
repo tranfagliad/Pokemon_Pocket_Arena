@@ -41,7 +41,10 @@
   ],
   "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[
-    {"$GMIncludedFile":"","%Name":"bulbasaur.png","CopyToMask":-1,"filePath":"datafiles/images/pokemon/display","name":"bulbasaur.png","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"Bulbasaur.png","CopyToMask":-1,"filePath":"datafiles/images/pokemon/display","name":"Bulbasaur.png","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"Ivysaur.png","CopyToMask":-1,"filePath":"datafiles/images/pokemon/display","name":"Ivysaur.png","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"Moltres.png","CopyToMask":-1,"filePath":"datafiles/images/pokemon/display","name":"Moltres.png","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"Venusaur.png","CopyToMask":-1,"filePath":"datafiles/images/pokemon/display","name":"Venusaur.png","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"abra.png","CopyToMask":-1,"filePath":"datafiles/images/pokemon/icons","name":"abra.png","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"aerodactyl.png","CopyToMask":-1,"filePath":"datafiles/images/pokemon/icons","name":"aerodactyl.png","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"alakazam.png","CopyToMask":-1,"filePath":"datafiles/images/pokemon/icons","name":"alakazam.png","resourceType":"GMIncludedFile","resourceVersion":"2.0",},

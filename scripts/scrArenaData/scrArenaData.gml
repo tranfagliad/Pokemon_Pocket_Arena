@@ -4,14 +4,14 @@ function GetArenaData ()
 	var _arenas = [
 		{
 			name: "Test Arena 1",
-			mapWidth: 25,
-			mapHeight: 25,
+			width: 25,
+			height: 25,
 			map: rmTestBattleArenaOne
 		},
 		{
 			name: "Test Arena 2",
-			mapWidth: 30,
-			mapHeight: 30,
+			width: 30,
+			height: 30,
 			map: rmTestBattleArenaTwo
 		}
 	];
