@@ -1,8 +1,4 @@
 
-global.midTransition = false;
-global.targetRoom = noone;
-
-
 // Create a transition
 function TransitionCreateSequence (_transition_type)
 {

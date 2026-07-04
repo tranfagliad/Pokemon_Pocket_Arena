@@ -19,8 +19,8 @@
   ],
   "name":"rmMainMenu",
   "parent":{
-    "name":"Rooms",
-    "path":"folders/Rooms.yy",
+    "name":"OutsideBattle",
+    "path":"folders/Rooms/OutsideBattle.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

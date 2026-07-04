@@ -1,2 +1,3 @@
 
-firstRoom = rmSplashScreen;
+//firstRoom = rmSplashScreen;
+firstRoom = rmBattleInit;

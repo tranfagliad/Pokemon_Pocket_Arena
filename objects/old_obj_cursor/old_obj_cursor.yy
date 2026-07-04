@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sprBattleArenaCursor",
-    "path":"sprites/sprBattleArenaCursor/sprBattleArenaCursor.yy",
+    "name":"sprBattleCursor",
+    "path":"sprites/sprBattleCursor/sprBattleCursor.yy",
   },
   "spriteMaskId":null,
   "visible":true,

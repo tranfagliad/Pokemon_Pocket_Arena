@@ -1,0 +1,2 @@
+
+//TransitionStart(rmTestBattleArena, seqFadeOut, seqFadeIn);

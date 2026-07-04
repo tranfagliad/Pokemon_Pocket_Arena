@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scrCursorStateMachine",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scrCursorStateMachine",
+  "parent":{
+    "name":"StateMachines",
+    "path":"folders/Scripts/StateMachines.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
