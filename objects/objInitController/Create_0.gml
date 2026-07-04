@@ -1,0 +1,2 @@
+
+firstRoom = rmSplashScreen;

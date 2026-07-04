@@ -6,7 +6,7 @@
   "name":"scr_unit_functions",
   "parent":{
     "name":"objects",
-    "path":"folders/scripts/objects.yy",
+    "path":"folders/Scripts/old/objects.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

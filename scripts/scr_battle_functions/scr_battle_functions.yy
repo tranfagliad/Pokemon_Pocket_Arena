@@ -6,7 +6,7 @@
   "name":"scr_battle_functions",
   "parent":{
     "name":"battle",
-    "path":"folders/scripts/battle.yy",
+    "path":"folders/Scripts/old/battle.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

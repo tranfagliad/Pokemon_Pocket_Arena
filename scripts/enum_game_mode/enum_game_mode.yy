@@ -6,7 +6,7 @@
   "name":"enum_game_mode",
   "parent":{
     "name":"enums",
-    "path":"folders/scripts/enums.yy",
+    "path":"folders/Scripts/old/enums.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

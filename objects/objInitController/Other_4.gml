@@ -1,0 +1,2 @@
+
+TransitionStart(firstRoom, seqFadeOut, seqFadeIn);

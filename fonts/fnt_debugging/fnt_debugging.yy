@@ -137,7 +137,7 @@
   "name":"fnt_debugging",
   "parent":{
     "name":"debugging",
-    "path":"folders/fonts/debugging.yy",
+    "path":"folders/Fonts/old/debugging.yy",
   },
   "pointRounding":0,
   "ranges":[

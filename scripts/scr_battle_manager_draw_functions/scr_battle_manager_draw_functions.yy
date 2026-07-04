@@ -6,7 +6,7 @@
   "name":"scr_battle_manager_draw_functions",
   "parent":{
     "name":"drawing",
-    "path":"folders/scripts/drawing.yy",
+    "path":"folders/Scripts/old/drawing.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

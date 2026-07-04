@@ -2,7 +2,7 @@
 function create_and_register_unit (_unit_info, _team_list, _map)
 {
 	// Create and initialize the unit
-	var _unit = instance_create_layer(0, 0, UNITS_LAYER, obj_unit);
+	var _unit = instance_create_layer(0, 0, UNITS_LAYER, old_obj_unit);
 	_unit.team = _unit_info.team;
 	_unit.cell_x = _unit_info.cell_x;
 	_unit.cell_y = _unit_info.cell_y;
@@ -12,7 +12,7 @@ function create_and_register_unit (_unit_info, _team_list, _map)
 	_unit.move_distance = _unit_info.move_distance;
 	_unit.attack_range = _unit_info.attack_range;
 	_unit.attack_distance = _unit_info.attack_distance;
-	_unit.sprite_index = (_unit_info.team == Team.ONE) ? spr_placeholder_unit_blue : spr_placeholder_unit_red;
+	_unit.sprite_index = (_unit_info.team == Team.ONE) ? sprPlaceholderUnitBlue : sprPlaceholderUnitRed;
 	_unit.x = (_unit.cell_x * CELL_SIZE) + CENTER_CELL;
 	_unit.y = (_unit.cell_y * CELL_SIZE) + CENTER_CELL;
 	_unit.name = _unit_info.name;

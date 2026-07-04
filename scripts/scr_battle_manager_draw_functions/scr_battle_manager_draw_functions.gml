@@ -31,7 +31,7 @@ function draw_unit_info_card(_unit)
     draw_set_alpha(DEFAULT_DRAW_ALPHA);
     draw_set_colour(DEFAULT_DRAW_COLOR);
 	// TESTING ----------------------------------------------------------------------------
-    draw_sprite(spr_unit_display_frame, 0, _display_x, _display_y);
+    draw_sprite(sprUnitDisplayBgr, 0, _display_x, _display_y);
 	draw_sprite(global.test_sprite_img, image_index*0.4, _display_x, _display_y);
 	//draw_sprite(spr_placeholder_display_sprite, 0, _display_x, _display_y);
 	// TESTING ----------------------------------------------------------------------------
@@ -64,14 +64,14 @@ function draw_unit_info_card(_unit)
 	draw_text(_stats_x+145, _stats_y+85, "Def: "+string(_unit.defense_stat));
 	
 	// Draw Type
-	draw_sprite_ext(spr_type, _unit.active_type, _type_x, _type_y, TYPE_SPRITE_SCALE, TYPE_SPRITE_SCALE, DEFAULT_DRAW_ROTATION, DEFAULT_DRAW_COLOR, DEFAULT_DRAW_ALPHA);
+	draw_sprite_ext(sprType, _unit.active_type, _type_x, _type_y, TYPE_SPRITE_SCALE, TYPE_SPRITE_SCALE, DEFAULT_DRAW_ROTATION, DEFAULT_DRAW_COLOR, DEFAULT_DRAW_ALPHA);
 
 	// Draw Ranges
 	draw_text(_move_range_x+10, _range_y-30, "Move");
-	draw_sprite_ext(spr_range, _unit.move_range, _move_range_x, _range_y, RANGE_SPRITE_SCALE, RANGE_SPRITE_SCALE, DEFAULT_DRAW_ROTATION, DEFAULT_DRAW_COLOR, DEFAULT_DRAW_ALPHA);
+	draw_sprite_ext(sprRange, _unit.move_range, _move_range_x, _range_y, RANGE_SPRITE_SCALE, RANGE_SPRITE_SCALE, DEFAULT_DRAW_ROTATION, DEFAULT_DRAW_COLOR, DEFAULT_DRAW_ALPHA);
 	draw_text(_move_range_x+85, _range_y+22, string(_unit.move_distance));
 	
 	draw_text(_move_range_x+137, _range_y-30, "Attack");
-	draw_sprite_ext(spr_range, _unit.attack_range, _attack_range_x, _range_y, RANGE_SPRITE_SCALE, RANGE_SPRITE_SCALE, DEFAULT_DRAW_ROTATION, DEFAULT_DRAW_COLOR, DEFAULT_DRAW_ALPHA);
+	draw_sprite_ext(sprRange, _unit.attack_range, _attack_range_x, _range_y, RANGE_SPRITE_SCALE, RANGE_SPRITE_SCALE, DEFAULT_DRAW_ROTATION, DEFAULT_DRAW_COLOR, DEFAULT_DRAW_ALPHA);
 	draw_text(_attack_range_x+85, _range_y+22, string(_unit.attack_distance));
 }

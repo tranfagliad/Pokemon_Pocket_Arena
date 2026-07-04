@@ -192,7 +192,7 @@
   "name":"fnt_unit_info",
   "parent":{
     "name":"unit_info_card",
-    "path":"folders/fonts/unit_info_card.yy",
+    "path":"folders/Fonts/old/unit_info_card.yy",
   },
   "pointRounding":0,
   "ranges":[
