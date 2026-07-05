@@ -13,7 +13,7 @@ if (!global.midTransition)
 			//show_debug_message("Selected Opponent: "+global.opponent.name);
 			//show_debug_message("Arena: "+global.battleArena.name);
 			// TODO: Change this to Pokemon Team Select Screen
-			TransitionStart(rmBattleInit, seqFadeOut, seqFadeIn);
+			TransitionStart(global.battleArena.map, seqFadeOut, seqFadeIn);
 		}
 	
 	}

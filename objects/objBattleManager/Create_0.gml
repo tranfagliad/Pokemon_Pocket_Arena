@@ -6,6 +6,15 @@ currentTurn = 0;
 
 opponent = global.opponent;
 
+mapName = global.battleArena.name;
+mapWidth = global.battleArena.width;
+mapHeight = global.battleArena.height;
+
+map = ds_grid_create(mapWidth, mapHeight);
+ds_grid_clear(map, { terrain: noone, unit: noone });
+
+
+
 
 
 var _team_one_pikachu = {
@@ -47,14 +56,11 @@ var _team_two_bulbasaur = {
 	hasMoved: false, hasAttacked: false
 };
 
-ds_list_add(teamOneUnits, _team_one_pikachu);
-ds_list_add(teamOneUnits, _team_one_charmander);
-
-ds_list_add(teamTwoUnits, _team_two_squirtle);
-ds_list_add(teamTwoUnits, _team_two_bulbasaur);
 
 
-if (instance_exists(objMapManager)) {
-	
-}
+CreateUnitAndPlaceOnMap(_team_one_pikachu, map, 2, 3);
+CreateUnitAndPlaceOnMap(_team_one_charmander, map, 4, 4);
+
+CreateUnitAndPlaceOnMap(_team_two_squirtle, map, 7, 5);
+CreateUnitAndPlaceOnMap(_team_two_bulbasaur, map, 11, 9);
 

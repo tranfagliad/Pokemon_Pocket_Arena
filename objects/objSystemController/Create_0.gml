@@ -16,9 +16,6 @@
 global.gamePaused = false;
 
 
-
-
-
 global.opponent = noone;
 global.battleArena = noone;
 global.cursorNormalSpeed = CURSOR_BASE_SPEED;

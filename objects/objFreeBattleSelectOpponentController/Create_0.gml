@@ -1,6 +1,5 @@
 
 trainerData = GetFreeBattleOpponentData();
-
 totalOpponents = array_length(trainerData);
 
 visibleCount = 7;
@@ -12,6 +11,3 @@ visualIndex = 0;
 
 
 arenaData = GetArenaData();
-
-
-

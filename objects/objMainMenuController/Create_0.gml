@@ -1,8 +1,8 @@
 
 menuOptions = [
-	{ name: "Campaign",    sprite: sprPlaceholderCampaignButton },
-	{ name: "Free Battle", sprite: sprPlaceholderFreeBattleButton },
-	{ name: "Settings",    sprite: sprPlaceholderSettingsButton }
+	{ index: CAMPAIGN,    sprite: sprPlaceholderCampaignButton },
+	{ index: FREE_BATTLE, sprite: sprPlaceholderFreeBattleButton },
+	{ index: SETTINGS,    sprite: sprPlaceholderSettingsButton }
 	
 ];
 

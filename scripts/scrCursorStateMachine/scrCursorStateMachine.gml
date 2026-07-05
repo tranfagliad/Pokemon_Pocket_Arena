@@ -26,13 +26,13 @@ function CursorStateFree ()
         
 	        x += _move_x * cursorSpeed;
 	        y += _move_y * cursorSpeed;
-	    }
-    
-	    x = clamp(x, CENTER_CELL, room_width - CENTER_CELL);
-	    y = clamp(y, CENTER_CELL, room_height - CENTER_CELL);
+			
+			x = clamp(x, CENTER_CELL, room_width - CENTER_CELL);
+			y = clamp(y, CENTER_CELL, room_height - CENTER_CELL);
 		
-		mapX = x div CELL_SIZE;
-		mapY = y div CELL_SIZE;
+			mapX = x div CELL_SIZE;
+			mapY = y div CELL_SIZE;
+	    }
 		
 	#endregion
 }
