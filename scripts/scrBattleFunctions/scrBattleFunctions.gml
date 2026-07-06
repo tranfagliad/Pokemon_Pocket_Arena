@@ -8,12 +8,17 @@ function CreateUnitAndPlaceOnMap (_unit_info, _map, _mapX, _mapY)
 	var _unit = instance_create_layer(0, 0, UNITS_LAYER, objUnit);
 	_unit.team = _unit_info.team;
 	_unit.name = _unit_info.name;
-	_unit.maxHp = _unit_info.maxHp;
-	_unit.currentHp = _unit_info.currentHp;
+	_unit.maxHp = _unit_info.hp;
+	_unit.currentHp = _unit.maxHp;
 	_unit.activeType = _unit_info.activeType;
 	_unit.attackStat = _unit_info.attackStat;
 	_unit.defenseStat = _unit_info.defenseStat;
-	
+	_unit.moveRange = _unit_info.moveRange;
+	_unit.moveDistance = _unit_info.moveDistance;
+	_unit.attackRange = _unit_info.attackRange;
+	_unit.attackDistance = _unit_info.attackDistance;
+	_unit.hasMoved = false;
+	_unit.hasAttacked = false;
 	
 	_unit.sprite_index = (_unit_info.team == Team.ONE) ? sprPlaceholderUnitBlue : sprPlaceholderUnitRed;
 	_unit.x = (_mapX * CELL_SIZE) + CENTER_CELL;
