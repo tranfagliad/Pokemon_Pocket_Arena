@@ -20,4 +20,5 @@ global.opponent = noone;
 global.battleArena = noone;
 global.cursorNormalSpeed = CURSOR_BASE_SPEED;
 global.cursorSprintSpeed = CURSOR_BASE_SPEED * 2;
+global.cursorSnapStrength = 0.1;
 
