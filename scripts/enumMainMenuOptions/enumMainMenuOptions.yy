@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_battle_functions",
+  "%Name":"enumMainMenuOptions",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_battle_functions",
+  "name":"enumMainMenuOptions",
   "parent":{
-    "name":"battle",
-    "path":"folders/Scripts/old/battle.yy",
+    "name":"Enums",
+    "path":"folders/Scripts/Enums.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

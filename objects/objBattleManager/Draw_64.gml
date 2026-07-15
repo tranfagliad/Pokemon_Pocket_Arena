@@ -5,6 +5,7 @@
 	{
 		draw_text(10, 110, "Opponent: "+opponent.name);
 		draw_text(10, 135, "Turn: "+string(currentTurn));
+		draw_text(10, 150, "Whose Turn: "+string(whoseTurn));
 		draw_text(10, 225, "Arena: "+mapName);
 	
 		draw_text(300, 10, "Team One:")
@@ -22,8 +23,21 @@
 		if (ds_list_empty(teamTwoUnits)) {
 			draw_text(500, 25, "Empty");
 		}
+		
+		if (selectedUnit != noone) {
+			draw_text(10, 440, "Selected Unit: "+selectedUnit.name);
+		}
+		
+		draw_text(10, 460, string(battleState));
+		
+		
 	}
 
 #endregion
 
 drawUnitInfoCard();
+
+if (battleState == BattleStatePlayerTurnUnitMenu) { drawUnitMenu(); }
+
+
+

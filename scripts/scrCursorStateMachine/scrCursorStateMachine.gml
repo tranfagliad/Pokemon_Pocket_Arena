@@ -1,6 +1,8 @@
 
 function CursorStateFree ()
 {
+	image_speed = 1;
+	
 	#region cursor movement
 		
 		var _xStart = x;
@@ -38,21 +40,19 @@ function CursorStateFree ()
 		var _tempMapX = x div CELL_SIZE;
 		var _tempMapY = y div CELL_SIZE;
 		
-		//if (_tempMapX >= 0 && _tempMapX < objBattleManager.mapWidth && _tempMapY >= 0 && _tempMapY < objBattleManager.mapHeight)
-		//{
-			var _cell = objBattleManager.map[# _tempMapX, _tempMapY];
+
+		var _cell = objBattleManager.map[# _tempMapX, _tempMapY];
         
-			// If there is a unit on this tile, apply a gravitational pull to the center of the tile
-			if (_cell != undefined && _cell.unit != noone)
-			{
-				var _targetX = (_tempMapX * CELL_SIZE) + (CELL_SIZE / 2);
-				var _targetY = (_tempMapY * CELL_SIZE) + (CELL_SIZE / 2);
+		// If there is a unit on this tile, apply a gravitational pull to the center of the tile
+		if (_cell != undefined && _cell.unit != noone)
+		{
+			var _targetX = (_tempMapX * CELL_SIZE) + (CELL_SIZE / 2);
+			var _targetY = (_tempMapY * CELL_SIZE) + (CELL_SIZE / 2);
 				
-				x = lerp(x, _targetX, global.cursorSnapStrength);
-				y = lerp(y, _targetY, global.cursorSnapStrength);
-			}
-		//}
-		
+			x = lerp(x, _targetX, global.cursorSnapStrength);
+			y = lerp(y, _targetY, global.cursorSnapStrength);
+		}
+
 		x = clamp(x, CENTER_CELL, room_width - CENTER_CELL);
 		y = clamp(y, CENTER_CELL, room_height - CENTER_CELL);
 		
@@ -67,4 +67,19 @@ function CursorStateFree ()
 
 
 
-function CursorStatePaused () { /* Do Nothing */ }
+function CursorStateFrozen ()
+{
+	image_index = 0;
+	image_speed = 0;
+	
+	#region cursor snap
+		
+		var _unit = objBattleManager.selectedUnit;
+		x = _unit.x;
+		y = _unit.y;
+        
+		mapX = x div CELL_SIZE;
+		mapY = y div CELL_SIZE;
+		
+	#endregion
+}

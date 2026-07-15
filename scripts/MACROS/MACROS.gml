@@ -43,14 +43,18 @@
 #macro DEFAULT_FONT -1
 #macro EMPTY_STRING ""
 
-#macro CAMPAIGN    0
-#macro FREE_BATTLE 1
-#macro SETTINGS    2
-
 #macro INFO_CARD_WIDTH  320
 #macro INFO_CARD_HEIGHT 180
 #macro INFO_CARD_MARGIN 20
 #macro INFO_CARD_ALPHA  0.6
+
+#macro UNIT_OPTION_MOVE   "Move"
+#macro UNIT_OPTION_ATTACK "Attack"
+#macro UNIT_OPTION_CANCEL "Cancel"
+
+#macro UNIT_OPTION_BOX_WIDTH  160
+#macro UNIT_OPTION_BOX_HEIGHT  110
+
 
 
 

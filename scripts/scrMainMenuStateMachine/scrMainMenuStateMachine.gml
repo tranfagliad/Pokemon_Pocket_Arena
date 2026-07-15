@@ -14,17 +14,17 @@ function MainMenuStateFree ()
     {
         switch (menuIndex)
         {
-            case CAMPAIGN:
-                show_debug_message("Campaign Selected!");
+            case MainMenuOptions.CAMPAIGN:
+                //show_debug_message("Campaign Selected!");
                 break;
                 
-            case FREE_BATTLE:
-                show_debug_message("Free Battle Selected!");
+            case MainMenuOptions.FREE_BATTLE:
+                //show_debug_message("Free Battle Selected!");
 				TransitionStart(rmFreeBattleSelectOpponent, seqFadeOut, seqFadeIn);
                 break;
                 
-            case SETTINGS:
-                show_debug_message("Settings Selected!");
+            case MainMenuOptions.SETTINGS:
+                //show_debug_message("Settings Selected!");
                 break;
         }
     }

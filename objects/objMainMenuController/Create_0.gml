@@ -1,8 +1,8 @@
 
 menuOptions = [
-	{ index: CAMPAIGN,    sprite: sprPlaceholderCampaignButton },
-	{ index: FREE_BATTLE, sprite: sprPlaceholderFreeBattleButton },
-	{ index: SETTINGS,    sprite: sprPlaceholderSettingsButton }
+	{ index: MainMenuOptions.CAMPAIGN,    sprite: sprPlaceholderCampaignButton },
+	{ index: MainMenuOptions.FREE_BATTLE, sprite: sprPlaceholderFreeBattleButton },
+	{ index: MainMenuOptions.SETTINGS,    sprite: sprPlaceholderSettingsButton }
 	
 ];
 

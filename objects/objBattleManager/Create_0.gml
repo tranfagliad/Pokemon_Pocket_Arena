@@ -2,9 +2,12 @@
 teamOneUnits = ds_list_create();
 teamTwoUnits = ds_list_create();
 
+
 currentTurn = 0;
+whoseTurn = Team.ONE;
 
 opponent = global.opponent;
+
 
 mapName = global.battleArena.name;
 mapWidth = global.battleArena.width;
@@ -12,6 +15,21 @@ mapHeight = global.battleArena.height;
 
 map = ds_grid_create(mapWidth, mapHeight);
 ds_grid_clear(map, { terrain: noone, unit: noone });
+
+
+battleState = BattleStatePlayerTurnFree;
+battleStatePrev = BattleStatePlayerTurnFree;
+selectedUnit = noone;
+
+
+unitOptions = [UNIT_OPTION_MOVE, UNIT_OPTION_ATTACK, UNIT_OPTION_CANCEL];
+unitOptionsIndex = 0;
+
+
+
+
+
+
 
 
 

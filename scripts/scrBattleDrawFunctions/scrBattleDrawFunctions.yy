@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_cursor_functions",
+  "%Name":"scrBattleDrawFunctions",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_cursor_functions",
+  "name":"scrBattleDrawFunctions",
   "parent":{
-    "name":"objects",
-    "path":"folders/Scripts/old/objects.yy",
+    "name":"Battle",
+    "path":"folders/Scripts/Battle.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
