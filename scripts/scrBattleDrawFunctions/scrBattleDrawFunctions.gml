@@ -37,6 +37,19 @@ function drawUnitInfoCard ()
 			draw_set_font(fntConsolas12);
 			draw_text(_drawX+130, _drawY, _unit.name);
 			
+			draw_text(_drawX+130, _drawY+20, "Lvl: "+string(_unit.level));
+			draw_text(_drawX+130, _drawY+40, "HP: "+string(_unit.currentHp)+" / "+string(_unit.maxHp));
+			draw_text(_drawX+130, _drawY+60, "Atk: "+string(_unit.attackStat));
+			draw_text(_drawX+220, _drawY+60, "Def: "+string(_unit.defenseStat));
+			
+			draw_sprite_ext(sprType, _unit.activeType, _drawX, _drawY+130, 0.6, 0.6, 0, DEFAULT_DRAW_COLOR, DEFAULT_DRAW_ALPHA);
+			
+			draw_text(_drawX+130, _drawY+90, "Move: "+string(_unit.moveDistance));
+			draw_sprite_ext(sprRange, _unit.moveRange, _drawX+130, _drawY+110, 0.8, 0.8, 0, DEFAULT_DRAW_COLOR, DEFAULT_DRAW_ALPHA);
+			
+			draw_text(_drawX+220, _drawY+90, "Attack: "+string(_unit.attackDistance));
+			draw_sprite_ext(sprRange, _unit.attackRange, _drawX+220, _drawY+110, 0.8, 0.8, 0, DEFAULT_DRAW_COLOR, DEFAULT_DRAW_ALPHA);
+			
 		#endregion
 	}
 }

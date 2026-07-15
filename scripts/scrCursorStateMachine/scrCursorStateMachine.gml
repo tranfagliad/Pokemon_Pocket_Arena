@@ -35,7 +35,7 @@ function CursorStateFree ()
 		
 	#endregion
 	
-	#region magnetic snap
+	#region cursor snap
 		
 		var _tempMapX = x div CELL_SIZE;
 		var _tempMapY = y div CELL_SIZE;

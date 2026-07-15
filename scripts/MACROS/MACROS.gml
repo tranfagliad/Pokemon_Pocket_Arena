@@ -59,6 +59,7 @@
 
 
 
-
+#macro MIN_LEVEL 1
+#macro MAX_LEVEL 9
 
 

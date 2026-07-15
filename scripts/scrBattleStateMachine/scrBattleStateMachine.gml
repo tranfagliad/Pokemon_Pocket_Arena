@@ -127,11 +127,13 @@ function unselectUnit ()
 
 function backToUnitOptions ()
 {
-	objBattleCursor.x = objBattleManager.selectedUnit.x;
-	objBattleCursor.y = objBattleManager.selectedUnit.y;
+	objBattleCursor.x = selectedUnit.x;
+	objBattleCursor.y = selectedUnit.y;
+	objBattleCursor.mapX = objBattleCursor.x div CELL_SIZE;
+    objBattleCursor.mapY = objBattleCursor.y div CELL_SIZE;
 			
 	objBattleCursor.cursorState = CursorStateFrozen;
 	objBattleCursor.cursorStatePrev = CursorStateFree;
 	battleState = BattleStatePlayerTurnUnitMenu;
-	battleStatePrev = BattleStatePlayerTurnUnitAttack;
+	battleStatePrev = BattleStatePlayerTurnFree;
 }

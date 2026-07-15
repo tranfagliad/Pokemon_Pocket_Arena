@@ -8,6 +8,7 @@ function CreateUnitAndPlaceOnMap (_unit_info, _map, _mapX, _mapY)
 	var _unit = instance_create_layer(0, 0, UNITS_LAYER, objUnit);
 	_unit.team = _unit_info.team;
 	_unit.name = _unit_info.name;
+	_unit.level = _unit_info.level;
 	_unit.maxHp = _unit_info.hp;
 	_unit.currentHp = _unit.maxHp;
 	_unit.activeType = _unit_info.activeType;
@@ -27,3 +28,23 @@ function CreateUnitAndPlaceOnMap (_unit_info, _map, _mapX, _mapY)
 	ds_list_add(_team_list, _unit);
 	ds_grid_set(_map, _mapX, _mapY, { terrain: noone, unit: _unit });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
