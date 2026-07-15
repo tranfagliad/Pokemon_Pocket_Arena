@@ -20,7 +20,7 @@
 #macro DEFAULT_DEADZONE     0.2
 
 #macro CURSOR_BASE_SPEED 7
-#macro CURSOR_SNAP_STRENGTH 0.15
+#macro CURSOR_BASE_SNAP_STRENGTH 0.12
 
 #macro FIRST_VIEW 0
 #macro VIEWPORT_WIDTH 1280
@@ -40,13 +40,21 @@
 #macro CURSOR_LAYER     "Cursor"
 
 #macro MAX_DEPTH -9999
-
 #macro DEFAULT_FONT -1
-
 #macro EMPTY_STRING ""
-
 
 #macro CAMPAIGN    0
 #macro FREE_BATTLE 1
 #macro SETTINGS    2
+
+#macro INFO_CARD_WIDTH  320
+#macro INFO_CARD_HEIGHT 180
+#macro INFO_CARD_MARGIN 20
+#macro INFO_CARD_ALPHA  0.6
+
+
+
+
+
+
 

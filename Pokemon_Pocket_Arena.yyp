@@ -389,6 +389,7 @@
     {"id":{"name":"scrBattleFunctions","path":"scripts/scrBattleFunctions/scrBattleFunctions.yy",},},
     {"id":{"name":"scrBattleStateMachine","path":"scripts/scrBattleStateMachine/scrBattleStateMachine.yy",},},
     {"id":{"name":"scrCursorStateMachine","path":"scripts/scrCursorStateMachine/scrCursorStateMachine.yy",},},
+    {"id":{"name":"scrDrawUnitInfoCard","path":"scripts/scrDrawUnitInfoCard/scrDrawUnitInfoCard.yy",},},
     {"id":{"name":"scrFreeBattleOpponentData","path":"scripts/scrFreeBattleOpponentData/scrFreeBattleOpponentData.yy",},},
     {"id":{"name":"scrInputFunctions","path":"scripts/scrInputFunctions/scrInputFunctions.yy",},},
     {"id":{"name":"scrMainMenuStateMachine","path":"scripts/scrMainMenuStateMachine/scrMainMenuStateMachine.yy",},},

@@ -38,8 +38,8 @@ function CursorStateFree ()
 		var _tempMapX = x div CELL_SIZE;
 		var _tempMapY = y div CELL_SIZE;
 		
-		if (_tempMapX >= 0 && _tempMapX < objBattleManager.mapWidth && _tempMapY >= 0 && _tempMapY < objBattleManager.mapHeight)
-		{
+		//if (_tempMapX >= 0 && _tempMapX < objBattleManager.mapWidth && _tempMapY >= 0 && _tempMapY < objBattleManager.mapHeight)
+		//{
 			var _cell = objBattleManager.map[# _tempMapX, _tempMapY];
         
 			// If there is a unit on this tile, apply a gravitational pull to the center of the tile
@@ -51,12 +51,13 @@ function CursorStateFree ()
 				x = lerp(x, _targetX, global.cursorSnapStrength);
 				y = lerp(y, _targetY, global.cursorSnapStrength);
 			}
-		}
+		//}
 		
 		x = clamp(x, CENTER_CELL, room_width - CENTER_CELL);
 		y = clamp(y, CENTER_CELL, room_height - CENTER_CELL);
 		
-		if (x != _xStart || y != _yStart) {
+		if (x != _xStart || y != _yStart)
+		{
 			mapX = x div CELL_SIZE;
 			mapY = y div CELL_SIZE;
 		}
