@@ -83,18 +83,18 @@ function BattleStatePlayerTurnUnitMenu ()
 
 function BattleStatePlayerTurnUnitMove ()
 {
-	var _targetX = objBattleCursor.mapX;
-	var _targetY = objBattleCursor.mapY;
-	var _targetCell = map[# _targetX, _targetY];
+	#region show attack preview
+		
+		var _targetX = objBattleCursor.mapX;
+		var _targetY = objBattleCursor.mapY;
+		var _targetCell = map[# _targetX, _targetY];
+		var _unitCellX = selectedUnit.x div CELL_SIZE;
+		var _unitCellY = selectedUnit.y div CELL_SIZE;
 	
-	var _unitCellX = selectedUnit.x div CELL_SIZE;
-	var _unitCellY = selectedUnit.y div CELL_SIZE;
+		ClearAttackFlags(map);
+		if (_targetCell.canMove || (_targetX == _unitCellX && _targetY == _unitCellY)) { ShowAttackRange(_targetX, _targetY, selectedUnit); }
 	
-	ClearAttackFlags(map);
-	if (_targetCell != undefined && (_targetCell.canMove || (_targetX == _unitCellX && _targetY == _unitCellY)))
-	{
-		ShowAttackRange(_targetX, _targetY, selectedUnit);
-	}
+	#endregion
 	
 	#region cancel button - go back to unit options
 	
