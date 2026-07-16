@@ -1,57 +1,22 @@
 
-function drawUnitInfoCard ()
+function drawUnitInfoCards ()
 {
-	var _cell = map[# objBattleCursor.mapX, objBattleCursor.mapY];
-	if (_cell.unit != noone)
-	{
-		var _unit = _cell.unit;
-		var _drawX = 0;
-		var _drawY = VIEWPORT_HEIGHT - INFO_CARD_HEIGHT - INFO_CARD_MARGIN;
-		var _cardColor = DEFAULT_DRAW_COLOR;
-			
-		#region draw card background
-			
-			if (_unit.team == Team.ONE)
-			{
-				_cardColor = c_blue;
-			}
-			else if (_unit.team == Team.TWO)
-			{
-				_drawX = VIEWPORT_WIDTH - INFO_CARD_WIDTH;
-				_cardColor = c_red;
-			}
-			
-			draw_set_colour(_cardColor);
-			draw_set_alpha(INFO_CARD_ALPHA);
-			draw_rectangle(_drawX, _drawY, _drawX+INFO_CARD_WIDTH, _drawY+INFO_CARD_HEIGHT, false);
-			draw_set_colour(DEFAULT_DRAW_COLOR);
-			draw_set_alpha(DEFAULT_DRAW_ALPHA);
-				
-		#endregion
-			
-		#region draw details
-				
-			draw_sprite(sprUnitDisplayBgr, 0, _drawX, _drawY);
-			draw_sprite(sprPlaceholderDisplay, 0, _drawX, _drawY);
-				
-			draw_set_font(fntConsolas12);
-			draw_text(_drawX+130, _drawY, _unit.name);
-			
-			draw_text(_drawX+130, _drawY+20, "Lvl: "+string(_unit.level));
-			draw_text(_drawX+130, _drawY+40, "HP: "+string(_unit.currentHp)+" / "+string(_unit.maxHp));
-			draw_text(_drawX+130, _drawY+60, "Atk: "+string(_unit.attackStat));
-			draw_text(_drawX+220, _drawY+60, "Def: "+string(_unit.defenseStat));
-			
-			draw_sprite_ext(sprType, _unit.activeType, _drawX, _drawY+130, 0.6, 0.6, 0, DEFAULT_DRAW_COLOR, DEFAULT_DRAW_ALPHA);
-			
-			draw_text(_drawX+130, _drawY+90, "Move: "+string(_unit.moveDistance));
-			draw_sprite_ext(sprRange, _unit.moveRange, _drawX+130, _drawY+110, 0.8, 0.8, 0, DEFAULT_DRAW_COLOR, DEFAULT_DRAW_ALPHA);
-			
-			draw_text(_drawX+220, _drawY+90, "Attack: "+string(_unit.attackDistance));
-			draw_sprite_ext(sprRange, _unit.attackRange, _drawX+220, _drawY+110, 0.8, 0.8, 0, DEFAULT_DRAW_COLOR, DEFAULT_DRAW_ALPHA);
-			
-		#endregion
-	}
+    var _hoveredUnit = noone;
+    var _cell = map[# objBattleCursor.mapX, objBattleCursor.mapY];
+    
+    if (_cell != undefined && _cell.unit != noone) { _hoveredUnit = _cell.unit; }
+    
+    if (selectedUnit != noone)
+    {
+        if (_hoveredUnit != noone && _hoveredUnit.team != selectedUnit.team)
+        {
+            drawSingleUnitCard(selectedUnit);
+            drawSingleUnitCard(_hoveredUnit);
+        }
+        else if (_hoveredUnit != noone) { drawSingleUnitCard(_hoveredUnit); }
+        else { drawSingleUnitCard(selectedUnit); }
+    }
+    else { drawSingleUnitCard(_hoveredUnit); }
 }
 
 
@@ -74,4 +39,64 @@ function drawUnitMenu ()
 	
 	draw_set_font(fntConsolas12);
 	draw_set_colour(DEFAULT_DRAW_COLOR);
+}
+
+
+
+
+
+
+// Helper Functions
+
+function drawSingleUnitCard (_unit)
+{
+    if (_unit == noone || !instance_exists(_unit)) { return; }
+    
+    var _drawX = 0;
+    var _drawY = VIEWPORT_HEIGHT - INFO_CARD_HEIGHT - INFO_CARD_MARGIN;
+    var _cardColor = DEFAULT_DRAW_COLOR;
+    
+    #region draw card background
+        
+        if (_unit.team == Team.ONE)
+        {
+            _drawX = 0;
+            _cardColor = c_blue;
+        }
+        else if (_unit.team == Team.TWO)
+        {
+            _drawX = VIEWPORT_WIDTH - INFO_CARD_WIDTH;
+            _cardColor = c_red;
+        }
+        
+        draw_set_colour(_cardColor);
+        draw_set_alpha(INFO_CARD_ALPHA);
+        draw_rectangle(_drawX, _drawY, _drawX + INFO_CARD_WIDTH, _drawY + INFO_CARD_HEIGHT, false);
+        draw_set_colour(DEFAULT_DRAW_COLOR);
+        draw_set_alpha(DEFAULT_DRAW_ALPHA);
+            
+    #endregion
+    
+    #region draw details
+            
+        draw_sprite(sprUnitDisplayBgr, 0, _drawX, _drawY);
+        draw_sprite(sprPlaceholderDisplay, 0, _drawX, _drawY);
+            
+        draw_set_font(fntConsolas12);
+        draw_text(_drawX + 130, _drawY, _unit.name);
+        
+        draw_text(_drawX + 130, _drawY + 20, "Lvl: " + string(_unit.level));
+        draw_text(_drawX + 130, _drawY + 40, "HP: " + string(_unit.currentHp) + " / " + string(_unit.maxHp));
+        draw_text(_drawX + 130, _drawY + 60, "Atk: " + string(_unit.attackStat));
+        draw_text(_drawX + 220, _drawY + 60, "Def: " + string(_unit.defenseStat));
+        
+        draw_sprite_ext(sprType, _unit.activeType, _drawX, _drawY + 130, 0.6, 0.6, 0, DEFAULT_DRAW_COLOR, DEFAULT_DRAW_ALPHA);
+        
+        draw_text(_drawX + 130, _drawY + 90, "Move: " + string(_unit.moveDistance));
+        draw_sprite_ext(sprRange, _unit.moveRange, _drawX + 130, _drawY + 110, 0.8, 0.8, 0, DEFAULT_DRAW_COLOR, DEFAULT_DRAW_ALPHA);
+        
+        draw_text(_drawX + 220, _drawY + 90, "Attack: " + string(_unit.attackDistance));
+        draw_sprite_ext(sprRange, _unit.attackRange, _drawX + 220, _drawY + 110, 0.8, 0.8, 0, DEFAULT_DRAW_COLOR, DEFAULT_DRAW_ALPHA);
+        
+    #endregion
 }

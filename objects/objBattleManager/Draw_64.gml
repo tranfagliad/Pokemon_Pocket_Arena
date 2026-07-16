@@ -35,9 +35,6 @@
 
 #endregion
 
-drawUnitInfoCard();
+drawUnitInfoCards();
 
 if (battleState == BattleStatePlayerTurnUnitMenu) { drawUnitMenu(); }
-
-
-
