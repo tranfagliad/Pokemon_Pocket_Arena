@@ -26,25 +26,95 @@ function CreateUnitAndPlaceOnMap (_unit_info, _map, _mapX, _mapY)
 	_unit.y = (_mapY * CELL_SIZE) + CENTER_CELL;
 	
 	ds_list_add(_team_list, _unit);
-	ds_grid_set(_map, _mapX, _mapY, { terrain: noone, unit: _unit });
+	_map[# _mapX, _mapY].unit = _unit;
+}
+
+
+
+function ShowMoveRange (_unit)
+{
+	if (_unit == noone || _unit.hasMoved) { return; }
+	
+	var _unitCellX = _unit.x div CELL_SIZE;
+	var _unitCellY = _unit.y div CELL_SIZE;
+	var _moveDistance = _unit.moveDistance;
+	
+	switch (_unit.moveRange)
+	{
+		case Range.STRAIGHT:
+			ShowStraightRange(_unitCellX, _unitCellY, _moveDistance);
+			break;
+		case Range.DIAGONAL:
+			break;
+		case Range.MATRIX:
+			break;
+		default: break;
+	}
+}
+
+
+
+function InitializeMap ()
+{
+	var _map = ds_grid_create(mapWidth, mapHeight);
+	for (var _x = 0; _x < mapWidth; _x++)
+	{
+		for (var _y = 0; _y < mapHeight; _y++)
+		{
+			_map[# _x, _y] = { 
+				terrain: noone,
+				unit: noone,
+				moveable: true,
+				canMove: false,
+				canAttack: false
+			};
+		}
+	}
+	return _map;
+}
+
+
+
+function ClearMapFlags (_map)
+{
+	for (var _x = 0; _x < mapWidth; _x++)
+    {
+        for (var _y = 0; _y < mapHeight; _y++)
+        {
+            _map[# _x, _y].canMove = false;
+            _map[# _x, _y].canAttack = false;
+        }
+    }
+}
+
+
+
+// Helper Functions
+
+function ShowStraightRange (_unitCellX, _unitCellY, _moveDistance)
+{
+    ScanDirection(_unitCellX, _unitCellY, -1,  0, _moveDistance);   // Left
+    ScanDirection(_unitCellX, _unitCellY,  1,  0, _moveDistance);   // Right
+    ScanDirection(_unitCellX, _unitCellY,  0, -1, _moveDistance);   // Up
+    ScanDirection(_unitCellX, _unitCellY,  0,  1, _moveDistance);   // Down
 }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function ScanDirection (_startX, _startY, _dirX, _dirY, _dist)
+{
+    for (var _i = 1; _i <= _dist; _i++)
+    {
+        var _targetX = _startX + (_dirX * _i);
+        var _targetY = _startY + (_dirY * _i);
+        
+        if (_targetX < 0 || _targetX >= mapWidth || _targetY < 0 || _targetY >= mapHeight) { break; } 
+        
+        var _cell = map[# _targetX, _targetY];
+        
+        if (_cell.moveable == false || _cell.unit != noone) { break; }
+        
+        _cell.canMove = true;
+    }
+}

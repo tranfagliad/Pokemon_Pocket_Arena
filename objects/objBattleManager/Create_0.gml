@@ -12,9 +12,7 @@ opponent = global.opponent;
 mapName = global.battleArena.name;
 mapWidth = global.battleArena.width;
 mapHeight = global.battleArena.height;
-
-map = ds_grid_create(mapWidth, mapHeight);
-ds_grid_clear(map, { terrain: noone, unit: noone });
+map = InitializeMap();
 
 
 battleState = BattleStatePlayerTurnFree;
@@ -68,8 +66,8 @@ var _team_two_bulbasaur = {
 
 
 
-CreateUnitAndPlaceOnMap(_team_one_pikachu, map, 2, 3);
-CreateUnitAndPlaceOnMap(_team_one_charmander, map, 4, 4);
+CreateUnitAndPlaceOnMap(_team_one_pikachu, map, 1, 3);
+CreateUnitAndPlaceOnMap(_team_one_charmander, map, 3, 3);
 
 CreateUnitAndPlaceOnMap(_team_two_squirtle, map, 7, 5);
 CreateUnitAndPlaceOnMap(_team_two_bulbasaur, map, 11, 9);

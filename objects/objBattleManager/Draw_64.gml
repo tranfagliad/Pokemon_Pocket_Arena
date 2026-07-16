@@ -3,6 +3,8 @@
 
 	if (global.showDebugUI)
 	{
+		draw_set_font(fntConsolas12);
+		
 		draw_text(10, 110, "Opponent: "+opponent.name);
 		draw_text(10, 135, "Turn: "+string(currentTurn));
 		draw_text(10, 150, "Whose Turn: "+string(whoseTurn));
@@ -29,8 +31,6 @@
 		}
 		
 		draw_text(10, 460, string(battleState));
-		
-		
 	}
 
 #endregion

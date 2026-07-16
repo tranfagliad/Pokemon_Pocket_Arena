@@ -42,7 +42,19 @@ function drawUnitMenu ()
 }
 
 
-
+function drawMoveRange ()
+{
+	for (var _col = 0; _col < mapWidth; _col++)
+	{
+	    for (var _row = 0; _row < mapHeight; _row++)
+	    {
+			var _cell = map[# _col, _row];
+			var _drawX = (_col * CELL_SIZE) + CENTER_CELL;
+	        var _drawY = (_row * CELL_SIZE) + CENTER_CELL;
+			if (_cell.canMove) { draw_sprite(sprMoveTile, 0, _drawX, _drawY); }
+		}
+	}
+}
 
 
 

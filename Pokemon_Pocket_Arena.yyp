@@ -352,6 +352,7 @@
     {"id":{"name":"fntConsolas20","path":"fonts/fntConsolas20/fntConsolas20.yy",},},
     {"id":{"name":"fntConsolas20Bold","path":"fonts/fntConsolas20Bold/fntConsolas20Bold.yy",},},
     {"id":{"name":"fntConsolas32","path":"fonts/fntConsolas32/fntConsolas32.yy",},},
+    {"id":{"name":"fntConsolas8","path":"fonts/fntConsolas8/fntConsolas8.yy",},},
     {"id":{"name":"objBattleCamera","path":"objects/objBattleCamera/objBattleCamera.yy",},},
     {"id":{"name":"objBattleCursor","path":"objects/objBattleCursor/objBattleCursor.yy",},},
     {"id":{"name":"objBattleManager","path":"objects/objBattleManager/objBattleManager.yy",},},

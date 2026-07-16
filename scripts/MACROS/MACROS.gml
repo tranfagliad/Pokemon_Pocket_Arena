@@ -34,10 +34,11 @@
 #macro DEFAULT_DRAW_ROTATION 0
 #macro DEFAULT_DRAW_COLOR c_white
 
-#macro SYSTEM_LAYER     "System"
-#macro TRANSITION_LAYER "Transition"
-#macro UNITS_LAYER      "Units"
-#macro CURSOR_LAYER     "Cursor"
+#macro SYSTEM_LAYER       "System"
+#macro TRANSITION_LAYER   "Transition"
+#macro UNITS_LAYER        "Units"
+#macro CURSOR_LAYER       "Cursor"
+#macro GRID_OVERLAY_LAYER "GridOverlay"
 
 #macro MAX_DEPTH -9999
 #macro DEFAULT_FONT -1

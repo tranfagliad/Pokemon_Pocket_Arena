@@ -52,6 +52,7 @@ function BattleStatePlayerTurnUnitMenu ()
 					objBattleCursor.cursorStatePrev = CursorStateFrozen;
 					battleState = BattleStatePlayerTurnUnitMove;
 					battleStatePrev = BattleStatePlayerTurnUnitMenu;
+					ShowMoveRange(selectedUnit);
 					break;
 					
 				case UnitOptions.ATTACK:
@@ -62,7 +63,7 @@ function BattleStatePlayerTurnUnitMenu ()
 					break;
 					
 				case UnitOptions.CANCEL:
-					unselectUnit();
+					UnselectUnit();
 					break;
 				default: break;
 			}
@@ -72,7 +73,7 @@ function BattleStatePlayerTurnUnitMenu ()
 	
 	#region cancel button - unselect unit
 	
-		if (objInputManager.pressed.cancel) { unselectUnit(); }
+		if (objInputManager.pressed.cancel) { UnselectUnit(); }
 	
 	#endregion
 }
@@ -83,7 +84,11 @@ function BattleStatePlayerTurnUnitMove ()
 {
 	#region cancel button - go back to unit options
 	
-		if (objInputManager.pressed.cancel) { backToUnitOptions(); }
+		if (objInputManager.pressed.cancel)
+		{
+			ClearMapFlags(map);
+			BackToUnitOptions();
+		}
 	
 	#endregion
 }
@@ -94,7 +99,7 @@ function BattleStatePlayerTurnUnitAttack ()
 {
 	#region cancel button - go back to unit options
 	
-		if (objInputManager.pressed.cancel) { backToUnitOptions(); }
+		if (objInputManager.pressed.cancel) { BackToUnitOptions(); }
 	
 	#endregion
 }
@@ -114,7 +119,7 @@ function BattleStatePlayerTurnUnitAttack ()
 
 // Helper Functions
 
-function unselectUnit ()
+function UnselectUnit ()
 {
 	selectedUnit = noone;
 	unitOptionsIndex = UnitOptions.MOVE;
@@ -125,7 +130,7 @@ function unselectUnit ()
 	battleStatePrev = BattleStatePlayerTurnUnitMenu;
 }
 
-function backToUnitOptions ()
+function BackToUnitOptions ()
 {
 	objBattleCursor.x = selectedUnit.x;
 	objBattleCursor.y = selectedUnit.y;
