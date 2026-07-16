@@ -60,6 +60,7 @@ function BattleStatePlayerTurnUnitMenu ()
 					objBattleCursor.cursorStatePrev = CursorStateFrozen;
 					battleState = BattleStatePlayerTurnUnitAttack;
 					battleStatePrev = BattleStatePlayerTurnUnitMenu;
+					ShowAttackRange(objBattleCursor.mapX, objBattleCursor.mapY, selectedUnit);
 					break;
 					
 				case UnitOptions.CANCEL:
@@ -83,19 +84,17 @@ function BattleStatePlayerTurnUnitMenu ()
 function BattleStatePlayerTurnUnitMove ()
 {
 	var _targetX = objBattleCursor.mapX;
-    var _targetY = objBattleCursor.mapY;
-    var _targetCell = map[# _targetX, _targetY];
+	var _targetY = objBattleCursor.mapY;
+	var _targetCell = map[# _targetX, _targetY];
 	
 	var _unitCellX = selectedUnit.x div CELL_SIZE;
-    var _unitCellY = selectedUnit.y div CELL_SIZE;
+	var _unitCellY = selectedUnit.y div CELL_SIZE;
 	
 	ClearAttackFlags(map);
 	if (_targetCell != undefined && (_targetCell.canMove || (_targetX == _unitCellX && _targetY == _unitCellY)))
-    {
-        ShowAttackRange(_targetX, _targetY, selectedUnit);
-    }
-	
-	
+	{
+		ShowAttackRange(_targetX, _targetY, selectedUnit);
+	}
 	
 	#region cancel button - go back to unit options
 	
@@ -114,7 +113,11 @@ function BattleStatePlayerTurnUnitAttack ()
 {
 	#region cancel button - go back to unit options
 	
-		if (objInputManager.pressed.cancel) { BackToUnitOptions(); }
+		if (objInputManager.pressed.cancel)
+		{
+			ClearAttackFlags(map);
+			BackToUnitOptions();
+		}
 	
 	#endregion
 }

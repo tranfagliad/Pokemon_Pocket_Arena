@@ -69,6 +69,6 @@ var _team_two_bulbasaur = {
 CreateUnitAndPlaceOnMap(_team_one_pikachu, map, 1, 3);
 CreateUnitAndPlaceOnMap(_team_one_charmander, map, 3, 3);
 
-CreateUnitAndPlaceOnMap(_team_two_squirtle, map, 7, 5);
+CreateUnitAndPlaceOnMap(_team_two_squirtle, map, 5, 5);
 CreateUnitAndPlaceOnMap(_team_two_bulbasaur, map, 11, 9);
 

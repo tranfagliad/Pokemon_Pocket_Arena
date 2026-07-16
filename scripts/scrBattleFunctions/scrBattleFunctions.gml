@@ -42,13 +42,13 @@ function ShowMoveRange (_unit)
 	switch (_unit.moveRange)
 	{
 		case Range.STRAIGHT:
-			ShowStraightRange(_unitCellX, _unitCellY, _moveDistance);
+			ShowStraightRange(_unitCellX, _unitCellY, _moveDistance, false, _unit.team, _unit);
 			break;
 		case Range.DIAGONAL:
-			ShowDiagonalRange(_unitCellX, _unitCellY, _moveDistance);
+			ShowDiagonalRange(_unitCellX, _unitCellY, _moveDistance, false, _unit.team, _unit);
 			break;
 		case Range.MATRIX:
-			ShowMatrixRange(_unitCellX, _unitCellY, _moveDistance);
+			ShowMatrixRange(_unitCellX, _unitCellY, _moveDistance, false, _unit.team, _unit);
 			break;
 		default: break;
 	}
@@ -65,13 +65,13 @@ function ShowAttackRange (_cellX, _cellY, _unit)
 	switch (_unit.attackRange)
 	{
 		case Range.STRAIGHT:
-			ShowStraightRange(_cellX, _cellY, _attackDistance, true);
+			ShowStraightRange(_cellX, _cellY, _attackDistance, true, _unit.team, _unit);
 			break;
 		case Range.DIAGONAL:
-			ShowDiagonalRange(_cellX, _cellY, _attackDistance, true);
+			ShowDiagonalRange(_cellX, _cellY, _attackDistance, true, _unit.team, _unit);
 			break;
 		case Range.MATRIX:
-			ShowMatrixRange(_cellX, _cellY, _attackDistance, true);
+			ShowMatrixRange(_cellX, _cellY, _attackDistance, true, _unit.team, _unit);
 			break;
 		default: break;
 	}
@@ -131,55 +131,73 @@ function ClearAttackFlags (_map)
 
 // Helper Functions
 
-function ShowStraightRange (_unitCellX, _unitCellY, _distance, _isAttack = false)
+function ShowStraightRange (_unitCellX, _unitCellY, _distance, _isAttack = false, _team = noone, _ignoreUnit = noone)
 {
-    ScanDirection(_unitCellX, _unitCellY, -1,  0, _distance, _isAttack);   // Left
-    ScanDirection(_unitCellX, _unitCellY,  1,  0, _distance, _isAttack);   // Right
-    ScanDirection(_unitCellX, _unitCellY,  0, -1, _distance, _isAttack);   // Up
-    ScanDirection(_unitCellX, _unitCellY,  0,  1, _distance, _isAttack);   // Down
+    ScanDirection(_unitCellX, _unitCellY, -1,  0, _distance, _isAttack, _team, _ignoreUnit);   // Left
+    ScanDirection(_unitCellX, _unitCellY,  1,  0, _distance, _isAttack, _team, _ignoreUnit);   // Right
+    ScanDirection(_unitCellX, _unitCellY,  0, -1, _distance, _isAttack, _team, _ignoreUnit);   // Up
+    ScanDirection(_unitCellX, _unitCellY,  0,  1, _distance, _isAttack, _team, _ignoreUnit);   // Down
 }
 
-function ShowDiagonalRange (_unitCellX, _unitCellY, _distance, _isAttack = false)
+function ShowDiagonalRange (_unitCellX, _unitCellY, _distance, _isAttack = false, _team = noone, _ignoreUnit = noone)
 {
-    ScanDirection(_unitCellX, _unitCellY, -1, -1, _distance, _isAttack);   // Top-Left
-    ScanDirection(_unitCellX, _unitCellY,  1, -1, _distance, _isAttack);   // Top-Right
-    ScanDirection(_unitCellX, _unitCellY, -1,  1, _distance, _isAttack);   // Bottom-Left
-    ScanDirection(_unitCellX, _unitCellY,  1,  1, _distance, _isAttack);   // Bottom-Right
+    ScanDirection(_unitCellX, _unitCellY, -1, -1, _distance, _isAttack, _team, _ignoreUnit);   // Top-Left
+    ScanDirection(_unitCellX, _unitCellY,  1, -1, _distance, _isAttack, _team, _ignoreUnit);   // Top-Right
+    ScanDirection(_unitCellX, _unitCellY, -1,  1, _distance, _isAttack, _team, _ignoreUnit);   // Bottom-Left
+    ScanDirection(_unitCellX, _unitCellY,  1,  1, _distance, _isAttack, _team, _ignoreUnit);   // Bottom-Right
 }
 
-function ShowMatrixRange (_unitCellX, _unitCellY, _distance, _isAttack = false)
+function ShowMatrixRange (_unitCellX, _unitCellY, _distance, _isAttack = false, _team = noone, _ignoreUnit = noone)
 {
-    ScanMatrixDirection(_unitCellX, _unitCellY, -1,  0, _isAttack); // Left
-    ScanMatrixDirection(_unitCellX, _unitCellY,  1,  0, _isAttack); // Right
-    ScanMatrixDirection(_unitCellX, _unitCellY,  0, -1, _isAttack); // Up
-    ScanMatrixDirection(_unitCellX, _unitCellY,  0,  1, _isAttack); // Down
+    ScanMatrixDirection(_unitCellX, _unitCellY, -1,  0, _isAttack, _team, _ignoreUnit);   // Left
+    ScanMatrixDirection(_unitCellX, _unitCellY,  1,  0, _isAttack, _team, _ignoreUnit);   // Right
+    ScanMatrixDirection(_unitCellX, _unitCellY,  0, -1, _isAttack, _team, _ignoreUnit);   // Up
+    ScanMatrixDirection(_unitCellX, _unitCellY,  0,  1, _isAttack, _team, _ignoreUnit);   // Down
     
-    ScanMatrixDirection(_unitCellX, _unitCellY, -1, -1, _isAttack); // Top-Left
-    ScanMatrixDirection(_unitCellX, _unitCellY,  1, -1, _isAttack); // Top-Right
-    ScanMatrixDirection(_unitCellX, _unitCellY, -1,  1, _isAttack); // Bottom-Left
-    ScanMatrixDirection(_unitCellX, _unitCellY,  1,  1, _isAttack); // Bottom-Right
+    ScanMatrixDirection(_unitCellX, _unitCellY, -1, -1, _isAttack, _team, _ignoreUnit);   // Top-Left
+    ScanMatrixDirection(_unitCellX, _unitCellY,  1, -1, _isAttack, _team, _ignoreUnit);   // Top-Right
+    ScanMatrixDirection(_unitCellX, _unitCellY, -1,  1, _isAttack, _team, _ignoreUnit);   // Bottom-Left
+    ScanMatrixDirection(_unitCellX, _unitCellY,  1,  1, _isAttack, _team, _ignoreUnit);   // Bottom-Right
 }
 
-function ScanDirection (_startX, _startY, _dirX, _dirY, _dist, _isAttack = false)
+function ScanDirection (_startX, _startY, _dirX, _dirY, _dist, _isAttack = false, _attackerTeam = noone, _ignoreUnit = noone)
 {
     for (var _i = 1; _i <= _dist; _i++)
     {
         var _targetX = _startX + (_dirX * _i);
         var _targetY = _startY + (_dirY * _i);
-        
         if (_targetX < 0 || _targetX >= mapWidth || _targetY < 0 || _targetY >= mapHeight) { break; } 
         
         var _cell = map[# _targetX, _targetY];
-        
         if (_cell.moveable == false) { break; }
-        if (!_isAttack && _cell.unit != noone) { break; }
         
-        if (_isAttack) { _cell.canAttack = true; }
-		else { _cell.canMove = true; }
+        var _cellUnit = _cell.unit;
+        if (_cellUnit == _ignoreUnit) { _cellUnit = noone; }
+        
+        // Movement Rules
+        if (!_isAttack) 
+        {
+            if (_cellUnit != noone) { break; }
+            _cell.canMove = true;
+        }
+        // Attack Rules
+        else 
+        {
+            if (_cellUnit != noone)
+            {
+                if (_cellUnit.team == _attackerTeam) { break; }
+                else
+                {
+                    _cell.canAttack = true;
+                    break;
+                }
+            }
+            else { _cell.canAttack = true; }
+        }
     }
 }
 
-function ScanMatrixDirection (_startX, _startY, _dirX, _dirY, _isAttack = false)
+function ScanMatrixDirection (_startX, _startY, _dirX, _dirY, _isAttack = false, _attackerTeam = noone, _ignoreUnit = noone)
 {
     var _targetX1 = _startX + _dirX;
     var _targetY1 = _startY + _dirY;
@@ -187,7 +205,10 @@ function ScanMatrixDirection (_startX, _startY, _dirX, _dirY, _isAttack = false)
     
     var _cell1 = map[# _targetX1, _targetY1];
     if (_cell1.moveable == false) { return; }
-    if (!_isAttack && _cell1.unit != noone) { return; }
+    
+    var _cellUnit1 = _cell1.unit;
+    if (_cellUnit1 == _ignoreUnit) { _cellUnit1 = noone; }
+    if (_cellUnit1 != noone) { return; }
     
     var _targetX2 = _startX + (_dirX * 2);
     var _targetY2 = _startY + (_dirY * 2);
@@ -195,8 +216,24 @@ function ScanMatrixDirection (_startX, _startY, _dirX, _dirY, _isAttack = false)
     
     var _cell2 = map[# _targetX2, _targetY2];
     if (_cell2.moveable == false) { return; }
-    if (!_isAttack && _cell2.unit != noone) { return; }
     
-    if (_isAttack) { _cell2.canAttack = true; }
-	else { _cell2.canMove = true; }
+    var _cellUnit2 = _cell2.unit;
+    if (_cellUnit2 == _ignoreUnit) { _cellUnit2 = noone; }
+    
+    // Movement Rules
+    if (!_isAttack)
+    {
+        if (_cellUnit2 != noone) { return; }
+        _cell2.canMove = true;
+    }
+    // Attack Rules
+    else
+    {
+        if (_cellUnit2 != noone)
+        {
+            if (_cellUnit2.team == _attackerTeam) { return; }
+            _cell2.canAttack = true;
+        }
+        else { _cell2.canAttack = true; }
+    }
 }

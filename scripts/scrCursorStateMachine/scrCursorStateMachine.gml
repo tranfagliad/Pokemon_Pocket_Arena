@@ -42,9 +42,7 @@ function CursorStateFree ()
 		
 
 		var _cell = objBattleManager.map[# _tempMapX, _tempMapY];
-        
-		// If there is a unit on this tile, apply a gravitational pull to the center of the tile
-		if (_cell != undefined && _cell.unit != noone || _cell.canMove)
+		if (_cell != undefined && _cell.unit != noone || _cell.canMove || _cell.canAttack)
 		{
 			var _targetX = (_tempMapX * CELL_SIZE) + (CELL_SIZE / 2);
 			var _targetY = (_tempMapY * CELL_SIZE) + (CELL_SIZE / 2);
