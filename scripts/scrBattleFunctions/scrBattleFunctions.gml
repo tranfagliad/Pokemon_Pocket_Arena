@@ -103,14 +103,17 @@ function InitializeMap ()
 // Clear all flags
 function ClearMapFlags (_map)
 {
-	for (var _x = 0; _x < mapWidth; _x++)
+    var _count = ds_list_size(activeRangeTiles);
+    for (var _i = 0; _i < _count; _i++)
     {
-        for (var _y = 0; _y < mapHeight; _y++)
-        {
-            _map[# _x, _y].canMove = false;
-            _map[# _x, _y].canAttack = false;
-        }
+        var _coord = activeRangeTiles[| _i];
+        var _cell = _map[# _coord.mapX, _coord.mapY];
+        
+        _cell.canMove = false;
+        _cell.canAttack = false;
     }
+    
+    ds_list_clear(activeRangeTiles);
 }
 
 
@@ -118,12 +121,13 @@ function ClearMapFlags (_map)
 // Clear ONLY attack flags
 function ClearAttackFlags (_map)
 {
-    for (var _x = 0; _x < mapWidth; _x++)
+    var _count = ds_list_size(activeRangeTiles);
+    for (var _i = 0; _i < _count; _i++)
     {
-        for (var _y = 0; _y < mapHeight; _y++)
-        {
-            _map[# _x, _y].canAttack = false;
-        }
+        var _coord = activeRangeTiles[| _i];
+        var _cell = _map[# _coord.mapX, _coord.mapY];
+        
+        _cell.canAttack = false;
     }
 }
 
@@ -179,6 +183,7 @@ function ScanDirection (_startX, _startY, _dirX, _dirY, _dist, _isAttack = false
         {
             if (_cellUnit != noone) { break; }
             _cell.canMove = true;
+			ds_list_add(activeRangeTiles, { mapX: _targetX, mapY: _targetY });
         }
         // Attack Rules
         else 
@@ -189,10 +194,15 @@ function ScanDirection (_startX, _startY, _dirX, _dirY, _dist, _isAttack = false
                 else
                 {
                     _cell.canAttack = true;
+					ds_list_add(activeRangeTiles, { mapX: _targetX, mapY: _targetY });
                     break;
                 }
             }
-            else { _cell.canAttack = true; }
+            else
+			{
+				_cell.canAttack = true;
+				ds_list_add(activeRangeTiles, { mapX: _targetX, mapY: _targetY });	
+			}
         }
     }
 }
@@ -225,6 +235,7 @@ function ScanMatrixDirection (_startX, _startY, _dirX, _dirY, _isAttack = false,
     {
         if (_cellUnit2 != noone) { return; }
         _cell2.canMove = true;
+		ds_list_add(activeRangeTiles, { mapX: _targetX2, mapY: _targetY2 });
     }
     // Attack Rules
     else
@@ -233,7 +244,12 @@ function ScanMatrixDirection (_startX, _startY, _dirX, _dirY, _isAttack = false,
         {
             if (_cellUnit2.team == _attackerTeam) { return; }
             _cell2.canAttack = true;
+			ds_list_add(activeRangeTiles, { mapX: _targetX2, mapY: _targetY2 });
         }
-        else { _cell2.canAttack = true; }
+        else
+		{
+			_cell2.canAttack = true;
+			ds_list_add(activeRangeTiles, { mapX: _targetX2, mapY: _targetY2 });
+		}
     }
 }

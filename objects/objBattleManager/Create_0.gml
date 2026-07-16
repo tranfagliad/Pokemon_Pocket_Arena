@@ -23,7 +23,7 @@ selectedUnit = noone;
 unitOptions = [UNIT_OPTION_MOVE, UNIT_OPTION_ATTACK, UNIT_OPTION_CANCEL];
 unitOptionsIndex = 0;
 
-
+activeRangeTiles = ds_list_create();
 
 
 
