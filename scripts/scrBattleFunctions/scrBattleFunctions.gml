@@ -45,8 +45,10 @@ function ShowMoveRange (_unit)
 			ShowStraightRange(_unitCellX, _unitCellY, _moveDistance);
 			break;
 		case Range.DIAGONAL:
+			ShowDiagonalRange(_unitCellX, _unitCellY, _moveDistance);
 			break;
 		case Range.MATRIX:
+			ShowMatrixRange(_unitCellX, _unitCellY, _moveDistance);
 			break;
 		default: break;
 	}
@@ -99,8 +101,28 @@ function ShowStraightRange (_unitCellX, _unitCellY, _moveDistance)
     ScanDirection(_unitCellX, _unitCellY,  0,  1, _moveDistance);   // Down
 }
 
+function ShowDiagonalRange (_unitCellX, _unitCellY, _moveDistance)
+{
+	ScanDirection(_unitCellX, _unitCellY, -1, -1, _moveDistance);   // Top-Left
+    ScanDirection(_unitCellX, _unitCellY,  1, -1, _moveDistance);   // Top-Right
+    ScanDirection(_unitCellX, _unitCellY, -1,  1, _moveDistance);   // Bottom-Left
+    ScanDirection(_unitCellX, _unitCellY,  1,  1, _moveDistance);   // Bottom-Right
+}
 
-
+function ShowMatrixRange (_unitCellX, _unitCellY, _moveDistance)
+{
+	// Cardinal directions
+    ScanMatrixDirection(_unitCellX, _unitCellY, -1,  0); // Left
+    ScanMatrixDirection(_unitCellX, _unitCellY,  1,  0); // Right
+    ScanMatrixDirection(_unitCellX, _unitCellY,  0, -1); // Up
+    ScanMatrixDirection(_unitCellX, _unitCellY,  0,  1); // Down
+    
+    // Diagonal directions
+    ScanMatrixDirection(_unitCellX, _unitCellY, -1, -1); // Top-Left
+    ScanMatrixDirection(_unitCellX, _unitCellY,  1, -1); // Top-Right
+    ScanMatrixDirection(_unitCellX, _unitCellY, -1,  1); // Bottom-Left
+    ScanMatrixDirection(_unitCellX, _unitCellY,  1,  1); // Bottom-Right
+}
 
 function ScanDirection (_startX, _startY, _dirX, _dirY, _dist)
 {
@@ -117,4 +139,27 @@ function ScanDirection (_startX, _startY, _dirX, _dirY, _dist)
         
         _cell.canMove = true;
     }
+}
+
+function ScanMatrixDirection (_startX, _startY, _dirX, _dirY)
+{
+    var _targetX1 = _startX + _dirX;
+    var _targetY1 = _startY + _dirY;
+    
+    if (_targetX1 < 0 || _targetX1 >= mapWidth || _targetY1 < 0 || _targetY1 >= mapHeight) { return; }
+    
+    var _cell1 = map[# _targetX1, _targetY1];
+    
+    if (_cell1.moveable == false || _cell1.unit != noone) { return; }
+    
+    var _targetX2 = _startX + (_dirX * 2);
+    var _targetY2 = _startY + (_dirY * 2);
+    
+    if (_targetX2 < 0 || _targetX2 >= mapWidth || _targetY2 < 0 || _targetY2 >= mapHeight) { return; }
+    
+    var _cell2 = map[# _targetX2, _targetY2];
+    
+    if (_cell2.moveable == false || _cell2.unit != noone) { return; }
+    
+    _cell2.canMove = true;
 }

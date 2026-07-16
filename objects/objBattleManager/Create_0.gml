@@ -44,7 +44,7 @@ var _team_one_charmander = {
 	team: Team.ONE, name: "Charmander", level: 7,
 	hp: 22, attackStat: 15, defenseStat: 11,
 	activeType: Type.FIRE,
-	moveRange: Range.STRAIGHT, moveDistance: 2,
+	moveRange: Range.MATRIX, moveDistance: 2,
 	attackRange: Range.STRAIGHT, attackDistance: 2,
 };
 
