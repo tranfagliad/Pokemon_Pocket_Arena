@@ -33,7 +33,7 @@ function CreateUnitAndPlaceOnMap (_unit_info, _map, _mapX, _mapY)
 
 function ShowMoveRange (_unit)
 {
-	if (_unit == noone || _unit.hasMoved) { return; }
+	if (_unit == noone) { return; }
 	
 	var _unitCellX = _unit.x div CELL_SIZE;
 	var _unitCellY = _unit.y div CELL_SIZE;
@@ -49,6 +49,29 @@ function ShowMoveRange (_unit)
 			break;
 		case Range.MATRIX:
 			ShowMatrixRange(_unitCellX, _unitCellY, _moveDistance);
+			break;
+		default: break;
+	}
+}
+
+
+
+function ShowAttackRange (_cellX, _cellY, _unit)
+{
+	if (_unit == noone) { return; }
+	
+	var _attackDistance = _unit.attackDistance;
+	
+	switch (_unit.attackRange)
+	{
+		case Range.STRAIGHT:
+			ShowStraightRange(_cellX, _cellY, _attackDistance, true);
+			break;
+		case Range.DIAGONAL:
+			ShowDiagonalRange(_cellX, _cellY, _attackDistance, true);
+			break;
+		case Range.MATRIX:
+			ShowMatrixRange(_cellX, _cellY, _attackDistance, true);
 			break;
 		default: break;
 	}
@@ -77,6 +100,7 @@ function InitializeMap ()
 
 
 
+// Clear all flags
 function ClearMapFlags (_map)
 {
 	for (var _x = 0; _x < mapWidth; _x++)
@@ -91,40 +115,52 @@ function ClearMapFlags (_map)
 
 
 
+// Clear ONLY attack flags
+function ClearAttackFlags (_map)
+{
+    for (var _x = 0; _x < mapWidth; _x++)
+    {
+        for (var _y = 0; _y < mapHeight; _y++)
+        {
+            _map[# _x, _y].canAttack = false;
+        }
+    }
+}
+
+
+
 // Helper Functions
 
-function ShowStraightRange (_unitCellX, _unitCellY, _moveDistance)
+function ShowStraightRange (_unitCellX, _unitCellY, _distance, _isAttack = false)
 {
-    ScanDirection(_unitCellX, _unitCellY, -1,  0, _moveDistance);   // Left
-    ScanDirection(_unitCellX, _unitCellY,  1,  0, _moveDistance);   // Right
-    ScanDirection(_unitCellX, _unitCellY,  0, -1, _moveDistance);   // Up
-    ScanDirection(_unitCellX, _unitCellY,  0,  1, _moveDistance);   // Down
+    ScanDirection(_unitCellX, _unitCellY, -1,  0, _distance, _isAttack);   // Left
+    ScanDirection(_unitCellX, _unitCellY,  1,  0, _distance, _isAttack);   // Right
+    ScanDirection(_unitCellX, _unitCellY,  0, -1, _distance, _isAttack);   // Up
+    ScanDirection(_unitCellX, _unitCellY,  0,  1, _distance, _isAttack);   // Down
 }
 
-function ShowDiagonalRange (_unitCellX, _unitCellY, _moveDistance)
+function ShowDiagonalRange (_unitCellX, _unitCellY, _distance, _isAttack = false)
 {
-	ScanDirection(_unitCellX, _unitCellY, -1, -1, _moveDistance);   // Top-Left
-    ScanDirection(_unitCellX, _unitCellY,  1, -1, _moveDistance);   // Top-Right
-    ScanDirection(_unitCellX, _unitCellY, -1,  1, _moveDistance);   // Bottom-Left
-    ScanDirection(_unitCellX, _unitCellY,  1,  1, _moveDistance);   // Bottom-Right
+    ScanDirection(_unitCellX, _unitCellY, -1, -1, _distance, _isAttack);   // Top-Left
+    ScanDirection(_unitCellX, _unitCellY,  1, -1, _distance, _isAttack);   // Top-Right
+    ScanDirection(_unitCellX, _unitCellY, -1,  1, _distance, _isAttack);   // Bottom-Left
+    ScanDirection(_unitCellX, _unitCellY,  1,  1, _distance, _isAttack);   // Bottom-Right
 }
 
-function ShowMatrixRange (_unitCellX, _unitCellY, _moveDistance)
+function ShowMatrixRange (_unitCellX, _unitCellY, _distance, _isAttack = false)
 {
-	// Cardinal directions
-    ScanMatrixDirection(_unitCellX, _unitCellY, -1,  0); // Left
-    ScanMatrixDirection(_unitCellX, _unitCellY,  1,  0); // Right
-    ScanMatrixDirection(_unitCellX, _unitCellY,  0, -1); // Up
-    ScanMatrixDirection(_unitCellX, _unitCellY,  0,  1); // Down
+    ScanMatrixDirection(_unitCellX, _unitCellY, -1,  0, _isAttack); // Left
+    ScanMatrixDirection(_unitCellX, _unitCellY,  1,  0, _isAttack); // Right
+    ScanMatrixDirection(_unitCellX, _unitCellY,  0, -1, _isAttack); // Up
+    ScanMatrixDirection(_unitCellX, _unitCellY,  0,  1, _isAttack); // Down
     
-    // Diagonal directions
-    ScanMatrixDirection(_unitCellX, _unitCellY, -1, -1); // Top-Left
-    ScanMatrixDirection(_unitCellX, _unitCellY,  1, -1); // Top-Right
-    ScanMatrixDirection(_unitCellX, _unitCellY, -1,  1); // Bottom-Left
-    ScanMatrixDirection(_unitCellX, _unitCellY,  1,  1); // Bottom-Right
+    ScanMatrixDirection(_unitCellX, _unitCellY, -1, -1, _isAttack); // Top-Left
+    ScanMatrixDirection(_unitCellX, _unitCellY,  1, -1, _isAttack); // Top-Right
+    ScanMatrixDirection(_unitCellX, _unitCellY, -1,  1, _isAttack); // Bottom-Left
+    ScanMatrixDirection(_unitCellX, _unitCellY,  1,  1, _isAttack); // Bottom-Right
 }
 
-function ScanDirection (_startX, _startY, _dirX, _dirY, _dist)
+function ScanDirection (_startX, _startY, _dirX, _dirY, _dist, _isAttack = false)
 {
     for (var _i = 1; _i <= _dist; _i++)
     {
@@ -135,31 +171,32 @@ function ScanDirection (_startX, _startY, _dirX, _dirY, _dist)
         
         var _cell = map[# _targetX, _targetY];
         
-        if (_cell.moveable == false || _cell.unit != noone) { break; }
+        if (_cell.moveable == false) { break; }
+        if (!_isAttack && _cell.unit != noone) { break; }
         
-        _cell.canMove = true;
+        if (_isAttack) { _cell.canAttack = true; }
+		else { _cell.canMove = true; }
     }
 }
 
-function ScanMatrixDirection (_startX, _startY, _dirX, _dirY)
+function ScanMatrixDirection (_startX, _startY, _dirX, _dirY, _isAttack = false)
 {
     var _targetX1 = _startX + _dirX;
     var _targetY1 = _startY + _dirY;
-    
     if (_targetX1 < 0 || _targetX1 >= mapWidth || _targetY1 < 0 || _targetY1 >= mapHeight) { return; }
     
     var _cell1 = map[# _targetX1, _targetY1];
-    
-    if (_cell1.moveable == false || _cell1.unit != noone) { return; }
+    if (_cell1.moveable == false) { return; }
+    if (!_isAttack && _cell1.unit != noone) { return; }
     
     var _targetX2 = _startX + (_dirX * 2);
     var _targetY2 = _startY + (_dirY * 2);
-    
     if (_targetX2 < 0 || _targetX2 >= mapWidth || _targetY2 < 0 || _targetY2 >= mapHeight) { return; }
     
     var _cell2 = map[# _targetX2, _targetY2];
+    if (_cell2.moveable == false) { return; }
+    if (!_isAttack && _cell2.unit != noone) { return; }
     
-    if (_cell2.moveable == false || _cell2.unit != noone) { return; }
-    
-    _cell2.canMove = true;
+    if (_isAttack) { _cell2.canAttack = true; }
+	else { _cell2.canMove = true; }
 }

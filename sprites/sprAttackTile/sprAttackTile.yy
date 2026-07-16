@@ -19,7 +19,7 @@
   "height":64,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"b4224bac-202b-4734-bf48-b42627f925c6","blendMode":0,"displayName":"default","isLocked":false,"name":"b4224bac-202b-4734-bf48-b42627f925c6","opacity":75.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"b4224bac-202b-4734-bf48-b42627f925c6","blendMode":0,"displayName":"default","isLocked":false,"name":"b4224bac-202b-4734-bf48-b42627f925c6","opacity":80.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"sprAttackTile",
   "nineSlice":null,
