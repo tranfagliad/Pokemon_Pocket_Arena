@@ -42,6 +42,28 @@ function drawUnitMenu ()
 }
 
 
+function drawPostMoveUnitMenu ()
+{
+	var _drawX = (VIEWPORT_WIDTH / 2) - (UNIT_OPTION_BOX_WIDTH / 2);
+	var _drawY = (VIEWPORT_HEIGHT / 2) + (UNIT_OPTION_BOX_HEIGHT / 2);
+	
+	draw_set_colour(DEFAULT_DRAW_COLOR);
+	draw_sprite_stretched(sprNineSliceUI, 0, _drawX, _drawY, UNIT_OPTION_BOX_WIDTH, UNIT_OPTION_BOX_HEIGHT);
+	
+	draw_set_font(fntConsolas20);
+	draw_set_colour(c_black);
+	
+	for (var _i = 0; _i < array_length(unitOptionsPostMove); _i++)
+	{
+		var _optionStr = (_i == unitOptionsIndex) ? "->"+unitOptionsPostMove[_i] : unitOptionsPostMove[_i];
+		draw_text(_drawX+10, 30*_i+_drawY+5, _optionStr);
+	}
+	
+	draw_set_font(fntConsolas12);
+	draw_set_colour(DEFAULT_DRAW_COLOR);
+}
+
+
 function drawRanges ()
 {
 	for (var _col = 0; _col < mapWidth; _col++)

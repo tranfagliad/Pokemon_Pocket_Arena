@@ -12,9 +12,7 @@ function BattleStatePlayerTurnFree ()
 				selectedUnit = _cell.unit;
 				
 				objBattleCursor.cursorState = CursorStateFrozen;
-				objBattleCursor.cursorStatePrev = CursorStateFree;
 				battleState = BattleStatePlayerTurnUnitMenu;
-				battleStatePrev = BattleStatePlayerTurnFree;
 			}
 		}
 	
@@ -49,17 +47,13 @@ function BattleStatePlayerTurnUnitMenu ()
 			{
 				case UnitOptions.MOVE:
 					objBattleCursor.cursorState = CursorStateFree;
-					objBattleCursor.cursorStatePrev = CursorStateFrozen;
 					battleState = BattleStatePlayerTurnUnitMove;
-					battleStatePrev = BattleStatePlayerTurnUnitMenu;
 					ShowMoveRange(selectedUnit);
 					break;
 					
 				case UnitOptions.ATTACK:
 					objBattleCursor.cursorState = CursorStateFree;
-					objBattleCursor.cursorStatePrev = CursorStateFrozen;
 					battleState = BattleStatePlayerTurnUnitAttack;
-					battleStatePrev = BattleStatePlayerTurnUnitMenu;
 					ShowAttackRange(objBattleCursor.mapX, objBattleCursor.mapY, selectedUnit);
 					break;
 					
@@ -96,6 +90,31 @@ function BattleStatePlayerTurnUnitMove ()
 	
 	#endregion
 	
+	#region confirm move position
+	
+		if (objInputManager.pressed.select)
+		{
+			if (_targetCell != undefined && _targetCell.canMove)
+			{
+				unitOriginalMapX = _unitCellX;
+                unitOriginalMapY = _unitCellY;
+                unitTargetMapX = _targetX;
+                unitTargetMapY = _targetY;
+				
+				map[# _unitCellX, _unitCellY].unit = noone;
+                _targetCell.unit = selectedUnit;
+				
+				objBattleCursor.cursorState = CursorStateFrozen;
+				
+				battleStateNext = BattleStatePlayerTurnPostMoveUnitMenu;
+				battleState = BattleStateUnitMoving;
+				
+				ClearMapFlags(map);
+			}
+		}
+	
+	#endregion
+	
 	#region cancel button - go back to unit options
 	
 		if (objInputManager.pressed.cancel)
@@ -107,6 +126,32 @@ function BattleStatePlayerTurnUnitMove ()
 	#endregion
 }
 
+
+function BattleStateUnitMoving ()
+{
+	var _moveSpeed = UNIT_MOVE_SPEED;
+	var _targetX = (unitTargetMapX * CELL_SIZE) + CENTER_CELL;
+    var _targetY = (unitTargetMapY * CELL_SIZE) + CENTER_CELL;
+	var _distance = point_distance(selectedUnit.x, selectedUnit.y, _targetX, _targetY);
+	
+	if (_distance > _moveSpeed)
+	{
+		var _direction = point_direction(selectedUnit.x, selectedUnit.y, _targetX, _targetY);
+		selectedUnit.x += lengthdir_x(_moveSpeed, _direction);
+		selectedUnit.y += lengthdir_y(_moveSpeed, _direction);
+	}
+	else
+	{
+		selectedUnit.x = _targetX;
+        selectedUnit.y = _targetY;
+		
+		unitTargetMapX = RESET_CELL_COORDINATE;
+		unitTargetMapY = RESET_CELL_COORDINATE;
+		
+		UnitOptionsIndex = UnitOptionsPostMove.ATTACK;
+		battleState = battleStateNext;
+	}
+}
 
 
 function BattleStatePlayerTurnUnitAttack ()
@@ -123,11 +168,33 @@ function BattleStatePlayerTurnUnitAttack ()
 }
 
 
-
-
-
-
-
+function BattleStatePlayerTurnPostMoveUnitMenu ()
+{
+	#region post-move menu navigation
+	
+		if (objInputManager.pressed.down)
+		{
+			unitOptionsIndex++;
+			if (unitOptionsIndex > UnitOptionsPostMove.END) { unitOptionsIndex = UnitOptionsPostMove.ATTACK; }
+		}
+		
+		if (objInputManager.pressed.up)
+		{
+			unitOptionsIndex--;
+			if (unitOptionsIndex < UnitOptionsPostMove.ATTACK) { unitOptionsIndex = UnitOptionsPostMove.END; }
+		}
+	
+	#endregion
+	
+	
+	
+	
+	#region cancel button - go back to original coordinates
+	
+		if (objInputManager.pressed.cancel) { UndoUnitMove(); }
+	
+	#endregion
+}
 
 
 
@@ -143,9 +210,7 @@ function UnselectUnit ()
 	unitOptionsIndex = UnitOptions.MOVE;
 	
 	objBattleCursor.cursorState = CursorStateFree;
-	objBattleCursor.cursorStatePrev = CursorStateFrozen;
 	battleState = BattleStatePlayerTurnFree;
-	battleStatePrev = BattleStatePlayerTurnUnitMenu;
 }
 
 function BackToUnitOptions ()
@@ -156,7 +221,10 @@ function BackToUnitOptions ()
     objBattleCursor.mapY = objBattleCursor.y div CELL_SIZE;
 			
 	objBattleCursor.cursorState = CursorStateFrozen;
-	objBattleCursor.cursorStatePrev = CursorStateFree;
 	battleState = BattleStatePlayerTurnUnitMenu;
-	battleStatePrev = BattleStatePlayerTurnFree;
+}
+
+function UndoUnitMove ()
+{
+	
 }

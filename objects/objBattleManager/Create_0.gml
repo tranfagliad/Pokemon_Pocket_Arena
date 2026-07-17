@@ -16,16 +16,19 @@ map = InitializeMap();
 
 
 battleState = BattleStatePlayerTurnFree;
-battleStatePrev = BattleStatePlayerTurnFree;
+battleStateNext = noone;
 selectedUnit = noone;
 
 
-unitOptions = [UNIT_OPTION_MOVE, UNIT_OPTION_ATTACK, UNIT_OPTION_CANCEL];
-unitOptionsIndex = 0;
+unitOptions = [ UNIT_OPTION_MOVE, UNIT_OPTION_ATTACK, UNIT_OPTION_CANCEL ];
+unitOptionsPostMove = [ UNIT_OPTION_ATTACK, UNIT_OPTION_GO_BACK, UNIT_OPTION_END ];
+unitOptionsIndex = UnitOptions.MOVE;
 
 activeRangeTiles = ds_list_create();
-
-
+unitTargetMapX   = RESET_CELL_COORDINATE;
+unitTargetMapY   = RESET_CELL_COORDINATE;
+unitOriginalMapX = RESET_CELL_COORDINATE;
+unitOriginalMapY = RESET_CELL_COORDINATE;
 
 
 

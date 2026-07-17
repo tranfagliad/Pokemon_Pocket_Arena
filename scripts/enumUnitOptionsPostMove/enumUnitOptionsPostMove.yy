@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"enumUnitOptionsPostMove",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"enumUnitOptionsPostMove",
+  "parent":{
+    "name":"Enums",
+    "path":"folders/Scripts/Enums.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

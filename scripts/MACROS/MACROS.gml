@@ -49,12 +49,20 @@
 #macro INFO_CARD_MARGIN 20
 #macro INFO_CARD_ALPHA  0.6
 
-#macro UNIT_OPTION_MOVE   "Move"
-#macro UNIT_OPTION_ATTACK "Attack"
-#macro UNIT_OPTION_CANCEL "Cancel"
+#macro UNIT_OPTION_MOVE    "Move"
+#macro UNIT_OPTION_ATTACK  "Attack"
+#macro UNIT_OPTION_CANCEL  "Cancel"
+#macro UNIT_OPTION_GO_BACK "Go Back"
+#macro UNIT_OPTION_END     "End"
 
 #macro UNIT_OPTION_BOX_WIDTH  160
 #macro UNIT_OPTION_BOX_HEIGHT  110
+
+#macro RESET_CELL_COORDINATE -1
+
+#macro UNIT_MOVE_SPEED 4
+
+
 
 
 

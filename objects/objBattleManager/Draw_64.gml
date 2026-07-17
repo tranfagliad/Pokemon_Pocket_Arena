@@ -38,3 +38,4 @@
 drawUnitInfoCards();
 
 if (battleState == BattleStatePlayerTurnUnitMenu) { drawUnitMenu(); }
+if (battleState == BattleStatePlayerTurnPostMoveUnitMenu) { drawPostMoveUnitMenu(); }

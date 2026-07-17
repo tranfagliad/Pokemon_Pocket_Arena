@@ -374,6 +374,7 @@
     {"id":{"name":"enumTeam","path":"scripts/enumTeam/enumTeam.yy",},},
     {"id":{"name":"enumType","path":"scripts/enumType/enumType.yy",},},
     {"id":{"name":"enumUnitOptions","path":"scripts/enumUnitOptions/enumUnitOptions.yy",},},
+    {"id":{"name":"enumUnitOptionsPostMove","path":"scripts/enumUnitOptionsPostMove/enumUnitOptionsPostMove.yy",},},
     {"id":{"name":"MACROS","path":"scripts/MACROS/MACROS.yy",},},
     {"id":{"name":"scrArenaData","path":"scripts/scrArenaData/scrArenaData.yy",},},
     {"id":{"name":"scrBattleDrawFunctions","path":"scripts/scrBattleDrawFunctions/scrBattleDrawFunctions.yy",},},
