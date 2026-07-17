@@ -55,7 +55,7 @@ function drawPostMoveUnitMenu ()
 	
 	for (var _i = 0; _i < array_length(unitOptionsPostMove); _i++)
 	{
-		var _optionStr = (_i == unitOptionsIndex) ? "-> " + unitOptionsPostMove[_i] : unitOptionsPostMove[_i];
+		var _optionStr = (_i == unitOptionsIndex) ? "->" + unitOptionsPostMove[_i] : unitOptionsPostMove[_i];
 		draw_text(_drawX + 10, (30 * _i) + _drawY + 5, _optionStr);
 	}
 	

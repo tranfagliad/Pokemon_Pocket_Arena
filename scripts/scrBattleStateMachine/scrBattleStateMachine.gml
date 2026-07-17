@@ -113,6 +113,7 @@ function BattleStatePlayerTurnUnitMove ()
                 _targetCell.unit = selectedUnit;
 				
 				objBattleCursor.cursorState = CursorStateFrozen;
+				objBattleCursor.visible = false;
 				
 				battleStateNext = BattleStatePlayerTurnPostMoveUnitMenu;
 				battleState = BattleStateUnitMoving;
@@ -155,6 +156,8 @@ function BattleStateUnitMoving ()
 		
 		unitTargetMapX = RESET_CELL_COORDINATE;
 		unitTargetMapY = RESET_CELL_COORDINATE;
+		
+		objBattleCursor.visible = true;
 		
 		unitOptionsIndex = UnitOptionsPostMove.ATTACK;
 		battleState = battleStateNext;
