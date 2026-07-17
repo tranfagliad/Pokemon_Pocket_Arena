@@ -20,7 +20,6 @@ function BattleStatePlayerTurnFree ()
 }
 
 
-
 function BattleStatePlayerTurnUnitMenu ()
 {
 	#region unit menu navigation
@@ -72,7 +71,6 @@ function BattleStatePlayerTurnUnitMenu ()
 	
 	#endregion
 }
-
 
 
 function BattleStatePlayerTurnUnitMove ()
@@ -193,7 +191,11 @@ function BattleStatePlayerTurnPostMoveUnitMenu ()
 			switch (unitOptionsIndex)
 			{
 				case UnitOptionsPostMove.ATTACK:
-					
+					objBattleCursor.cursorState = CursorStateFree;
+					battleState = BattleStatePlayerTurnPostMoveUnitAttack;
+					var _unitMapX = selectedUnit.x div CELL_SIZE;
+					var _unitMapY = selectedUnit.y div CELL_SIZE;
+					ShowAttackRange(_unitMapX, _unitMapY, selectedUnit);
 					break;
 				
 				case UnitOptionsPostMove.GO_BACK:
@@ -218,7 +220,18 @@ function BattleStatePlayerTurnPostMoveUnitMenu ()
 }
 
 
-
+function BattleStatePlayerTurnPostMoveUnitAttack ()
+{
+	#region cancel button - go back to unit options
+	
+		if (objInputManager.pressed.cancel)
+		{
+			ClearAttackFlags(map);
+			BackToPostMoveUnitOptions();
+		}
+	
+	#endregion
+}
 
 
 
@@ -243,6 +256,17 @@ function BackToUnitOptions ()
 			
 	objBattleCursor.cursorState = CursorStateFrozen;
 	battleState = BattleStatePlayerTurnUnitMenu;
+}
+
+function BackToPostMoveUnitOptions ()
+{
+	objBattleCursor.x = selectedUnit.x;
+	objBattleCursor.y = selectedUnit.y;
+	objBattleCursor.mapX = objBattleCursor.x div CELL_SIZE;
+    objBattleCursor.mapY = objBattleCursor.y div CELL_SIZE;
+	
+	objBattleCursor.cursorState = CursorStateFrozen;
+	battleState = BattleStatePlayerTurnPostMoveUnitMenu;
 }
 
 function UndoUnitMove ()
