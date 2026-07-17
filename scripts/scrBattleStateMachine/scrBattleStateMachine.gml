@@ -15,6 +15,16 @@ function BattleStatePlayerTurnFree ()
 				battleState = BattleStatePlayerTurnUnitMenu;
 			}
 		}
+		
+	#endregion
+	
+	#region press start - go to system menu
+	
+		if (objInputManager.pressed.start)
+		{
+			objBattleCursor.cursorState = CursorStateFrozen;
+			battleState = BattleStateSystemMenu;
+		}
 	
 	#endregion
 }
@@ -231,6 +241,16 @@ function BattleStatePlayerTurnPostMoveUnitAttack ()
 		}
 	
 	#endregion
+}
+
+
+function BattleStateSystemMenu ()
+{
+	if (objInputManager.pressed.cancel)
+	{
+		objBattleCursor.cursorState = CursorStateFree;
+		objBattleManager.battleState = BattleStatePlayerTurnFree;
+	}
 }
 
 

@@ -369,6 +369,7 @@
     {"id":{"name":"rmSplashScreen","path":"rooms/rmSplashScreen/rmSplashScreen.yy",},},
     {"id":{"name":"rmTestBattleArenaOne","path":"rooms/rmTestBattleArenaOne/rmTestBattleArenaOne.yy",},},
     {"id":{"name":"rmTestBattleArenaTwo","path":"rooms/rmTestBattleArenaTwo/rmTestBattleArenaTwo.yy",},},
+    {"id":{"name":"enumBattleSystemMenuOptions","path":"scripts/enumBattleSystemMenuOptions/enumBattleSystemMenuOptions.yy",},},
     {"id":{"name":"enumMainMenuOptions","path":"scripts/enumMainMenuOptions/enumMainMenuOptions.yy",},},
     {"id":{"name":"enumRange","path":"scripts/enumRange/enumRange.yy",},},
     {"id":{"name":"enumTeam","path":"scripts/enumTeam/enumTeam.yy",},},

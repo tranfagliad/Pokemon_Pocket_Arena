@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"enumBattleSystemMenuOptions",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"enumBattleSystemMenuOptions",
+  "parent":{
+    "name":"Enums",
+    "path":"folders/Scripts/Enums.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
