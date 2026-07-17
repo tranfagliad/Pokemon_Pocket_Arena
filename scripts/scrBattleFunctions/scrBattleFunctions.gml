@@ -18,7 +18,7 @@ function CreateUnitAndPlaceOnMap (_unit_info, _map, _mapX, _mapY)
 	_unit.moveDistance = _unit_info.moveDistance;
 	_unit.attackRange = _unit_info.attackRange;
 	_unit.attackDistance = _unit_info.attackDistance;
-	_unit.isEnabled = true;
+	//_unit.isEnabled = true;
 	
 	_unit.sprite_index = (_unit_info.team == Team.ONE) ? sprPlaceholderUnitBlue : sprPlaceholderUnitRed;
 	_unit.x = (_mapX * CELL_SIZE) + CENTER_CELL;

@@ -20,3 +20,4 @@ attackRange = Range.NONE;
 attackDistance = 0;
 
 isEnabled = true;
+colorBlend = UNIT_ENABLED_BLEND;
