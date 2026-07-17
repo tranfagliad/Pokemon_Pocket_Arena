@@ -7,7 +7,7 @@ function BattleStatePlayerTurnFree ()
 	    {
 			var _cell = map[# objBattleCursor.mapX, objBattleCursor.mapY];
 		
-			if (_cell != undefined && _cell.unit != noone && _cell.unit.team == whoseTurn)
+			if (_cell != undefined && _cell.unit != noone && _cell.unit.team == whoseTurn && _cell.unit.isEnabled)
 			{
 				selectedUnit = _cell.unit;
 				
@@ -148,7 +148,7 @@ function BattleStateUnitMoving ()
 		unitTargetMapX = RESET_CELL_COORDINATE;
 		unitTargetMapY = RESET_CELL_COORDINATE;
 		
-		UnitOptionsIndex = UnitOptionsPostMove.ATTACK;
+		unitOptionsIndex = UnitOptionsPostMove.ATTACK;
 		battleState = battleStateNext;
 	}
 }
@@ -186,8 +186,29 @@ function BattleStatePlayerTurnPostMoveUnitMenu ()
 	
 	#endregion
 	
+	#region unit menu selection
 	
+		if (objInputManager.pressed.select)
+		{
+			switch (unitOptionsIndex)
+			{
+				case UnitOptionsPostMove.ATTACK:
+					
+					break;
+				
+				case UnitOptionsPostMove.GO_BACK:
+					UndoUnitMove();
+					break;
+				
+				case UnitOptionsPostMove.END:
+					selectedUnit.isEnabled = false;
+					UnselectUnit();
+					break;
+				default: break;
+			}
+		}
 	
+	#endregion
 	
 	#region cancel button - go back to original coordinates
 	
@@ -226,5 +247,24 @@ function BackToUnitOptions ()
 
 function UndoUnitMove ()
 {
+	var _currentX = selectedUnit.x div CELL_SIZE;
+	var _currentY = selectedUnit.y div CELL_SIZE;
 	
+	map[# _currentX, _currentY].unit = noone;
+	map[# unitOriginalMapX, unitOriginalMapY].unit = selectedUnit;
+	
+	selectedUnit.x = (unitOriginalMapX * CELL_SIZE) + CENTER_CELL;
+	selectedUnit.y = (unitOriginalMapY * CELL_SIZE) + CENTER_CELL;
+	
+	objBattleCursor.x = selectedUnit.x;
+	objBattleCursor.y = selectedUnit.y;
+	objBattleCursor.mapX = unitOriginalMapX;
+	objBattleCursor.mapY = unitOriginalMapY;
+	
+	unitOriginalMapX = RESET_CELL_COORDINATE;
+	unitOriginalMapY = RESET_CELL_COORDINATE;
+	
+	objBattleCursor.cursorState = CursorStateFree;
+	ShowMoveRange(selectedUnit);
+	battleState = BattleStatePlayerTurnUnitMove;
 }

@@ -19,5 +19,4 @@ moveDistance = 0;
 attackRange = Range.NONE;
 attackDistance = 0;
 
-hasMoved = false;
-hasAttacked = false;
+isEnabled = true;
