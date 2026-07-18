@@ -51,14 +51,16 @@
 
 #macro UNIT_OPTION_MOVE    "Move"
 #macro UNIT_OPTION_ATTACK  "Attack"
-#macro UNIT_OPTION_CANCEL  "Cancel"
 #macro UNIT_OPTION_GO_BACK "Go Back"
 #macro UNIT_OPTION_END     "End"
 
 #macro BATTLE_SYSTEM_OPTION_END_TURN  "End Turn"
 #macro BATTLE_SYSTEM_OPTION_SETTINGS  "Settings"
-#macro BATTLE_SYSTEM_OPTION_CANCEL    "Cancel"
 #macro BATTLE_SYSTEM_OPTION_SURRENDER "Surrender"
+
+#macro ATTACK_OPTION_CONFIRM "Confirm"
+
+#macro OPTION_CANCEL  "Cancel"
 
 #macro UNIT_OPTION_BOX_WIDTH  160
 #macro UNIT_OPTION_BOX_HEIGHT  110

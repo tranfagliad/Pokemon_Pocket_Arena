@@ -1,0 +1,6 @@
+
+enum AttackConfirmationOptions
+{
+	CONFIRM,
+	CANCEL
+}

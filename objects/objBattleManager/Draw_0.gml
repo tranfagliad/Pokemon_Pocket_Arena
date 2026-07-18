@@ -33,6 +33,8 @@
 
 	if (battleState == BattleStatePlayerTurnUnitMove ||
 		battleState == BattleStatePlayerTurnUnitAttack ||
-		battleState == BattleStatePlayerTurnPostMoveUnitAttack) { drawRanges(); }
+		battleState == BattleStatePlayerTurnPostMoveUnitAttack) { DrawRanges(); }
+	
+	if (battleState == BattleStateSystemMenu) { DrawSystemMenu(); }
 	
 #endregion

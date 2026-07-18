@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"enumMainMenuOptions",
   "parent":{
-    "name":"Enums",
-    "path":"folders/Scripts/Enums.yy",
+    "name":"Menus",
+    "path":"folders/Scripts/Enums/Menus.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

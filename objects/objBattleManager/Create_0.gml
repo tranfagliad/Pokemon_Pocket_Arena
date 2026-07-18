@@ -20,8 +20,10 @@ battleStateNext = noone;
 selectedUnit = noone;
 
 
-unitOptions = [ UNIT_OPTION_MOVE, UNIT_OPTION_ATTACK, UNIT_OPTION_CANCEL ];
+unitOptions = [ UNIT_OPTION_MOVE, UNIT_OPTION_ATTACK, OPTION_CANCEL ];
 unitOptionsPostMove = [ UNIT_OPTION_ATTACK, UNIT_OPTION_GO_BACK, UNIT_OPTION_END ];
+attackConfirmationOptions = [ ATTACK_OPTION_CONFIRM, OPTION_CANCEL ];
+
 unitOptionsIndex = UnitOptions.MOVE;
 
 activeRangeTiles = ds_list_create();

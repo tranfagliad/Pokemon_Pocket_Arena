@@ -35,7 +35,7 @@
 
 #endregion
 
-drawUnitInfoCards();
+DrawUnitInfoCards();
 
-if (battleState == BattleStatePlayerTurnUnitMenu) { drawUnitMenu(); }
-if (battleState == BattleStatePlayerTurnPostMoveUnitMenu) { drawPostMoveUnitMenu(); }
+if (battleState == BattleStatePlayerTurnUnitMenu) { DrawUnitMenu(); }
+if (battleState == BattleStatePlayerTurnPostMoveUnitMenu) { DrawPostMoveUnitMenu(); }

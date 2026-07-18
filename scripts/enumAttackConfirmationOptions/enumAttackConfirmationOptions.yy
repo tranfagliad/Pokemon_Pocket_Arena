@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"enumUnitOptionsPostMove",
+  "%Name":"enumAttackConfirmationOptions",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"enumUnitOptionsPostMove",
+  "name":"enumAttackConfirmationOptions",
   "parent":{
     "name":"Menus",
     "path":"folders/Scripts/Enums/Menus.yy",

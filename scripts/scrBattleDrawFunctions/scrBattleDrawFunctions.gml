@@ -1,5 +1,5 @@
 
-function drawUnitInfoCards ()
+function DrawUnitInfoCards ()
 {
     var _hoveredUnit = noone;
     var _cell = map[# objBattleCursor.mapX, objBattleCursor.mapY];
@@ -10,17 +10,17 @@ function drawUnitInfoCards ()
     {
         if (_hoveredUnit != noone && _hoveredUnit.team != selectedUnit.team)
         {
-            drawSingleUnitCard(selectedUnit);
-            drawSingleUnitCard(_hoveredUnit);
+            DrawSingleUnitCard(selectedUnit);
+            DrawSingleUnitCard(_hoveredUnit);
         }
-        else if (_hoveredUnit != noone) { drawSingleUnitCard(_hoveredUnit); }
-        else { drawSingleUnitCard(selectedUnit); }
+        else if (_hoveredUnit != noone) { DrawSingleUnitCard(_hoveredUnit); }
+        else { DrawSingleUnitCard(selectedUnit); }
     }
-    else { drawSingleUnitCard(_hoveredUnit); }
+    else { DrawSingleUnitCard(_hoveredUnit); }
 }
 
 
-function drawUnitMenu ()
+function DrawUnitMenu ()
 {
 	var _drawX = (VIEWPORT_WIDTH / 2) - (UNIT_OPTION_BOX_WIDTH / 2);
 	var _drawY = (VIEWPORT_HEIGHT / 2) + (UNIT_OPTION_BOX_HEIGHT / 2);
@@ -42,7 +42,7 @@ function drawUnitMenu ()
 }
 
 
-function drawPostMoveUnitMenu ()
+function DrawPostMoveUnitMenu ()
 {
 	var _drawX = (VIEWPORT_WIDTH / 2) - (UNIT_OPTION_BOX_WIDTH / 2);
 	var _drawY = (VIEWPORT_HEIGHT / 2) + (UNIT_OPTION_BOX_HEIGHT / 2);
@@ -64,7 +64,7 @@ function drawPostMoveUnitMenu ()
 }
 
 
-function drawRanges ()
+function DrawRanges ()
 {
 	for (var _col = 0; _col < mapWidth; _col++)
 	{
@@ -84,10 +84,17 @@ function drawRanges ()
 }
 
 
+function DrawSystemMenu ()
+{
+	
+	
+}
+
+
 
 // Helper Functions
 
-function drawSingleUnitCard (_unit)
+function DrawSingleUnitCard (_unit)
 {
     if (_unit == noone || !instance_exists(_unit)) { return; }
     

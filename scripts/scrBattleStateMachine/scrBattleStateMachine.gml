@@ -167,6 +167,13 @@ function BattleStateUnitMoving ()
 
 function BattleStatePlayerTurnUnitAttack ()
 {
+	#region select an enemy unit to attack
+	
+		
+		
+	
+	#endregion
+	
 	#region cancel button - go back to unit options
 	
 		if (objInputManager.pressed.cancel)
@@ -245,6 +252,22 @@ function BattleStatePlayerTurnPostMoveUnitAttack ()
 	
 	#endregion
 }
+
+
+function BattleStatePlayerTurnAttackConfirmation ()
+{
+	if (objInputManager.pressed.down)
+	{
+		
+	}
+	
+	
+	
+	
+	
+}
+
+
 
 
 function BattleStateSystemMenu ()
