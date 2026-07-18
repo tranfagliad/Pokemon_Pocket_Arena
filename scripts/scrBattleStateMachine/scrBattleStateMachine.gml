@@ -115,7 +115,7 @@ function BattleStatePlayerTurnUnitMove ()
 				objBattleCursor.cursorState = CursorStateFrozen;
 				objBattleCursor.visible = false;
 				
-				battleStateNext = BattleStatePlayerTurnPostMoveUnitMenu;
+				battleStateTemp = BattleStatePlayerTurnPostMoveUnitMenu;
 				battleState = BattleStateUnitMoving;
 				
 				ClearMapFlags(map);
@@ -160,17 +160,17 @@ function BattleStateUnitMoving ()
 		objBattleCursor.visible = true;
 		
 		unitOptionsIndex = UnitOptionsPostMove.ATTACK;
-		battleState = battleStateNext;
+		battleState = battleStateTemp;
+		battleStateTemp = noone;
 	}
 }
 
 
 function BattleStatePlayerTurnUnitAttack ()
 {
-	#region select an enemy unit to attack
+	#region confirm target
 	
-		
-		
+		if (objInputManager.pressed.select) { GoToAttackConfirmation(); }
 	
 	#endregion
 	
@@ -242,6 +242,12 @@ function BattleStatePlayerTurnPostMoveUnitMenu ()
 
 function BattleStatePlayerTurnPostMoveUnitAttack ()
 {
+	#region confirm target
+	
+		if (objInputManager.pressed.select) { GoToAttackConfirmation(); }
+	
+	#endregion
+	
 	#region cancel button - go back to unit options
 	
 		if (objInputManager.pressed.cancel)
@@ -256,18 +262,15 @@ function BattleStatePlayerTurnPostMoveUnitAttack ()
 
 function BattleStatePlayerTurnAttackConfirmation ()
 {
-	if (objInputManager.pressed.down)
-	{
-		
-	}
 	
 	
 	
+	#region cancel button - go back to selecting a target
 	
+		if (objInputManager.pressed.cancel) { BackFromAttackConfirmation(); }
 	
+	#endregion
 }
-
-
 
 
 function BattleStateSystemMenu ()
@@ -278,7 +281,6 @@ function BattleStateSystemMenu ()
 		objBattleManager.battleState = BattleStatePlayerTurnFree;
 	}
 }
-
 
 
 
@@ -337,4 +339,26 @@ function UndoUnitMove ()
 	objBattleCursor.cursorState = CursorStateFree;
 	ShowMoveRange(selectedUnit);
 	battleState = BattleStatePlayerTurnUnitMove;
+}
+
+function GoToAttackConfirmation ()
+{
+	var _cell = map[# objBattleCursor.mapX, objBattleCursor.mapY];
+	if (_cell != undefined && _cell.canAttack && _cell.unit != noone && _cell.unit.team != whoseTurn)
+	{
+		attackTargetUnit = _cell.unit;
+		
+		battleStateTemp = battleState;
+		
+		unitOptionsIndex = AttackConfirmationOptions.CONFIRM;
+		objBattleCursor.cursorState = CursorStateFrozen;
+		battleState = BattleStatePlayerTurnAttackConfirmation;
+	}
+}
+
+function BackFromAttackConfirmation ()
+{
+	attackTargetUnit = noone;
+	
+	
 }

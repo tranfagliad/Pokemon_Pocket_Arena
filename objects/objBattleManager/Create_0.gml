@@ -16,8 +16,11 @@ map = InitializeMap();
 
 
 battleState = BattleStatePlayerTurnFree;
-battleStateNext = noone;
+battleStateTemp = noone;
+
+
 selectedUnit = noone;
+attackTargetUnit = noone;
 
 
 unitOptions = [ UNIT_OPTION_MOVE, UNIT_OPTION_ATTACK, OPTION_CANCEL ];
@@ -25,6 +28,7 @@ unitOptionsPostMove = [ UNIT_OPTION_ATTACK, UNIT_OPTION_GO_BACK, UNIT_OPTION_END
 attackConfirmationOptions = [ ATTACK_OPTION_CONFIRM, OPTION_CANCEL ];
 
 unitOptionsIndex = UnitOptions.MOVE;
+
 
 activeRangeTiles = ds_list_create();
 unitTargetMapX   = RESET_CELL_COORDINATE;
@@ -74,6 +78,6 @@ var _team_two_bulbasaur = {
 CreateUnitAndPlaceOnMap(_team_one_pikachu, map, 2, 3);
 CreateUnitAndPlaceOnMap(_team_one_charmander, map, 3, 3);
 
-CreateUnitAndPlaceOnMap(_team_two_squirtle, map, 5, 4);
+CreateUnitAndPlaceOnMap(_team_two_squirtle, map, 5, 3);
 CreateUnitAndPlaceOnMap(_team_two_bulbasaur, map, 11, 9);
 

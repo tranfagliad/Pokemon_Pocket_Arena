@@ -30,7 +30,10 @@
 			draw_text(10, 440, "Selected Unit: "+selectedUnit.name);
 		}
 		
-		draw_text(10, 460, string(battleState));
+		if (battleStateTemp == noone) { draw_text(10, 400, "Temp State: None"); }
+		else { draw_text(10, 400, "Temp State: "+string(battleStateTemp)); }
+		
+		draw_text(10, 460, "Cur State: "+string(battleState));
 	}
 
 #endregion
