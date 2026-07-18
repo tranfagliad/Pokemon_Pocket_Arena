@@ -336,6 +336,7 @@ function UndoUnitMove ()
 	unitOriginalMapX = RESET_CELL_COORDINATE;
 	unitOriginalMapY = RESET_CELL_COORDINATE;
 	
+	unitOptionsIndex = UnitOptions.MOVE;
 	objBattleCursor.cursorState = CursorStateFree;
 	ShowMoveRange(selectedUnit);
 	battleState = BattleStatePlayerTurnUnitMove;
@@ -347,9 +348,7 @@ function GoToAttackConfirmation ()
 	if (_cell != undefined && _cell.canAttack && _cell.unit != noone && _cell.unit.team != whoseTurn)
 	{
 		attackTargetUnit = _cell.unit;
-		
 		battleStateTemp = battleState;
-		
 		unitOptionsIndex = AttackConfirmationOptions.CONFIRM;
 		objBattleCursor.cursorState = CursorStateFrozen;
 		battleState = BattleStatePlayerTurnAttackConfirmation;
@@ -359,6 +358,10 @@ function GoToAttackConfirmation ()
 function BackFromAttackConfirmation ()
 {
 	attackTargetUnit = noone;
-	
+	if (battleStateTemp == BattleStatePlayerTurnUnitAttack) { unitOptionsIndex = UnitOptions.ATTACK; }
+	else if (battleStateTemp == BattleStatePlayerTurnPostMoveUnitAttack) { unitOptionsIndex = UnitOptionsPostMove.ATTACK; }
+	objBattleCursor.cursorState = CursorStateFree;
+	battleState = battleStateTemp;
+	battleStateTemp = noone;
 	
 }
