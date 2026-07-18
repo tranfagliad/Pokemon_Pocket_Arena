@@ -20,74 +20,24 @@ function DrawUnitInfoCards ()
 }
 
 
-function DrawUnitMenu ()
+function DrawMenus ()
 {
-	var _drawX = (VIEWPORT_WIDTH / 2) - (UNIT_OPTION_BOX_WIDTH / 2);
-	var _drawY = (VIEWPORT_HEIGHT / 2) + (UNIT_OPTION_BOX_HEIGHT / 2);
-		
-	draw_set_colour(DEFAULT_DRAW_COLOR);
-	draw_sprite_stretched(sprNineSliceUI, 0, _drawX, _drawY, UNIT_OPTION_BOX_WIDTH, UNIT_OPTION_BOX_HEIGHT);
-		
-	draw_set_font(fntConsolas20);
-	draw_set_colour(c_black);
-	
-	for (var _i = 0; _i < array_length(unitOptions); _i++)
+	switch (battleState)
 	{
-		var _optionStr = (_i == unitOptionsIndex) ? "->"+unitOptions[_i] : unitOptions[_i];
-		draw_text(_drawX+10, 30*_i+_drawY+5, _optionStr);
+		case BattleStatePlayerTurnUnitMenu:
+			DrawUnitMenu();
+			break;
+	
+		case BattleStatePlayerTurnPostMoveUnitMenu:
+			DrawPostMoveUnitMenu();
+			break;
+	
+		case BattleStatePlayerTurnAttackConfirmation:
+			DrawAttackConfirmationMenu();
+			DrawUnitsComparison(whoseTurn);
+			break;
+		default: break;
 	}
-	
-	draw_set_font(fntConsolas12);
-	draw_set_colour(DEFAULT_DRAW_COLOR);
-}
-
-
-function DrawPostMoveUnitMenu ()
-{
-	var _drawX = (VIEWPORT_WIDTH / 2) - (UNIT_OPTION_BOX_WIDTH / 2);
-	var _drawY = (VIEWPORT_HEIGHT / 2) + (UNIT_OPTION_BOX_HEIGHT / 2);
-	
-	draw_set_colour(DEFAULT_DRAW_COLOR);
-	draw_sprite_stretched(sprNineSliceUI, 0, _drawX, _drawY, UNIT_OPTION_BOX_WIDTH, UNIT_OPTION_BOX_HEIGHT);
-	
-	draw_set_font(fntConsolas20);
-	draw_set_colour(c_black);
-	
-	for (var _i = 0; _i < array_length(unitOptionsPostMove); _i++)
-	{
-		var _optionStr = (_i == unitOptionsIndex) ? "->" + unitOptionsPostMove[_i] : unitOptionsPostMove[_i];
-		draw_text(_drawX + 10, (30 * _i) + _drawY + 5, _optionStr);
-	}
-	
-	draw_set_font(fntConsolas12);
-	draw_set_colour(DEFAULT_DRAW_COLOR);
-}
-
-
-function DrawRanges ()
-{
-	for (var _col = 0; _col < mapWidth; _col++)
-	{
-		for (var _row = 0; _row < mapHeight; _row++)
-		{
-			var _cell = map[# _col, _row];
-			if (_cell.canMove || _cell.canAttack)
-			{
-				var _drawX = (_col * CELL_SIZE) + CENTER_CELL;
-				var _drawY = (_row * CELL_SIZE) + CENTER_CELL;
-				
-				if (_cell.canMove) { draw_sprite(sprMoveTile, 0, _drawX, _drawY); }
-				if (_cell.canAttack) { draw_sprite(sprAttackTile, 0, _drawX, _drawY); }
-			}
-		}
-	}
-}
-
-
-function DrawSystemMenu ()
-{
-	
-	
 }
 
 
@@ -145,4 +95,112 @@ function DrawSingleUnitCard (_unit)
         draw_sprite_ext(sprRange, _unit.attackRange, _drawX + 220, _drawY + 110, 0.8, 0.8, 0, DEFAULT_DRAW_COLOR, DEFAULT_DRAW_ALPHA);
         
     #endregion
+}
+
+function DrawUnitMenu ()
+{
+	var _drawX = (VIEWPORT_WIDTH / 2) - (UNIT_OPTION_BOX_WIDTH / 2);
+	var _drawY = (VIEWPORT_HEIGHT / 2) + (UNIT_OPTION_BOX_HEIGHT / 2);
+		
+	draw_set_colour(DEFAULT_DRAW_COLOR);
+	draw_sprite_stretched(sprNineSliceUI, 0, _drawX, _drawY, UNIT_OPTION_BOX_WIDTH, UNIT_OPTION_BOX_HEIGHT);
+		
+	draw_set_font(fntConsolas20);
+	draw_set_colour(c_black);
+	
+	for (var _i = 0; _i < array_length(unitOptions); _i++)
+	{
+		var _optionStr = (_i == unitOptionsIndex) ? "->"+unitOptions[_i] : unitOptions[_i];
+		draw_text(_drawX+10, 30*_i+_drawY+5, _optionStr);
+	}
+	
+	draw_set_font(fntConsolas12);
+	draw_set_colour(DEFAULT_DRAW_COLOR);
+}
+
+function DrawPostMoveUnitMenu ()
+{
+	var _drawX = (VIEWPORT_WIDTH / 2) - (UNIT_OPTION_BOX_WIDTH / 2);
+	var _drawY = (VIEWPORT_HEIGHT / 2) + (UNIT_OPTION_BOX_HEIGHT / 2);
+	
+	draw_set_colour(DEFAULT_DRAW_COLOR);
+	draw_sprite_stretched(sprNineSliceUI, 0, _drawX, _drawY, UNIT_OPTION_BOX_WIDTH, UNIT_OPTION_BOX_HEIGHT);
+	
+	draw_set_font(fntConsolas20);
+	draw_set_colour(c_black);
+	
+	for (var _i = 0; _i < array_length(unitOptionsPostMove); _i++)
+	{
+		var _optionStr = (_i == unitOptionsIndex) ? "->" + unitOptionsPostMove[_i] : unitOptionsPostMove[_i];
+		draw_text(_drawX + 10, (30 * _i) + _drawY + 5, _optionStr);
+	}
+	
+	draw_set_font(fntConsolas12);
+	draw_set_colour(DEFAULT_DRAW_COLOR);
+}
+
+function DrawRanges ()
+{
+	for (var _col = 0; _col < mapWidth; _col++)
+	{
+		for (var _row = 0; _row < mapHeight; _row++)
+		{
+			var _cell = map[# _col, _row];
+			if (_cell.canMove || _cell.canAttack)
+			{
+				var _drawX = (_col * CELL_SIZE) + CENTER_CELL;
+				var _drawY = (_row * CELL_SIZE) + CENTER_CELL;
+				
+				if (_cell.canMove) { draw_sprite(sprMoveTile, 0, _drawX, _drawY); }
+				if (_cell.canAttack) { draw_sprite(sprAttackTile, 0, _drawX, _drawY); }
+			}
+		}
+	}
+}
+
+function DrawAttackConfirmationMenu ()
+{
+	var _menuWidth = UNIT_OPTION_BOX_WIDTH + 80;
+	var _drawX = (VIEWPORT_WIDTH / 2) - (_menuWidth / 2);
+	var _drawY = (VIEWPORT_HEIGHT / 2) + (UNIT_OPTION_BOX_HEIGHT / 2);
+	
+	draw_set_colour(DEFAULT_DRAW_COLOR);
+	draw_sprite_stretched(sprNineSliceUI, 0, _drawX, _drawY, _menuWidth, UNIT_OPTION_BOX_HEIGHT);
+	
+	draw_set_font(fntConsolas20);
+	draw_set_colour(c_black);
+	
+	draw_text(_drawX + 10, _drawY + 5, "Attack Target?");
+	for (var _i = 0; _i < array_length(attackConfirmationOptions); _i++)
+	{
+		var _optionStr = (_i == unitOptionsIndex) ? "->" + attackConfirmationOptions[_i] : attackConfirmationOptions[_i];
+		draw_text(_drawX + 10, (30 * _i) + _drawY + 40, _optionStr);
+	}
+}
+
+function DrawUnitsComparison (_whoseTurn)
+{
+	var _boxWidth  = UNITS_COMPARISON_BOX_WIDTH;
+	var _boxHeight = UNITS_COMPARISON_BOX_HEIGHT;
+	var _boxBottomMargin = UNITS_COMPARISON_BOX_BOTTOM_MARGIN;
+	
+	var _drawX = (VIEWPORT_WIDTH / 2) - (_boxWidth / 2);
+	var _drawY = VIEWPORT_HEIGHT - _boxHeight - _boxBottomMargin;
+	
+	var _boxColor = c_blue;
+	if (_whoseTurn == Team.TWO) { _boxColor = c_red; }
+	
+	draw_set_colour(_boxColor);
+	draw_set_alpha(INFO_CARD_ALPHA);
+	
+	draw_rectangle(_drawX, _drawY, _drawX+_boxWidth, _drawY+_boxHeight, false);
+	
+	draw_set_colour(DEFAULT_DRAW_COLOR);
+	draw_set_alpha(DEFAULT_DRAW_ALPHA);
+}
+
+function DrawSystemMenu ()
+{
+	
+	
 }

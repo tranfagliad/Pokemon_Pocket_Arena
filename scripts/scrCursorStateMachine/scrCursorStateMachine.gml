@@ -72,14 +72,24 @@ function CursorStateFrozen ()
 	
 	#region cursor snap
 		
-		if (objBattleManager.selectedUnit != noone)
+		if (objBattleManager.battleState == BattleStatePlayerTurnAttackConfirmation)
 		{
-			var _unit = objBattleManager.selectedUnit;
-			x = _unit.x;
-			y = _unit.y;
-        
-			mapX = x div CELL_SIZE;
-			mapY = y div CELL_SIZE;
+			var _targetX = (mapX * CELL_SIZE) + CENTER_CELL;
+			var _targetY = (mapY * CELL_SIZE) + CENTER_CELL;
+			x = _targetX;
+			y = _targetY;
+		}
+		else
+		{
+			if (objBattleManager.selectedUnit != noone)
+			{
+				var _unit = objBattleManager.selectedUnit;
+				x = _unit.x;
+				y = _unit.y;
+	        
+				mapX = x div CELL_SIZE;
+				mapY = y div CELL_SIZE;
+			}
 		}
 		
 	#endregion

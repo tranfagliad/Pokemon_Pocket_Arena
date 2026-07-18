@@ -32,7 +32,7 @@ function BattleStatePlayerTurnFree ()
 
 function BattleStatePlayerTurnUnitMenu ()
 {
-	#region unit menu navigation
+	#region menu navigation
 		
 		if (objInputManager.pressed.down)
 		{
@@ -188,7 +188,7 @@ function BattleStatePlayerTurnUnitAttack ()
 
 function BattleStatePlayerTurnPostMoveUnitMenu ()
 {
-	#region post-move menu navigation
+	#region menu navigation
 	
 		if (objInputManager.pressed.down)
 		{
@@ -262,8 +262,40 @@ function BattleStatePlayerTurnPostMoveUnitAttack ()
 
 function BattleStatePlayerTurnAttackConfirmation ()
 {
+	#region menu navigation
 	
+		if (objInputManager.pressed.down)
+		{
+			unitOptionsIndex++;
+			if (unitOptionsIndex > AttackConfirmationOptions.CANCEL) { unitOptionsIndex = AttackConfirmationOptions.CONFIRM; }
+		}
+		
+		if (objInputManager.pressed.up)
+		{
+			unitOptionsIndex--;
+			if (unitOptionsIndex < AttackConfirmationOptions.CONFIRM) { unitOptionsIndex = AttackConfirmationOptions.CANCEL; }
+		}
 	
+	#endregion
+	
+	#region attack target
+	
+		if (objInputManager.pressed.select)
+		{
+			switch (unitOptionsIndex)
+			{
+				case AttackConfirmationOptions.CONFIRM:
+				
+					break;
+				
+				case AttackConfirmationOptions.CANCEL:
+					BackFromAttackConfirmation();
+					break;
+				default: break;
+			}
+		}
+	
+	#endregion
 	
 	#region cancel button - go back to selecting a target
 	
@@ -363,5 +395,4 @@ function BackFromAttackConfirmation ()
 	objBattleCursor.cursorState = CursorStateFree;
 	battleState = battleStateTemp;
 	battleStateTemp = noone;
-	
 }
