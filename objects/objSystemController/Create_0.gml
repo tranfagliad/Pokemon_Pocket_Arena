@@ -12,13 +12,14 @@
 #endregion
 
 
+#region battle
+	global.opponent = noone;
+	global.battleArena = noone;
+#endregion
 
-global.gamePaused = false;
 
-
-global.opponent = noone;
-global.battleArena = noone;
-global.cursorNormalSpeed = CURSOR_BASE_SPEED;
-global.cursorSprintSpeed = CURSOR_BASE_SPEED * 2;
-global.cursorSnapStrength = CURSOR_BASE_SNAP_STRENGTH;
-
+#region cursor settings
+	global.cursorNormalSpeed = CURSOR_BASE_SPEED;
+	global.cursorSprintSpeed = CURSOR_BASE_SPEED * 2;
+	global.cursorSnapStrength = CURSOR_BASE_SNAP_STRENGTH;
+#endregion

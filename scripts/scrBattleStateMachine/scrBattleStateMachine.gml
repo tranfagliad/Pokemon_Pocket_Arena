@@ -285,7 +285,7 @@ function BattleStatePlayerTurnAttackConfirmation ()
 			switch (unitOptionsIndex)
 			{
 				case AttackConfirmationOptions.CONFIRM:
-				
+					
 					break;
 				
 				case AttackConfirmationOptions.CANCEL:
@@ -384,6 +384,7 @@ function GoToAttackConfirmation ()
 		unitOptionsIndex = AttackConfirmationOptions.CONFIRM;
 		objBattleCursor.cursorState = CursorStateFrozen;
 		battleState = BattleStatePlayerTurnAttackConfirmation;
+		damage = CalculateDamage(selectedUnit, attackTargetUnit);
 	}
 }
 
@@ -395,4 +396,5 @@ function BackFromAttackConfirmation ()
 	objBattleCursor.cursorState = CursorStateFree;
 	battleState = battleStateTemp;
 	battleStateTemp = noone;
+	damage = 0;
 }

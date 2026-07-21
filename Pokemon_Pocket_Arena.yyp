@@ -386,6 +386,7 @@
     {"id":{"name":"scrCursorStateMachine","path":"scripts/scrCursorStateMachine/scrCursorStateMachine.yy",},},
     {"id":{"name":"scrFreeBattleOpponentData","path":"scripts/scrFreeBattleOpponentData/scrFreeBattleOpponentData.yy",},},
     {"id":{"name":"scrInputFunctions","path":"scripts/scrInputFunctions/scrInputFunctions.yy",},},
+    {"id":{"name":"scrLoadTypeData","path":"scripts/scrLoadTypeData/scrLoadTypeData.yy",},},
     {"id":{"name":"scrMainMenuStateMachine","path":"scripts/scrMainMenuStateMachine/scrMainMenuStateMachine.yy",},},
     {"id":{"name":"scrTransitions","path":"scripts/scrTransitions/scrTransitions.yy",},},
     {"id":{"name":"seqFadeIn","path":"sequences/seqFadeIn/seqFadeIn.yy",},},

@@ -8,6 +8,8 @@ whoseTurn = Team.ONE;
 
 opponent = global.opponent;
 
+typeChart = GetTypeChart();
+
 
 mapName = global.battleArena.name;
 mapWidth = global.battleArena.width;
@@ -37,7 +39,7 @@ unitOriginalMapX = RESET_CELL_COORDINATE;
 unitOriginalMapY = RESET_CELL_COORDINATE;
 
 
-
+damage = 0;
 
 
 
@@ -75,7 +77,7 @@ var _team_two_bulbasaur = {
 
 
 
-CreateUnitAndPlaceOnMap(_team_one_pikachu, map, 2, 3);
+CreateUnitAndPlaceOnMap(_team_one_pikachu, map, 3, 4);
 CreateUnitAndPlaceOnMap(_team_one_charmander, map, 3, 3);
 
 CreateUnitAndPlaceOnMap(_team_two_squirtle, map, 5, 3);

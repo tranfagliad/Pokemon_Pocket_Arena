@@ -30,6 +30,21 @@ function CreateUnitAndPlaceOnMap (_unit_info, _map, _mapX, _mapY)
 
 
 
+function CalculateDamage (_attackingUnit, _defendingUnit)
+{
+    var _typeMultiplier = GetTypeAdvantageMultiplier(typeChart, _attackingUnit.activeType, _defendingUnit.activeType);
+    var _def = max(1, _defendingUnit.defenseStat);
+    
+    var _levelFactor = ((2 * _attackingUnit.level) / 5) + 2;
+    var _statRatio = _attackingUnit.attackStat / _def;
+    
+    var _baseDamage = (_levelFactor * _statRatio * (_attackingUnit.attackStat / 10)) + 2;
+    
+    return max(1, floor(_baseDamage * _typeMultiplier));
+}
+
+
+
 function ShowMoveRange (_unit)
 {
 	if (_unit == noone) { return; }

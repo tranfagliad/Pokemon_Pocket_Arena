@@ -19,5 +19,5 @@ enum Type
 	DRAGON,
 	DARK,
 	STEEL,
-	FAIRY
+	FAIRY,
 }
