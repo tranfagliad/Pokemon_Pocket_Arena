@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"enumRange",
   "parent":{
-    "name":"Enums",
-    "path":"folders/Scripts/Enums.yy",
+    "name":"Units",
+    "path":"folders/Scripts/Enums/Units.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

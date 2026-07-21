@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"enumType",
+  "%Name":"enumDirection",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"enumType",
+  "name":"enumDirection",
   "parent":{
-    "name":"Units",
-    "path":"folders/Scripts/Enums/Units.yy",
+    "name":"Misc",
+    "path":"folders/Scripts/Enums/Misc.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

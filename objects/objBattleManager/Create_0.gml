@@ -45,14 +45,14 @@ damage = 0;
 
 
 var _team_one_pikachu = {
-	team: Team.ONE, name: "Pikachu", level: 5,
+	team: Team.ONE, name: "Ivysaur", level: 5,
 	hp: 20, attackStat: 12, defenseStat: 7,
 	activeType: Type.ELECTRIC,
 	moveRange: Range.DIAGONAL, moveDistance: 3,
 	attackRange: Range.STRAIGHT, attackDistance: 2,
 };
 var _team_one_charmander = {
-	team: Team.ONE, name: "Charmander", level: 7,
+	team: Team.ONE, name: "Charmeleon", level: 7,
 	hp: 22, attackStat: 15, defenseStat: 11,
 	activeType: Type.FIRE,
 	moveRange: Range.MATRIX, moveDistance: 2,
@@ -68,7 +68,7 @@ var _team_two_squirtle = {
 	attackRange: Range.STRAIGHT, attackDistance: 2,
 };
 var _team_two_bulbasaur = {
-	team: Team.TWO, name: "Bulbasaur", level: 9,
+	team: Team.TWO, name: "Venusaur", level: 9,
 	hp: 24, attackStat: 13, defenseStat: 9,
 	activeType: Type.GRASS,
 	moveRange: Range.STRAIGHT, moveDistance: 2,

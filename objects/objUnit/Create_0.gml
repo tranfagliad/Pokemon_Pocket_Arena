@@ -21,3 +21,7 @@ attackDistance = 0;
 
 isEnabled = true;
 colorBlend = UNIT_ENABLED_BLEND;
+
+displaySprite = noone;
+iconSprite = noone;
+idleSprite = noone;

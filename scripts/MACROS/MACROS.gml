@@ -1,4 +1,12 @@
 
+#macro POKEMON_IMAGES_BASE_PATH "images/pokemon/finished"
+#macro ICON_SPRITE "icon.png"
+#macro DISPLAY_SPRITE "display.png"
+#macro IDLE "idle"
+#macro IDLE_SPRITE "idle.png"
+
+#macro NUM_FRAMES_TXT "numFrames.txt"
+
 #macro CELL_SIZE   64
 #macro CENTER_CELL 32
 
@@ -73,6 +81,10 @@
 #macro RESET_CELL_COORDINATE -1
 
 #macro UNIT_MOVE_SPEED 4
+
+#macro UNIT_DIRECTIONS 8
+#macro UNIT_DISPLAY_SIZE 128
+#macro UNIT_DISPLAY_ANIMATION_SPEED 0.4
 
 #macro UNIT_ENABLED_BLEND  1.0
 #macro UNIT_DISABLED_BLEND 0.0

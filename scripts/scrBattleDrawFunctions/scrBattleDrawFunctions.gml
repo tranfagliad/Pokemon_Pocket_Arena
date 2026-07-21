@@ -76,7 +76,7 @@ function DrawSingleUnitCard (_unit)
     #region draw details
             
         draw_sprite(sprUnitDisplayBgr, 0, _drawX, _drawY);
-        draw_sprite(sprPlaceholderDisplay, 0, _drawX, _drawY);
+        draw_sprite(_unit.displaySprite, image_index*UNIT_DISPLAY_ANIMATION_SPEED, _drawX, _drawY);
             
         draw_set_font(fntConsolas12);
         draw_text(_drawX + 130, _drawY, _unit.name);

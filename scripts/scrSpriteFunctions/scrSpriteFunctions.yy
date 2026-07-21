@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"enumType",
+  "%Name":"scrSpriteFunctions",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"enumType",
+  "name":"scrSpriteFunctions",
   "parent":{
-    "name":"Units",
-    "path":"folders/Scripts/Enums/Units.yy",
+    "name":"Misc",
+    "path":"folders/Scripts/Misc.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

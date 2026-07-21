@@ -314,6 +314,8 @@ function BattleStateUnitAttacking ()
 	
 	if (_animationFinished)
 	{
+		attackTargetUnit.currentHp -= damage;
+		
 		objBattleCursor.x = selectedUnit.x;
 		objBattleCursor.y = selectedUnit.y;
 		objBattleCursor.mapX = selectedUnit.x div CELL_SIZE;

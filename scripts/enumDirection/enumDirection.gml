@@ -1,0 +1,12 @@
+
+enum Direction
+{
+	SOUTH,
+	SOUTHEAST,
+	EAST,
+	NORTHEAST,
+	NORTH,
+	NORTHWEST,
+	WEST,
+	SOUTHWEST
+}
