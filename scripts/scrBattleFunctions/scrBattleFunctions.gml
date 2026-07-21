@@ -114,6 +114,24 @@ function InitializeMap ()
 
 
 
+function CleanUpMap ()
+{
+	if (ds_exists(map, ds_type_grid))
+	{
+	    for (var _x = 0; _x < mapWidth; _x++)
+	    {
+	        for (var _y = 0; _y < mapHeight; _y++)
+	        {
+	            map[# _x, _y] = noone;
+	        }
+	    }
+	    ds_grid_destroy(map);
+		map = noone;
+	}
+}
+
+
+
 // Clear all flags
 function ClearMapFlags (_map)
 {
@@ -192,14 +210,13 @@ function ScanDirection (_startX, _startY, _dirX, _dirY, _dist, _isAttack = false
         var _cellUnit = _cell.unit;
         if (_cellUnit == _ignoreUnit) { _cellUnit = noone; }
         
-        // Movement Rules
         if (!_isAttack) 
         {
             if (_cellUnit != noone) { break; }
+            
             _cell.canMove = true;
-			ds_list_add(activeRangeTiles, { mapX: _targetX, mapY: _targetY });
+            ds_list_add(activeRangeTiles, { mapX: _targetX, mapY: _targetY });
         }
-        // Attack Rules
         else 
         {
             if (_cellUnit != noone)
@@ -208,15 +225,15 @@ function ScanDirection (_startX, _startY, _dirX, _dirY, _dist, _isAttack = false
                 else
                 {
                     _cell.canAttack = true;
-					ds_list_add(activeRangeTiles, { mapX: _targetX, mapY: _targetY });
+                    ds_list_add(activeRangeTiles, { mapX: _targetX, mapY: _targetY });
                     break;
                 }
             }
             else
-			{
-				_cell.canAttack = true;
-				ds_list_add(activeRangeTiles, { mapX: _targetX, mapY: _targetY });	
-			}
+            {
+                _cell.canAttack = true;
+                ds_list_add(activeRangeTiles, { mapX: _targetX, mapY: _targetY }); 
+            }
         }
     }
 }

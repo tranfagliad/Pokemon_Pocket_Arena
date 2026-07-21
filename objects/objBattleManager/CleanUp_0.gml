@@ -1,8 +1,8 @@
 
 ds_list_destroy(teamOneUnits);
-ds_list_destroy(teamOneUnits);
+ds_list_destroy(teamTwoUnits);
 
-ds_grid_destroy(map);
+CleanUpMap();
 
 ds_list_destroy(activeRangeTiles);
                                  
