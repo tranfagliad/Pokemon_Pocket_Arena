@@ -7,14 +7,14 @@ if (gamepad_id == GAMEPAD_DISCONNECTED)
         if (gamepad_is_connected(_slot))
         {
             gamepad_id = _slot;
-            show_debug_message("Gamepad Connected on slot "+string(_slot)+": "+gamepad_get_description(_slot));
+            //show_debug_message("Gamepad Connected on slot "+string(_slot)+": "+gamepad_get_description(_slot));
             break;
         }
     }
 }
 else if (!gamepad_is_connected(gamepad_id))
 {
-    show_debug_message("Gamepad Disconnected from slot "+string(gamepad_id));
+    //show_debug_message("Gamepad Disconnected from slot "+string(gamepad_id));
     gamepad_id = GAMEPAD_DISCONNECTED;
     using_gamepad = false;   // Fall back to keyboard if disconnected
 }

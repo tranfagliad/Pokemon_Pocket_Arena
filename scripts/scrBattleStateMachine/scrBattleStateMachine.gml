@@ -285,7 +285,10 @@ function BattleStatePlayerTurnAttackConfirmation ()
 			switch (unitOptionsIndex)
 			{
 				case AttackConfirmationOptions.CONFIRM:
-					
+					objBattleCursor.cursorState = CursorStateFrozen;
+					objBattleCursor.visible = false;
+					ClearAttackFlags(map);
+					battleState = BattleStateUnitAttacking;
 					break;
 				
 				case AttackConfirmationOptions.CANCEL:
@@ -303,6 +306,35 @@ function BattleStatePlayerTurnAttackConfirmation ()
 	
 	#endregion
 }
+
+
+function BattleStateUnitAttacking ()
+{
+	var _animationFinished = true;
+	
+	if (_animationFinished)
+	{
+		objBattleCursor.x = selectedUnit.x;
+		objBattleCursor.y = selectedUnit.y;
+		objBattleCursor.mapX = selectedUnit.x div CELL_SIZE;
+		objBattleCursor.mapY = selectedUnit.y div CELL_SIZE;
+		
+		objBattleCursor.visible = true;
+		
+		selectedUnit.isEnabled = false;
+		
+		attackTargetUnit = noone;
+		damage = 0;
+		
+		UnselectUnit();
+	}
+}
+
+
+
+
+
+
 
 
 function BattleStateSystemMenu ()
