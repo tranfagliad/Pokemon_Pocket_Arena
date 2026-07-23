@@ -45,25 +45,25 @@ damage = 0;
 
 
 var _team_one_pikachu = {
-	team: Team.ONE, name: "Pidgeot", level: 5,
+	team: Team.ONE, name: "Poliwrath", level: 5,
 	hp: 20, attackStat: 12, defenseStat: 7,
-	activeType: Type.FLYING,
+	activeType: Type.WATER,
 	moveRange: Range.DIAGONAL, moveDistance: 3,
 	attackRange: Range.STRAIGHT, attackDistance: 2,
 };
 var _team_one_charmander = {
-	team: Team.ONE, name: "Kakuna", level: 7,
+	team: Team.ONE, name: "Arcanine", level: 7,
 	hp: 22, attackStat: 15, defenseStat: 11,
-	activeType: Type.BUG,
+	activeType: Type.FIRE,
 	moveRange: Range.MATRIX, moveDistance: 2,
 	attackRange: Range.STRAIGHT, attackDistance: 2,
 };
 
 
 var _team_two_squirtle = {
-	team: Team.ONE, name: "Raticate", level: 6,
+	team: Team.ONE, name: "Kadabra", level: 6,
 	hp: 21, attackStat: 9, defenseStat: 10,
-	activeType: Type.NORMAL,
+	activeType: Type.PSYCHIC,
 	moveRange: Range.STRAIGHT, moveDistance: 2,
 	attackRange: Range.STRAIGHT, attackDistance: 2,
 };
