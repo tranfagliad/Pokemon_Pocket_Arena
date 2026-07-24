@@ -45,16 +45,16 @@ damage = 0;
 
 
 var _team_one_pikachu = {
-	team: Team.ONE, name: "Exeggutor", level: 5,
+	team: Team.ONE, name: "Lickitung", level: 5,
 	hp: 20, attackStat: 12, defenseStat: 7,
-	activeType: Type.GRASS,
+	activeType: Type.NORMAL,
 	moveRange: Range.DIAGONAL, moveDistance: 3,
 	attackRange: Range.STRAIGHT, attackDistance: 2,
 };
 var _team_one_charmander = {
-	team: Team.ONE, name: "Hitmonchan", level: 7,
+	team: Team.ONE, name: "Weezing", level: 7,
 	hp: 22, attackStat: 15, defenseStat: 11,
-	activeType: Type.FIGHTING,
+	activeType: Type.POISON,
 	moveRange: Range.MATRIX, moveDistance: 2,
 	attackRange: Range.STRAIGHT, attackDistance: 2,
 };
