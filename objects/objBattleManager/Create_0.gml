@@ -45,25 +45,24 @@ damage = 0;
 
 
 var _team_one_pikachu = {
-	team: Team.ONE, name: "Dodrio", level: 5,
+	team: Team.ONE, name: "Exeggutor", level: 5,
 	hp: 20, attackStat: 12, defenseStat: 7,
-	activeType: Type.FLYING,
+	activeType: Type.GRASS,
 	moveRange: Range.DIAGONAL, moveDistance: 3,
 	attackRange: Range.STRAIGHT, attackDistance: 2,
 };
 var _team_one_charmander = {
-	team: Team.ONE, name: "Dewgong", level: 7,
+	team: Team.ONE, name: "Hitmonchan", level: 7,
 	hp: 22, attackStat: 15, defenseStat: 11,
-	activeType: Type.WATER,
+	activeType: Type.FIGHTING,
 	moveRange: Range.MATRIX, moveDistance: 2,
 	attackRange: Range.STRAIGHT, attackDistance: 2,
 };
 
-
 var _team_two_squirtle = {
-	team: Team.ONE, name: "Muk", level: 6,
+	team: Team.ONE, name: "Onix", level: 6,
 	hp: 21, attackStat: 9, defenseStat: 10,
-	activeType: Type.POISON,
+	activeType: Type.ROCK,
 	moveRange: Range.STRAIGHT, moveDistance: 2,
 	attackRange: Range.STRAIGHT, attackDistance: 2,
 };
