@@ -246,6 +246,8 @@ function BattleStatePlayerTurnPostMoveUnitMenu ()
 
 function BattleStatePlayerTurnPostMoveUnitAttack ()
 {
+	UpdateUnitFacingToCursor();
+	
 	#region confirm target
 	
 		if (objInputManager.pressed.select) { GoToAttackConfirmation(); }
