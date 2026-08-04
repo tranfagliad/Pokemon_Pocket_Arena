@@ -1,4 +1,8 @@
 
+image_speed = 0.2;
+
+facingDirection = Direction.SOUTH;
+
 team = Team.NONE;
 
 name = "";

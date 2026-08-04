@@ -1,3 +1,22 @@
 
-if (isEnabled) { colorBlend = lerp(colorBlend, UNIT_ENABLED_BLEND, UNIT_BLEND_TRANSITION_SPEED); }
-else { colorBlend = lerp(colorBlend, UNIT_DISABLED_BLEND, UNIT_BLEND_TRANSITION_SPEED); }
+#region color blend for enabled/disabled
+
+	if (isEnabled) { colorBlend = lerp(colorBlend, UNIT_ENABLED_BLEND, UNIT_BLEND_TRANSITION_SPEED); }
+	else { colorBlend = lerp(colorBlend, UNIT_DISABLED_BLEND, UNIT_BLEND_TRANSITION_SPEED); }
+
+#endregion
+
+#region 8-direction animation loop
+	
+	if (sprite_exists(sprite_index))
+	{
+		var _totalFrames = sprite_get_number(sprite_index);
+		var _framesPerDir = _totalFrames / UNIT_DIRECTIONS;
+		
+		var _startFrame = facingDirection * _framesPerDir;
+		var _endFrame = _startFrame + _framesPerDir;
+    
+		if (image_index < _startFrame || image_index >= _endFrame) { image_index = _startFrame; }
+	}
+	
+#endregion
