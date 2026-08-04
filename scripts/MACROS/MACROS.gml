@@ -1,5 +1,5 @@
 
-#macro POKEMON_IMAGES_BASE_PATH "images/pokemon/finished"
+#macro POKEMON_IMAGES_BASE_PATH "images/pokemon"
 #macro ICON_SPRITE "icon.png"
 #macro DISPLAY_SPRITE "display.png"
 #macro IDLE "idle"

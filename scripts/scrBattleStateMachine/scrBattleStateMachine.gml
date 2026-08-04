@@ -369,6 +369,7 @@ function UnselectUnit ()
 
 function BackToUnitOptions ()
 {
+	selectedUnit.facingDirection = Direction.SOUTH;
 	objBattleCursor.x = selectedUnit.x;
 	objBattleCursor.y = selectedUnit.y;
 	objBattleCursor.mapX = objBattleCursor.x div CELL_SIZE;
@@ -380,6 +381,7 @@ function BackToUnitOptions ()
 
 function BackToPostMoveUnitOptions ()
 {
+	selectedUnit.facingDirection = Direction.SOUTH;
 	objBattleCursor.x = selectedUnit.x;
 	objBattleCursor.y = selectedUnit.y;
 	objBattleCursor.mapX = objBattleCursor.x div CELL_SIZE;
@@ -399,6 +401,7 @@ function UndoUnitMove ()
 	
 	selectedUnit.x = (unitOriginalMapX * CELL_SIZE) + CENTER_CELL;
 	selectedUnit.y = (unitOriginalMapY * CELL_SIZE) + CENTER_CELL;
+	selectedUnit.facingDirection = Direction.SOUTH;
 	
 	objBattleCursor.x = selectedUnit.x;
 	objBattleCursor.y = selectedUnit.y;
