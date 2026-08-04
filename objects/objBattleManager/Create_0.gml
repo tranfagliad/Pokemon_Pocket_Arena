@@ -45,24 +45,24 @@ damage = 0;
 
 
 var _team_one_pikachu = {
-	team: Team.ONE, name: "Lickitung", level: 5,
+	team: Team.ONE, name: "Kabutops", level: 5,
 	hp: 20, attackStat: 12, defenseStat: 7,
-	activeType: Type.NORMAL,
+	activeType: Type.WATER,
 	moveRange: Range.DIAGONAL, moveDistance: 3,
 	attackRange: Range.STRAIGHT, attackDistance: 2,
 };
 var _team_one_charmander = {
-	team: Team.ONE, name: "Weezing", level: 7,
+	team: Team.ONE, name: "Porygon", level: 7,
 	hp: 22, attackStat: 15, defenseStat: 11,
-	activeType: Type.POISON,
+	activeType: Type.NORMAL,
 	moveRange: Range.MATRIX, moveDistance: 2,
 	attackRange: Range.STRAIGHT, attackDistance: 2,
 };
 
 var _team_two_squirtle = {
-	team: Team.ONE, name: "Onix", level: 6,
+	team: Team.ONE, name: "Flareon", level: 6,
 	hp: 21, attackStat: 9, defenseStat: 10,
-	activeType: Type.ROCK,
+	activeType: Type.FIRE,
 	moveRange: Range.STRAIGHT, moveDistance: 2,
 	attackRange: Range.STRAIGHT, attackDistance: 2,
 };
