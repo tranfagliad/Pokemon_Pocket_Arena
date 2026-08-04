@@ -184,6 +184,30 @@ function ClearAttackFlags (_map)
 
 
 
+// Updates the selected unit's direction based on cursor position
+function UpdateUnitFacingToCursor ()
+{
+	if (selectedUnit == noone) { return; }
+	
+	var _unitCellX = selectedUnit.x div CELL_SIZE;
+    var _unitCellY = selectedUnit.y div CELL_SIZE;
+    var _cursorX = objBattleCursor.mapX;
+    var _cursorY = objBattleCursor.mapY;
+	
+	if (_cursorX != _unitCellX || _cursorY != _unitCellY)
+    {
+        var _unitPxX = (_unitCellX * CELL_SIZE) + CENTER_CELL;
+        var _unitPxY = (_unitCellY * CELL_SIZE) + CENTER_CELL;
+        var _cursorPxX = (_cursorX * CELL_SIZE) + CENTER_CELL;
+        var _cursorPxY = (_cursorY * CELL_SIZE) + CENTER_CELL;
+        
+        var _angle = point_direction(_unitPxX, _unitPxY, _cursorPxX, _cursorPxY);
+        selectedUnit.facingDirection = Get8WayDirection(_angle);
+    }
+}
+
+
+
 // Helper Functions
 
 function ShowStraightRange (_unitCellX, _unitCellY, _distance, _isAttack = false, _team = noone, _ignoreUnit = noone)
@@ -302,4 +326,23 @@ function ScanMatrixDirection (_startX, _startY, _dirX, _dirY, _isAttack = false,
 			ds_list_add(activeRangeTiles, { mapX: _targetX2, mapY: _targetY2 });
 		}
     }
+}
+
+function Get8WayDirection (_angle)
+{
+	_angle = (_angle + FULL_REVOLUTION) % FULL_REVOLUTION;
+	
+	var _sector = floor((_angle + CENTER_SECTOR) / DIRECTION_SECTOR) % UNIT_DIRECTIONS;
+	switch (_sector)
+	{
+		case 0: return Direction.EAST;
+		case 1: return Direction.NORTHEAST;
+		case 2: return Direction.NORTH;
+		case 3: return Direction.NORTHWEST;
+		case 4: return Direction.WEST;
+		case 5: return Direction.SOUTHWEST;
+		case 6: return Direction.SOUTH;
+		case 7: return Direction.SOUTHEAST;
+		default: return Direction.SOUTH;
+	}
 }

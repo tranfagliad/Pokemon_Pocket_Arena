@@ -10,6 +10,10 @@
 #macro CELL_SIZE   64
 #macro CENTER_CELL 32
 
+#macro DIRECTION_SECTOR 45
+#macro CENTER_SECTOR    22.5
+#macro FULL_REVOLUTION  360
+
 #macro W_KEY ord("W")
 #macro A_KEY ord("A")
 #macro S_KEY ord("S")

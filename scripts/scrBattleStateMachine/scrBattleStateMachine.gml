@@ -85,6 +85,8 @@ function BattleStatePlayerTurnUnitMenu ()
 
 function BattleStatePlayerTurnUnitMove ()
 {
+	UpdateUnitFacingToCursor();
+	
 	#region show attack preview
 		
 		var _targetX = objBattleCursor.mapX;
@@ -168,6 +170,8 @@ function BattleStateUnitMoving ()
 
 function BattleStatePlayerTurnUnitAttack ()
 {
+	UpdateUnitFacingToCursor();
+	
 	#region confirm target
 	
 		if (objInputManager.pressed.select) { GoToAttackConfirmation(); }
