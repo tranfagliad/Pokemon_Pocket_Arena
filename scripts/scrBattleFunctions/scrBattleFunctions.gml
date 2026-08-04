@@ -31,7 +31,6 @@ function CreateUnitAndPlaceOnMap (_unit_info, _map, _mapX, _mapY)
 	
 	#region other details
 		
-		_unit.facingDirection = Direction.SOUTH;
 		_unit.sprite_index = _unit.idleSprite;
 		_unit.x = (_mapX * CELL_SIZE) + CENTER_CELL;
 		_unit.y = (_mapY * CELL_SIZE) + CENTER_CELL;
