@@ -43,7 +43,7 @@ damage = 0;
 
 
 
-
+/*
 var _team_one_pikachu = {
 	team: Team.ONE, name: "Zubat", level: 5,
 	hp: 20, attackStat: 12, defenseStat: 7,
@@ -66,6 +66,7 @@ var _team_two_squirtle = {
 	moveRange: Range.STRAIGHT, moveDistance: 2,
 	attackRange: Range.STRAIGHT, attackDistance: 2,
 };
+*/
 /*
 var _team_two_bulbasaur = {
 	team: Team.TWO, name: "Venusaur", level: 9,
@@ -77,9 +78,9 @@ var _team_two_bulbasaur = {
 */
 
 
-CreateUnitAndPlaceOnMap(_team_one_pikachu, map, 3, 4);
-CreateUnitAndPlaceOnMap(_team_one_charmander, map, 3, 3);
+//CreateUnitAndPlaceOnMap(_team_one_pikachu, map, 3, 4);
+//CreateUnitAndPlaceOnMap(_team_one_charmander, map, 3, 3);
 
-CreateUnitAndPlaceOnMap(_team_two_squirtle, map, 5, 3);
+//CreateUnitAndPlaceOnMap(_team_two_squirtle, map, 5, 3);
 //CreateUnitAndPlaceOnMap(_team_two_bulbasaur, map, 11, 9);
 
