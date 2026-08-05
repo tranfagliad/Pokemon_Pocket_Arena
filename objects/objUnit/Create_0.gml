@@ -1,5 +1,5 @@
 
-image_speed = 0.3;
+image_speed = IDLE_IMAGE_SPEED;
 
 facingDirection = Direction.SOUTH;
 

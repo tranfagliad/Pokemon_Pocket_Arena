@@ -44,44 +44,11 @@ damage = 0;
 
 
 
-var _team_one_pikachu = {
-	uId: "0003", team: Team.ONE, name: "Venusaur", level: 5,
+var _team_one_unit_one = {
+	uId: "0025", team: Team.ONE, name: "Pikachu", level: 5,
 	hp: 20, attackStat: 12, defenseStat: 7,
-	activeType: Type.WATER,
+	activeType: Type.FIRE,
 	moveRange: Range.DIAGONAL, moveDistance: 3,
 	attackRange: Range.STRAIGHT, attackDistance: 2,
 };
-/*
-var _team_one_charmander = {
-	team: Team.ONE, name: "Wigglytuff", level: 7,
-	hp: 22, attackStat: 15, defenseStat: 11,
-	activeType: Type.NORMAL,
-	moveRange: Range.MATRIX, moveDistance: 2,
-	attackRange: Range.STRAIGHT, attackDistance: 2,
-};
-
-var _team_two_squirtle = {
-	team: Team.ONE, name: "Zapdos", level: 6,
-	hp: 21, attackStat: 9, defenseStat: 10,
-	activeType: Type.FIRE,
-	moveRange: Range.STRAIGHT, moveDistance: 2,
-	attackRange: Range.STRAIGHT, attackDistance: 2,
-};
-*/
-/*
-var _team_two_bulbasaur = {
-	team: Team.TWO, name: "Venusaur", level: 9,
-	hp: 24, attackStat: 13, defenseStat: 9,
-	activeType: Type.GRASS,
-	moveRange: Range.STRAIGHT, moveDistance: 2,
-	attackRange: Range.STRAIGHT, attackDistance: 2,
-};
-*/
-
-
-CreateUnitAndPlaceOnMap(_team_one_pikachu, map, 3, 4);
-//CreateUnitAndPlaceOnMap(_team_one_charmander, map, 3, 3);
-
-//CreateUnitAndPlaceOnMap(_team_two_squirtle, map, 5, 3);
-//CreateUnitAndPlaceOnMap(_team_two_bulbasaur, map, 11, 9);
-
+CreateUnitAndPlaceOnMap(_team_one_unit_one, map, 3, 4);

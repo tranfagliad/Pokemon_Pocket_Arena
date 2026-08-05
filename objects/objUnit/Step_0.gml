@@ -15,8 +15,12 @@
 		
 		var _startFrame = facingDirection * _framesPerDir;
 		var _endFrame = _startFrame + _framesPerDir;
-    
-		if (image_index < _startFrame || image_index >= _endFrame) { image_index = _startFrame; }
+		
+		if (image_index < _startFrame || image_index >= _endFrame) 
+		{ 
+			var _relativeFrame = image_index % _framesPerDir;
+			image_index = _startFrame + _relativeFrame; 
+		}
 	}
 	
 #endregion

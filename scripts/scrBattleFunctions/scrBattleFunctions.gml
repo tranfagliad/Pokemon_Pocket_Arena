@@ -33,6 +33,7 @@ function CreateUnitAndPlaceOnMap (_unitInfo, _map, _mapX, _mapY)
 	#region other details
 		
 		_unit.sprite_index = _unit.idleSprite;
+		_unit.image_speed = IDLE_IMAGE_SPEED;
 		_unit.x = (_mapX * CELL_SIZE) + CENTER_CELL;
 		_unit.y = (_mapY * CELL_SIZE) + CENTER_CELL;
 		

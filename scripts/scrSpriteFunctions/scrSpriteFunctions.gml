@@ -49,10 +49,14 @@ function LoadDisplaySprite (_name)
 
 function LoadAnimation (_id, _animationType)
 {
-    var _basePath = POKEMON_IMAGES_BASE_PATH+"/"+_id+"/"+_animationType;
-    var _imgPath = _basePath+"/"+_animationType+".png";
-    var _txtPath = _basePath+"/"+NUM_FRAMES_TXT;
-    
+	#region file paths
+		
+		var _basePath = POKEMON_IMAGES_BASE_PATH+"/"+_id+"/"+_animationType;
+		var _imgPath = _basePath+"/"+_animationType+".png";
+		var _txtPath = _basePath+"/"+NUM_FRAMES_TXT;
+		
+	#endregion
+	
     #region error checking
 		
 		if (!file_exists(_imgPath) || !file_exists(_txtPath))

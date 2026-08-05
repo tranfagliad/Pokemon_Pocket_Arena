@@ -6,6 +6,9 @@
 #macro IDLE "idle"
 #macro WALK "walk"
 
+#macro IDLE_IMAGE_SPEED 0.3
+#macro WALK_IMAGE_SPEED 0.4
+
 #macro NUM_FRAMES_TXT "numFrames.txt"
 
 #macro CELL_SIZE   64
