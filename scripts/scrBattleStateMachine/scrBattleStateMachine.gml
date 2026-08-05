@@ -425,6 +425,7 @@ function UndoUnitMove ()
 	unitOptionsIndex = UnitOptions.MOVE;
 	CursorToFreeState();
 	ShowMoveRange(selectedUnit);
+	ShowAttackRange(objBattleCursor.mapX, objBattleCursor.mapY, selectedUnit);
 	battleState = BattleStatePlayerTurnUnitMove;
 }
 

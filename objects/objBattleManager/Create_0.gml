@@ -45,7 +45,7 @@ damage = 0;
 
 
 var _team_one_pikachu = {
-	uId: "0001", team: Team.ONE, name: "Bulbasaur", level: 5,
+	uId: "0003", team: Team.ONE, name: "Venusaur", level: 5,
 	hp: 20, attackStat: 12, defenseStat: 7,
 	activeType: Type.WATER,
 	moveRange: Range.DIAGONAL, moveDistance: 3,
