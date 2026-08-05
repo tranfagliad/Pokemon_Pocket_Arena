@@ -21,7 +21,7 @@ function LoadIconSprite (_name)
 
 function LoadDisplaySprite (_name)
 {
-	var _filePath = POKEMON_IMAGES_BASE_PATH+"/"+string_lower(_name)+"/"+DISPLAY_SPRITE;
+	var _filePath = POKEMON_IMAGES_BASE_PATH+"/"+_name+"/"+DISPLAY_SPRITE;
 	
 	#region error checking
 	
@@ -49,9 +49,9 @@ function LoadDisplaySprite (_name)
 
 function LoadIdleSprite (_name)
 {
-    var _basePath = POKEMON_IMAGES_BASE_PATH + "/" + string_lower(_name) + "/" + IDLE;
-    var _imgPath = _basePath + "/" + IDLE_SPRITE;
-    var _txtPath = _basePath + "/" + NUM_FRAMES_TXT;
+    var _basePath = POKEMON_IMAGES_BASE_PATH+"/"+_name+"/"+IDLE;
+    var _imgPath = _basePath+"/"+IDLE_SPRITE;
+    var _txtPath = _basePath+"/"+NUM_FRAMES_TXT;
     
     #region error checking
 		

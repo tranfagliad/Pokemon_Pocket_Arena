@@ -10,8 +10,7 @@ function BattleStatePlayerTurnFree ()
 			if (_cell != undefined && _cell.unit != noone && _cell.unit.team == whoseTurn && _cell.unit.isEnabled)
 			{
 				selectedUnit = _cell.unit;
-				
-				objBattleCursor.cursorState = CursorStateFrozen;
+				CursorToFrozenState();
 				battleState = BattleStatePlayerTurnUnitMenu;
 			}
 		}
@@ -22,7 +21,7 @@ function BattleStatePlayerTurnFree ()
 	
 		if (objInputManager.pressed.start)
 		{
-			objBattleCursor.cursorState = CursorStateFrozen;
+			CursorToFrozenState();
 			battleState = BattleStateSystemMenu;
 		}
 	
@@ -55,13 +54,14 @@ function BattleStatePlayerTurnUnitMenu ()
 			switch (unitOptionsIndex)
 			{
 				case UnitOptions.MOVE:
-					objBattleCursor.cursorState = CursorStateFree;
+					CursorToFreeState();
 					battleState = BattleStatePlayerTurnUnitMove;
 					ShowMoveRange(selectedUnit);
+					ShowAttackRange(objBattleCursor.mapX, objBattleCursor.mapY, selectedUnit);
 					break;
 					
 				case UnitOptions.ATTACK:
-					objBattleCursor.cursorState = CursorStateFree;
+					CursorToFreeState();
 					battleState = BattleStatePlayerTurnUnitAttack;
 					ShowAttackRange(objBattleCursor.mapX, objBattleCursor.mapY, selectedUnit);
 					break;
@@ -85,18 +85,21 @@ function BattleStatePlayerTurnUnitMenu ()
 
 function BattleStatePlayerTurnUnitMove ()
 {
-	UpdateUnitFacingToCursor();
+	#region update facing and tile change updates
 	
-	#region show attack preview
+		if (objBattleCursor.hasChangedLocation)
+		{
+			UpdateUnitFacingToCursor();
+			
+			var _targetX = objBattleCursor.mapX;
+			var _targetY = objBattleCursor.mapY;
+			var _targetCell = map[# _targetX, _targetY];
+			var _unitCellX = selectedUnit.x div CELL_SIZE;
+			var _unitCellY = selectedUnit.y div CELL_SIZE;
 		
-		var _targetX = objBattleCursor.mapX;
-		var _targetY = objBattleCursor.mapY;
-		var _targetCell = map[# _targetX, _targetY];
-		var _unitCellX = selectedUnit.x div CELL_SIZE;
-		var _unitCellY = selectedUnit.y div CELL_SIZE;
-	
-		ClearAttackFlags(map);
-		if (_targetCell.canMove || (_targetX == _unitCellX && _targetY == _unitCellY)) { ShowAttackRange(_targetX, _targetY, selectedUnit); }
+			ClearAttackFlags(map);
+			if (_targetCell.canMove || (_targetX == _unitCellX && _targetY == _unitCellY)) { ShowAttackRange(_targetX, _targetY, selectedUnit); }
+		}
 	
 	#endregion
 	
@@ -104,19 +107,25 @@ function BattleStatePlayerTurnUnitMove ()
 	
 		if (objInputManager.pressed.select)
 		{
+			var _targetX = objBattleCursor.mapX;
+			var _targetY = objBattleCursor.mapY;
+			var _targetCell = map[# _targetX, _targetY];
+			
 			if (_targetCell != undefined && _targetCell.canMove)
 			{
+				var _unitCellX = selectedUnit.x div CELL_SIZE;
+				var _unitCellY = selectedUnit.y div CELL_SIZE;
+				
 				unitOriginalMapX = _unitCellX;
-                unitOriginalMapY = _unitCellY;
-                unitTargetMapX = _targetX;
-                unitTargetMapY = _targetY;
+				unitOriginalMapY = _unitCellY;
+				unitTargetMapX = _targetX;
+				unitTargetMapY = _targetY;
 				
 				map[# _unitCellX, _unitCellY].unit = noone;
-                _targetCell.unit = selectedUnit;
+				_targetCell.unit = selectedUnit;
 				
-				objBattleCursor.cursorState = CursorStateFrozen;
+				CursorToFrozenState();
 				objBattleCursor.visible = false;
-				
 				battleStateTemp = BattleStatePlayerTurnPostMoveUnitMenu;
 				battleState = BattleStateUnitMoving;
 				
@@ -170,7 +179,11 @@ function BattleStateUnitMoving ()
 
 function BattleStatePlayerTurnUnitAttack ()
 {
-	UpdateUnitFacingToCursor();
+	#region update facing
+		
+		if (objBattleCursor.hasChangedLocation) { UpdateUnitFacingToCursor(); }
+		
+	#endregion
 	
 	#region confirm target
 	
@@ -215,7 +228,7 @@ function BattleStatePlayerTurnPostMoveUnitMenu ()
 			switch (unitOptionsIndex)
 			{
 				case UnitOptionsPostMove.ATTACK:
-					objBattleCursor.cursorState = CursorStateFree;
+					CursorToFreeState();
 					battleState = BattleStatePlayerTurnPostMoveUnitAttack;
 					var _unitMapX = selectedUnit.x div CELL_SIZE;
 					var _unitMapY = selectedUnit.y div CELL_SIZE;
@@ -246,7 +259,11 @@ function BattleStatePlayerTurnPostMoveUnitMenu ()
 
 function BattleStatePlayerTurnPostMoveUnitAttack ()
 {
-	UpdateUnitFacingToCursor();
+	#region update facing
+		
+		if (objBattleCursor.hasChangedLocation) { UpdateUnitFacingToCursor(); }
+		
+	#endregion
 	
 	#region confirm target
 	
@@ -291,7 +308,7 @@ function BattleStatePlayerTurnAttackConfirmation ()
 			switch (unitOptionsIndex)
 			{
 				case AttackConfirmationOptions.CONFIRM:
-					objBattleCursor.cursorState = CursorStateFrozen;
+					CursorToFrozenState();
 					objBattleCursor.visible = false;
 					ClearAttackFlags(map);
 					battleState = BattleStateUnitAttacking;
@@ -339,17 +356,11 @@ function BattleStateUnitAttacking ()
 }
 
 
-
-
-
-
-
-
 function BattleStateSystemMenu ()
 {
 	if (objInputManager.pressed.cancel)
 	{
-		objBattleCursor.cursorState = CursorStateFree;
+		CursorToFreeState();
 		objBattleManager.battleState = BattleStatePlayerTurnFree;
 	}
 }
@@ -362,8 +373,7 @@ function UnselectUnit ()
 {
 	selectedUnit = noone;
 	unitOptionsIndex = UnitOptions.MOVE;
-	
-	objBattleCursor.cursorState = CursorStateFree;
+	CursorToFreeState();
 	battleState = BattleStatePlayerTurnFree;
 }
 
@@ -374,8 +384,7 @@ function BackToUnitOptions ()
 	objBattleCursor.y = selectedUnit.y;
 	objBattleCursor.mapX = objBattleCursor.x div CELL_SIZE;
     objBattleCursor.mapY = objBattleCursor.y div CELL_SIZE;
-			
-	objBattleCursor.cursorState = CursorStateFrozen;
+	CursorToFrozenState();
 	battleState = BattleStatePlayerTurnUnitMenu;
 }
 
@@ -386,8 +395,7 @@ function BackToPostMoveUnitOptions ()
 	objBattleCursor.y = selectedUnit.y;
 	objBattleCursor.mapX = objBattleCursor.x div CELL_SIZE;
     objBattleCursor.mapY = objBattleCursor.y div CELL_SIZE;
-	
-	objBattleCursor.cursorState = CursorStateFrozen;
+	CursorToFrozenState();
 	battleState = BattleStatePlayerTurnPostMoveUnitMenu;
 }
 
@@ -412,7 +420,7 @@ function UndoUnitMove ()
 	unitOriginalMapY = RESET_CELL_COORDINATE;
 	
 	unitOptionsIndex = UnitOptions.MOVE;
-	objBattleCursor.cursorState = CursorStateFree;
+	CursorToFreeState();
 	ShowMoveRange(selectedUnit);
 	battleState = BattleStatePlayerTurnUnitMove;
 }
@@ -425,7 +433,7 @@ function GoToAttackConfirmation ()
 		attackTargetUnit = _cell.unit;
 		battleStateTemp = battleState;
 		unitOptionsIndex = AttackConfirmationOptions.CONFIRM;
-		objBattleCursor.cursorState = CursorStateFrozen;
+		CursorToFrozenState();
 		battleState = BattleStatePlayerTurnAttackConfirmation;
 		damage = CalculateDamage(selectedUnit, attackTargetUnit);
 	}
@@ -436,7 +444,8 @@ function BackFromAttackConfirmation ()
 	attackTargetUnit = noone;
 	if (battleStateTemp == BattleStatePlayerTurnUnitAttack) { unitOptionsIndex = UnitOptions.ATTACK; }
 	else if (battleStateTemp == BattleStatePlayerTurnPostMoveUnitAttack) { unitOptionsIndex = UnitOptionsPostMove.ATTACK; }
-	objBattleCursor.cursorState = CursorStateFree;
+	
+	CursorToFreeState();
 	battleState = battleStateTemp;
 	battleStateTemp = noone;
 	damage = 0;

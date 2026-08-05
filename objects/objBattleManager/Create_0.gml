@@ -43,14 +43,15 @@ damage = 0;
 
 
 
-/*
+
 var _team_one_pikachu = {
-	team: Team.ONE, name: "Zubat", level: 5,
+	team: Team.ONE, name: "0001", level: 5,
 	hp: 20, attackStat: 12, defenseStat: 7,
 	activeType: Type.WATER,
 	moveRange: Range.DIAGONAL, moveDistance: 3,
 	attackRange: Range.STRAIGHT, attackDistance: 2,
 };
+/*
 var _team_one_charmander = {
 	team: Team.ONE, name: "Wigglytuff", level: 7,
 	hp: 22, attackStat: 15, defenseStat: 11,
@@ -78,7 +79,7 @@ var _team_two_bulbasaur = {
 */
 
 
-//CreateUnitAndPlaceOnMap(_team_one_pikachu, map, 3, 4);
+CreateUnitAndPlaceOnMap(_team_one_pikachu, map, 3, 4);
 //CreateUnitAndPlaceOnMap(_team_one_charmander, map, 3, 3);
 
 //CreateUnitAndPlaceOnMap(_team_two_squirtle, map, 5, 3);
