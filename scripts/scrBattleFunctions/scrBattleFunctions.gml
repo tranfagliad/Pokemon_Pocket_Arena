@@ -1,31 +1,32 @@
 
 // Using the unit info, create the unit, register it on a team list,
 // then place it on the given map at the given (X,Y) coordinates.
-function CreateUnitAndPlaceOnMap (_unit_info, _map, _mapX, _mapY)
+function CreateUnitAndPlaceOnMap (_unitInfo, _map, _mapX, _mapY)
 {
 	var _unit = instance_create_layer(0, 0, UNITS_LAYER, objUnit);
 	
 	#region battle stats
 	
-		_unit.team = _unit_info.team;
-		_unit.name = _unit_info.name;
-		_unit.level = _unit_info.level;
-		_unit.maxHp = _unit_info.hp;
+		_unit.team = _unitInfo.team;
+		_unit.name = _unitInfo.name;
+		_unit.level = _unitInfo.level;
+		_unit.maxHp = _unitInfo.hp;
 		_unit.currentHp = _unit.maxHp;
-		_unit.activeType = _unit_info.activeType;
-		_unit.attackStat = _unit_info.attackStat;
-		_unit.defenseStat = _unit_info.defenseStat;
-		_unit.moveRange = _unit_info.moveRange;
-		_unit.moveDistance = _unit_info.moveDistance;
-		_unit.attackRange = _unit_info.attackRange;
-		_unit.attackDistance = _unit_info.attackDistance;
+		_unit.activeType = _unitInfo.activeType;
+		_unit.attackStat = _unitInfo.attackStat;
+		_unit.defenseStat = _unitInfo.defenseStat;
+		_unit.moveRange = _unitInfo.moveRange;
+		_unit.moveDistance = _unitInfo.moveDistance;
+		_unit.attackRange = _unitInfo.attackRange;
+		_unit.attackDistance = _unitInfo.attackDistance;
 	
 	#endregion
 	
 	#region load sprites
 	
-		_unit.displaySprite = LoadDisplaySprite(_unit_info.name);
-		_unit.idleSprite = LoadIdleSprite(_unit_info.name);
+		_unit.displaySprite = LoadDisplaySprite(_unitInfo.name);
+		_unit.idleSprite = LoadAnimation(_unitInfo.name, IDLE);
+		_unit.walkSprite = LoadAnimation(_unitInfo.name, WALK);
 		
 	#endregion
 	
@@ -39,7 +40,7 @@ function CreateUnitAndPlaceOnMap (_unit_info, _map, _mapX, _mapY)
 	
 	#region register on the team list and map
 		
-		var _team_list = (_unit_info.team == Team.ONE) ? teamOneUnits : teamTwoUnits;
+		var _team_list = (_unitInfo.team == Team.ONE) ? teamOneUnits : teamTwoUnits;
 		ds_list_add(_team_list, _unit);
 		_map[# _mapX, _mapY].unit = _unit;
 		

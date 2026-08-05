@@ -2,8 +2,9 @@
 #macro POKEMON_IMAGES_BASE_PATH "images/pokemon"
 #macro ICON_SPRITE "icon.png"
 #macro DISPLAY_SPRITE "display.png"
+
 #macro IDLE "idle"
-#macro IDLE_SPRITE "idle.png"
+#macro WALK "walk"
 
 #macro NUM_FRAMES_TXT "numFrames.txt"
 

@@ -29,3 +29,4 @@ colorBlend = UNIT_ENABLED_BLEND;
 displaySprite = noone;
 iconSprite = noone;
 idleSprite = noone;
+walkSprite = noone;

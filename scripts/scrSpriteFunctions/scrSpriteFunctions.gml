@@ -47,10 +47,10 @@ function LoadDisplaySprite (_name)
 
 
 
-function LoadIdleSprite (_name)
+function LoadAnimation (_id, _animationType)
 {
-    var _basePath = POKEMON_IMAGES_BASE_PATH+"/"+_name+"/"+IDLE;
-    var _imgPath = _basePath+"/"+IDLE_SPRITE;
+    var _basePath = POKEMON_IMAGES_BASE_PATH+"/"+_id+"/"+_animationType;
+    var _imgPath = _basePath+"/"+_animationType+".png";
     var _txtPath = _basePath+"/"+NUM_FRAMES_TXT;
     
     #region error checking
@@ -84,11 +84,11 @@ function LoadIdleSprite (_name)
 		var _xOrigin = floor(_frameWidth / 2);
 		var _yOrigin = floor(_totalHeight / 2);
 		
-		var _idleSprite = sprite_add(_imgPath, _totalFrames, false, false, _xOrigin, _yOrigin);
+		var _animation = sprite_add(_imgPath, _totalFrames, false, false, _xOrigin, _yOrigin);
 		
     #endregion
     
-    return _idleSprite;
+    return _animation;
 }
 
 
