@@ -130,6 +130,7 @@ function BattleStatePlayerTurnUnitMove ()
 				battleState = BattleStateUnitMoving;
 				
 				ClearMapFlags(map);
+				selectedUnit.sprite_index = selectedUnit.walkSprite;
 			}
 		}
 	
@@ -168,6 +169,7 @@ function BattleStateUnitMoving ()
 		unitTargetMapX = RESET_CELL_COORDINATE;
 		unitTargetMapY = RESET_CELL_COORDINATE;
 		
+		selectedUnit.sprite_index = selectedUnit.idleSprite;
 		objBattleCursor.visible = true;
 		
 		unitOptionsIndex = UnitOptionsPostMove.ATTACK;
@@ -410,6 +412,7 @@ function UndoUnitMove ()
 	selectedUnit.x = (unitOriginalMapX * CELL_SIZE) + CENTER_CELL;
 	selectedUnit.y = (unitOriginalMapY * CELL_SIZE) + CENTER_CELL;
 	selectedUnit.facingDirection = Direction.SOUTH;
+	selectedUnit.sprite_index = selectedUnit.idleSprite;
 	
 	objBattleCursor.x = selectedUnit.x;
 	objBattleCursor.y = selectedUnit.y;
