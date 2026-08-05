@@ -6,7 +6,7 @@ function CreateUnitAndPlaceOnMap (_unitInfo, _map, _mapX, _mapY)
 	var _unit = instance_create_layer(0, 0, UNITS_LAYER, objUnit);
 	
 	#region battle stats
-	
+		
 		_unit.team = _unitInfo.team;
 		_unit.name = _unitInfo.name;
 		_unit.level = _unitInfo.level;
@@ -24,9 +24,9 @@ function CreateUnitAndPlaceOnMap (_unitInfo, _map, _mapX, _mapY)
 	
 	#region load sprites
 	
-		_unit.displaySprite = LoadDisplaySprite(_unitInfo.name);
-		_unit.idleSprite = LoadAnimation(_unitInfo.name, IDLE);
-		_unit.walkSprite = LoadAnimation(_unitInfo.name, WALK);
+		_unit.displaySprite = LoadDisplaySprite(_unitInfo.uId);
+		_unit.idleSprite = LoadAnimation(_unitInfo.uId, IDLE);
+		_unit.walkSprite = LoadAnimation(_unitInfo.uId, WALK);
 		
 	#endregion
 	
