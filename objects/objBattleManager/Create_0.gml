@@ -45,9 +45,9 @@ damage = 0;
 
 
 var _team_one_unit_one = {
-	uId: "0051a", team: Team.ONE, name: "Dugtrio", level: 5,
+	uId: "0150", team: Team.ONE, name: "Mewtwo", level: 5,
 	hp: 20, attackStat: 12, defenseStat: 7,
-	activeType: Type.GROUND,
+	activeType: Type.PSYCHIC,
 	moveRange: Range.MATRIX, moveDistance: 2,
 	attackRange: Range.MATRIX, attackDistance: 2,
 };
