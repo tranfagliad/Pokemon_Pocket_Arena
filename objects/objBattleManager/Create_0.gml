@@ -45,9 +45,9 @@ damage = 0;
 
 
 var _team_one_unit_one = {
-	uId: "0091", team: Team.ONE, name: "Cloyster", level: 5,
+	uId: "0115", team: Team.ONE, name: "Kangaskhan", level: 5,
 	hp: 20, attackStat: 12, defenseStat: 7,
-	activeType: Type.WATER,
+	activeType: Type.NORMAL,
 	moveRange: Range.MATRIX, moveDistance: 2,
 	attackRange: Range.MATRIX, attackDistance: 2,
 };

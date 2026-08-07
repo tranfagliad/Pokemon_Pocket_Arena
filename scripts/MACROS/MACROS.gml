@@ -6,8 +6,8 @@
 #macro IDLE "idle"
 #macro WALK "walk"
 
-#macro IDLE_IMAGE_SPEED 0.3
-#macro WALK_IMAGE_SPEED 0.4
+#macro IDLE_IMAGE_SPEED 0.2
+#macro WALK_IMAGE_SPEED 0.3
 
 #macro NUM_FRAMES_TXT "numFrames.txt"
 
