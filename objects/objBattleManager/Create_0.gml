@@ -46,10 +46,25 @@ damage = 0;
 
 
 
+
+
+
+
+
+
+
+var _uid = "0001";
+var _name = "Bulbasaur"
+var _type = Type.GRASS;
+
+
+
+
+
 var _team_one_unit_one = {
-	uId: "0001", team: Team.ONE, name: "Bulbasaur", level: 5,
+	uId: _uid, team: Team.ONE, name: _name, level: 5,
 	hp: 20, attackStat: 12, defenseStat: 7,
-	activeType: Type.GRASS,
+	activeType: _type,
 	moveRange: Range.STRAIGHT, moveDistance: 2,
 	attackRange: Range.STRAIGHT, attackDistance: 2,
 };
@@ -60,18 +75,18 @@ CreateUnitAndPlaceOnMap(_team_one_unit_one, map, 3, 4);
 
 
 var _team_one_unit_two = {
-	uId: "0001", team: Team.TWO, name: "Bulbasaur", level: 5,
+	uId: _uid, team: Team.TWO, name: _name, level: 5,
 	hp: 2, attackStat: 12, defenseStat: 7,
-	activeType: Type.GRASS,
+	activeType: _type,
 	moveRange: Range.STRAIGHT, moveDistance: 2,
 	attackRange: Range.STRAIGHT, attackDistance: 2,
 };
 CreateUnitAndPlaceOnMap(_team_one_unit_two, map, 3, 2);
 
 var _team_one_unit_three = {
-	uId: "0001", team: Team.TWO, name: "Bulbasaur", level: 5,
+	uId: _uid, team: Team.TWO, name: _name, level: 5,
 	hp: 20, attackStat: 12, defenseStat: 7,
-	activeType: Type.GRASS,
+	activeType: _type,
 	moveRange: Range.STRAIGHT, moveDistance: 2,
 	attackRange: Range.STRAIGHT, attackDistance: 2,
 };

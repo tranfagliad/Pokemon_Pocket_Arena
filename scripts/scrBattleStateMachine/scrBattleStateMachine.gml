@@ -344,53 +344,64 @@ function BattleStatePlayerTurnAttackConfirmation ()
 
 function BattleStateUnitAttacking ()
 {
-	var _attackFramesPerDir = selectedUnit.image_number / UNIT_DIRECTIONS;
-    var _attackStartFrame = selectedUnit.facingDirection * _attackFramesPerDir;
-    
-	var _attackEndFrame = _attackStartFrame + _attackFramesPerDir;
-	var _attackFinished = (selectedUnit.image_index >= _attackEndFrame - selectedUnit.image_speed);
+	#region calculate animation frames
+		
+		var _attackFramesPerDir = selectedUnit.image_number / UNIT_DIRECTIONS;
+		var _attackStartFrame = selectedUnit.facingDirection * _attackFramesPerDir;
+		
+		var _attackEndFrame = _attackStartFrame + _attackFramesPerDir;
+		var _attackFinished = (selectedUnit.image_index >= _attackEndFrame - selectedUnit.image_speed);
+		
+		var _impactFrame = _attackStartFrame + (_attackFramesPerDir * 0.5);
+		
+	#endregion
 	
-	var _impactFrame = _attackStartFrame + (_attackFramesPerDir * 0.5);
+	#region attack animation and target is hit
 	
-	if (!unitHasHit && selectedUnit.image_index >= _impactFrame)
-    {
-		// Attack connects
-        attackTargetUnit.currentHp -= damage;
-		unitHasHit = true;
-        
-        // Trigger target's hurt animation
-        var _targetFramesPerDir = attackTargetUnit.image_number / UNIT_DIRECTIONS;
-        var _targetStartFrame = attackTargetUnit.facingDirection * _targetFramesPerDir;
-        
-        attackTargetUnit.sprite_index = attackTargetUnit.hurtSprite;
-        attackTargetUnit.image_index  = _targetStartFrame;
-        attackTargetUnit.image_speed  = HURT_IMAGE_SPEED;
-		attackTargetUnit.facingDirection = (selectedUnit.facingDirection + (UNIT_DIRECTIONS / 2) % UNIT_DIRECTIONS);
-    }
+		if (!unitHasHit && selectedUnit.image_index >= _impactFrame)
+		{
+			// Attack connects
+			attackTargetUnit.currentHp -= damage;
+			unitHasHit = true;
+			
+			// Trigger target's hurt animation
+			attackTargetUnit.facingDirection = (selectedUnit.facingDirection + (UNIT_DIRECTIONS / 2)) % UNIT_DIRECTIONS;
+			var _targetFramesPerDir = attackTargetUnit.image_number / UNIT_DIRECTIONS;
+			var _targetStartFrame = attackTargetUnit.facingDirection * _targetFramesPerDir;
+			attackTargetUnit.sprite_index = attackTargetUnit.hurtSprite;
+			attackTargetUnit.image_speed  = HURT_IMAGE_SPEED;
+			attackTargetUnit.image_index  = _targetStartFrame;
+		}
 	
-	if (_attackFinished)
-    {
-		// Reset attacker sprite and disable
-		selectedUnit.sprite_index = selectedUnit.idleSprite;
-        selectedUnit.image_speed  = IDLE_IMAGE_SPEED;
-        selectedUnit.isEnabled   = false;
+	#endregion
+	
+	#region attacking has finished - reset flags, cursor, disable unit, and unselect unit
 		
-		// Reset target sprite
-		attackTargetUnit.sprite_index = attackTargetUnit.idleSprite;
-        attackTargetUnit.image_speed  = IDLE_IMAGE_SPEED;
+		if (_attackFinished)
+	    {
+			// Reset attacker sprite and disable
+			selectedUnit.sprite_index = selectedUnit.idleSprite;
+	        selectedUnit.image_speed  = IDLE_IMAGE_SPEED;
+	        selectedUnit.isEnabled   = false;
 		
-		objBattleCursor.x = selectedUnit.x;
-        objBattleCursor.y = selectedUnit.y;
-        objBattleCursor.mapX = selectedUnit.x div CELL_SIZE;
-        objBattleCursor.mapY = selectedUnit.y div CELL_SIZE;
-        objBattleCursor.visible = true;
+			// Reset target sprite
+			attackTargetUnit.sprite_index = attackTargetUnit.idleSprite;
+	        attackTargetUnit.image_speed  = IDLE_IMAGE_SPEED;
 		
-		attackTargetUnit = noone;
-        damage = 0;
-		unitHasHit = false;
+			objBattleCursor.x = selectedUnit.x;
+	        objBattleCursor.y = selectedUnit.y;
+	        objBattleCursor.mapX = selectedUnit.x div CELL_SIZE;
+	        objBattleCursor.mapY = selectedUnit.y div CELL_SIZE;
+	        objBattleCursor.visible = true;
 		
-		UnselectUnit();
-	}
+			attackTargetUnit = noone;
+	        damage = 0;
+			unitHasHit = false;
+		
+			UnselectUnit();
+		}
+		
+	#endregion
 }
 
 
