@@ -109,6 +109,11 @@
 #macro NORMAL_EFFECTIVE   1.0
 #macro SUPER_EFFECTIVE    1.5
 
+#macro DAMAGE_TEXT_FRAMES         60
+#macro DAMAGE_TEXT_Y_OFFSET       50
+#macro DAMAGE_TEXT_VSPEED        0.3
+#macro DAMAGE_TEXT_ALPHA_CHANGE 0.01
+
 #macro MIN_LEVEL 1
 #macro MAX_LEVEL 9
 

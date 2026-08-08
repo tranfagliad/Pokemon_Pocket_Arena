@@ -1,0 +1,3 @@
+
+alpha -= alphaChange;
+y -= vSpeed;

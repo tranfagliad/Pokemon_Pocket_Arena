@@ -367,6 +367,10 @@ function BattleStateUnitAttacking ()
 			attackTargetUnit.currentHp -= damage;
 			unitHasHit = true;
 			
+			ShowFloatingDamageText(damage);
+			// TODO: Screen shake
+			// TODO: Play damage sound
+			
 			// Trigger target's hurt animation
 			attackTargetUnit.facingDirection = (selectedUnit.facingDirection + (UNIT_DIRECTIONS / 2)) % UNIT_DIRECTIONS;
 			var _targetFramesPerDir = attackTargetUnit.image_number / UNIT_DIRECTIONS;

@@ -69,6 +69,14 @@ function CalculateDamage (_attackingUnit, _defendingUnit)
 
 
 
+function ShowFloatingDamageText (_damageAmount)
+{
+	var _damageText = instance_create_layer(attackTargetUnit.x, attackTargetUnit.y-DAMAGE_TEXT_Y_OFFSET, SYSTEM_LAYER, objFloatingDamageText);
+	_damageText.text = "-"+string(_damageAmount);
+}
+
+
+
 function ShowMoveRange (_unit)
 {
 	if (_unit == noone) { return; }
