@@ -317,10 +317,12 @@ function BattleStatePlayerTurnAttackConfirmation ()
 					CursorToFrozenState();
 					objBattleCursor.visible = false;
 					ClearAttackFlags(map);
-					battleState = BattleStateUnitAttacking;
+					
 					selectedUnit.sprite_index = selectedUnit.attackSprite;
 					selectedUnit.image_index = 0;
 					selectedUnit.image_speed = ATTACK_IMAGE_SPEED;
+					
+					battleState = BattleStateUnitAttacking;
 					break;
 				
 				case AttackConfirmationOptions.CANCEL:
@@ -342,29 +344,29 @@ function BattleStatePlayerTurnAttackConfirmation ()
 
 function BattleStateUnitAttacking ()
 {
-	
-	
-	
-	var _animationFinished = true;
-	
-	if (_animationFinished)
-	{
-		attackTargetUnit.currentHp -= damage;
-		
-		objBattleCursor.x = selectedUnit.x;
-		objBattleCursor.y = selectedUnit.y;
-		objBattleCursor.mapX = selectedUnit.x div CELL_SIZE;
-		objBattleCursor.mapY = selectedUnit.y div CELL_SIZE;
-		
-		objBattleCursor.visible = true;
-		
-		selectedUnit.isEnabled = false;
-		
-		attackTargetUnit = noone;
-		damage = 0;
-		
-		UnselectUnit();
-	}
+	var _framesPerDir = selectedUnit.image_number / UNIT_DIRECTIONS;
+    var _dirEndFrame  = (selectedUnit.facingDirection + 1) * _framesPerDir;
+    
+    var _animationFinished = (selectedUnit.image_index >= _dirEndFrame - selectedUnit.image_speed);
+    if (_animationFinished)
+    {
+        attackTargetUnit.currentHp -= damage;
+        
+        selectedUnit.sprite_index = selectedUnit.idleSprite;
+        selectedUnit.image_speed  = IDLE_IMAGE_SPEED;
+        selectedUnit.isEnabled   = false;
+        
+        objBattleCursor.x = selectedUnit.x;
+        objBattleCursor.y = selectedUnit.y;
+        objBattleCursor.mapX = selectedUnit.x div CELL_SIZE;
+        objBattleCursor.mapY = selectedUnit.y div CELL_SIZE;
+        objBattleCursor.visible = true;
+        
+        attackTargetUnit = noone;
+        damage = 0;
+        
+        UnselectUnit();
+    }
 }
 
 
