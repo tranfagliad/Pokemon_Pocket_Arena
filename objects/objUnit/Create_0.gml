@@ -1,37 +1,39 @@
 
-uId = "0000"
+#region unit battle data
+	
+	uId = "0000"
+	name = "";
+	team = Team.NONE;
+	level = 1;
+	maxHp = 1;
+	currentHp = maxHp;
+	attackStat = 1;
+	defenseStat = 1;
+	activeType = Type.NONE;
+	moveRange = Range.NONE;
+	moveDistance = 0;
+	attackRange = Range.NONE;
+	attackDistance = 0;
+	
+#endregion
 
-image_speed = IDLE_IMAGE_SPEED;
+#region unit meta data
+	
+	image_speed = IDLE_IMAGE_SPEED;
+	facingDirection = Direction.SOUTH;
+	isEnabled = true;
+	colorBlend = UNIT_ENABLED_BLEND;
+	
+#endregion
 
-facingDirection = Direction.SOUTH;
+#region unit sprites
 
-team = Team.NONE;
-
-name = "";
-
-level = 1;
-
-maxHp = 10;
-currentHp = maxHp;
-
-attackStat = 1;
-defenseStat = 1;
-
-activeType = Type.NONE;
-
-moveRange = Range.NONE;
-moveDistance = 0;
-
-attackRange = Range.NONE;
-attackDistance = 0;
-
-isEnabled = true;
-colorBlend = UNIT_ENABLED_BLEND;
-
-displaySprite = noone;
-iconSprite = noone;
-idleSprite = noone;
-walkSprite = noone;
-attackSprite = noone;
-hurtSprite = noone;
-faintSprite = noone;
+	displaySprite = noone;
+	iconSprite = noone;
+	idleSprite = noone;
+	walkSprite = noone;
+	attackSprite = noone;
+	hurtSprite = noone;
+	faintSprite = noone;
+	
+#endregion

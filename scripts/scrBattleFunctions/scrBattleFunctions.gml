@@ -29,6 +29,7 @@ function CreateUnitAndPlaceOnMap (_unitInfo, _map, _mapX, _mapY)
 		_unit.idleSprite = LoadAnimation(_unit.uId, IDLE);
 		_unit.walkSprite = LoadAnimation(_unit.uId, WALK);
 		_unit.attackSprite = LoadAnimation(_unit.uId, ATTACK);
+		_unit.hurtSprite = LoadAnimation(_unit.uId, HURT);
 		
 	#endregion
 	
