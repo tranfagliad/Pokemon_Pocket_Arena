@@ -365,6 +365,7 @@ function BattleStateUnitAttacking ()
         attackTargetUnit.sprite_index = attackTargetUnit.hurtSprite;
         attackTargetUnit.image_index  = _targetStartFrame;
         attackTargetUnit.image_speed  = HURT_IMAGE_SPEED;
+		attackTargetUnit.facingDirection = (selectedUnit.facingDirection + (UNIT_DIRECTIONS / 2) % UNIT_DIRECTIONS);
     }
 	
 	if (_attackFinished)

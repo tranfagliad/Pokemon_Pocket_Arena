@@ -75,4 +75,4 @@ var _team_one_unit_three = {
 	moveRange: Range.STRAIGHT, moveDistance: 2,
 	attackRange: Range.STRAIGHT, attackDistance: 2,
 };
-CreateUnitAndPlaceOnMap(_team_one_unit_three, map, 5, 2);
+CreateUnitAndPlaceOnMap(_team_one_unit_three, map, 5, 4);
