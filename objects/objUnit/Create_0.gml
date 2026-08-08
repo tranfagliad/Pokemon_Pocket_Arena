@@ -1,4 +1,6 @@
 
+uId = "0000"
+
 image_speed = IDLE_IMAGE_SPEED;
 
 facingDirection = Direction.SOUTH;
@@ -30,3 +32,6 @@ displaySprite = noone;
 iconSprite = noone;
 idleSprite = noone;
 walkSprite = noone;
+attackSprite = noone;
+hurtSprite = noone;
+faintSprite = noone;

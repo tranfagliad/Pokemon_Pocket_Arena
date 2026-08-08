@@ -61,7 +61,7 @@ function LoadAnimation (_id, _animationType)
 		
 		if (!file_exists(_imgPath) || !file_exists(_txtPath))
 		{
-			show_debug_message("LoadIdleSprite Error: Asset missing at " + _basePath);
+			show_debug_message("LoadAnimation Error: Asset missing at " + _imgPath);
 			return -1;
 		}
     

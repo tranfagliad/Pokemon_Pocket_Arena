@@ -1,13 +1,19 @@
 
+#macro POKEMON_DATA_BASE_PATH "data/pokemon"
+
 #macro POKEMON_IMAGES_BASE_PATH "images/pokemon"
 #macro ICON_SPRITE "icon.png"
 #macro DISPLAY_SPRITE "display.png"
 
-#macro IDLE "idle"
-#macro WALK "walk"
+#macro IDLE   "idle"
+#macro WALK   "walk"
+#macro ATTACK "attack"
+#macro HURT   "hurt"
 
-#macro IDLE_IMAGE_SPEED 0.2
-#macro WALK_IMAGE_SPEED 0.3
+#macro IDLE_IMAGE_SPEED   0.2
+#macro WALK_IMAGE_SPEED   0.3
+#macro ATTACK_IMAGE_SPEED 0.3
+#macro HURT_IMAGE_SPEED   0.2
 
 #macro NUM_FRAMES_TXT "numFrames.txt"
 

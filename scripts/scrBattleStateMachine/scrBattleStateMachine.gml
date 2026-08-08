@@ -307,7 +307,7 @@ function BattleStatePlayerTurnAttackConfirmation ()
 	
 	#endregion
 	
-	#region attack target
+	#region confirm attack target
 	
 		if (objInputManager.pressed.select)
 		{
@@ -318,6 +318,9 @@ function BattleStatePlayerTurnAttackConfirmation ()
 					objBattleCursor.visible = false;
 					ClearAttackFlags(map);
 					battleState = BattleStateUnitAttacking;
+					selectedUnit.sprite_index = selectedUnit.attackSprite;
+					selectedUnit.image_index = 0;
+					selectedUnit.image_speed = ATTACK_IMAGE_SPEED;
 					break;
 				
 				case AttackConfirmationOptions.CANCEL:
@@ -339,6 +342,9 @@ function BattleStatePlayerTurnAttackConfirmation ()
 
 function BattleStateUnitAttacking ()
 {
+	
+	
+	
 	var _animationFinished = true;
 	
 	if (_animationFinished)
