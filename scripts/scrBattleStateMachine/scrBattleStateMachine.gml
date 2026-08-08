@@ -319,8 +319,11 @@ function BattleStatePlayerTurnAttackConfirmation ()
 					ClearAttackFlags(map);
 					
 					selectedUnit.sprite_index = selectedUnit.attackSprite;
-					selectedUnit.image_index = 0;
 					selectedUnit.image_speed = ATTACK_IMAGE_SPEED;
+					
+					var _framesPerDir = selectedUnit.image_number / UNIT_DIRECTIONS;
+					var _attackStartFrame = selectedUnit.facingDirection * _framesPerDir;
+					selectedUnit.image_index = _attackStartFrame;
 					
 					battleState = BattleStateUnitAttacking;
 					break;
