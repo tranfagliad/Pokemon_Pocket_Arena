@@ -41,6 +41,7 @@
   ],
   "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[
+    {"$GMIncludedFile":"","%Name":"pokemon_evolutions.csv","CopyToMask":-1,"filePath":"datafiles/data","name":"pokemon_evolutions.csv","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"display.png","CopyToMask":-1,"filePath":"datafiles/images/0124","name":"display.png","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"icon.png","CopyToMask":-1,"filePath":"datafiles/images/0124","name":"icon.png","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"idle.png","CopyToMask":-1,"filePath":"datafiles/images/0124/idle","name":"idle.png","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
