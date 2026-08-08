@@ -344,29 +344,52 @@ function BattleStatePlayerTurnAttackConfirmation ()
 
 function BattleStateUnitAttacking ()
 {
-	var _framesPerDir = selectedUnit.image_number / UNIT_DIRECTIONS;
-    var _dirEndFrame  = (selectedUnit.facingDirection + 1) * _framesPerDir;
+	var _attackFramesPerDir = selectedUnit.image_number / UNIT_DIRECTIONS;
+    var _attackStartFrame = selectedUnit.facingDirection * _attackFramesPerDir;
     
-    var _animationFinished = (selectedUnit.image_index >= _dirEndFrame - selectedUnit.image_speed);
-    if (_animationFinished)
+	var _attackEndFrame = _attackStartFrame + _attackFramesPerDir;
+	var _attackFinished = (selectedUnit.image_index >= _attackEndFrame - selectedUnit.image_speed);
+	
+	var _impactFrame = _attackStartFrame + (_attackFramesPerDir * 0.5);
+	
+	if (!unitHasHit && selectedUnit.image_index >= _impactFrame)
     {
+		// Attack connects
         attackTargetUnit.currentHp -= damage;
+		unitHasHit = true;
         
-        selectedUnit.sprite_index = selectedUnit.idleSprite;
+        // Trigger target's hurt animation
+        var _targetFramesPerDir = attackTargetUnit.image_number / UNIT_DIRECTIONS;
+        var _targetStartFrame = attackTargetUnit.facingDirection * _targetFramesPerDir;
+        
+        attackTargetUnit.sprite_index = attackTargetUnit.hurtSprite;
+        attackTargetUnit.image_index  = _targetStartFrame;
+        attackTargetUnit.image_speed  = HURT_IMAGE_SPEED;
+    }
+	
+	if (_attackFinished)
+    {
+		// Reset attacker sprite and disable
+		selectedUnit.sprite_index = selectedUnit.idleSprite;
         selectedUnit.image_speed  = IDLE_IMAGE_SPEED;
         selectedUnit.isEnabled   = false;
-        
-        objBattleCursor.x = selectedUnit.x;
+		
+		// Reset target sprite
+		attackTargetUnit.sprite_index = attackTargetUnit.idleSprite;
+        attackTargetUnit.image_speed  = IDLE_IMAGE_SPEED;
+		
+		objBattleCursor.x = selectedUnit.x;
         objBattleCursor.y = selectedUnit.y;
         objBattleCursor.mapX = selectedUnit.x div CELL_SIZE;
         objBattleCursor.mapY = selectedUnit.y div CELL_SIZE;
         objBattleCursor.visible = true;
-        
-        attackTargetUnit = noone;
+		
+		attackTargetUnit = noone;
         damage = 0;
-        
-        UnselectUnit();
-    }
+		unitHasHit = false;
+		
+		UnselectUnit();
+	}
 }
 
 

@@ -40,6 +40,7 @@ unitOriginalMapY = RESET_CELL_COORDINATE;
 
 
 unitIsAttacking = false;
+unitHasHit = false;
 damage = 0;
 
 
