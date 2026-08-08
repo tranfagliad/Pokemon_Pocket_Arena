@@ -132,6 +132,7 @@ function BattleStatePlayerTurnUnitMove ()
 				ClearMapFlags(map);
 				selectedUnit.sprite_index = selectedUnit.walkSprite;
 				selectedUnit.image_speed = WALK_IMAGE_SPEED;
+				selectedUnit.image_index = 0;
 			}
 		}
 	
@@ -172,6 +173,7 @@ function BattleStateUnitMoving ()
 		
 		selectedUnit.sprite_index = selectedUnit.idleSprite;
 		selectedUnit.image_speed = IDLE_IMAGE_SPEED;
+		selectedUnit.image_index = 0;
 		objBattleCursor.visible = true;
 		
 		unitOptionsIndex = UnitOptionsPostMove.ATTACK;
