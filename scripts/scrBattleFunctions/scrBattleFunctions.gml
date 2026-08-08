@@ -61,8 +61,9 @@ function CalculateDamage (_attackingUnit, _defendingUnit)
     var _statRatio = _attackingUnit.attackStat / _def;
     
     var _baseDamage = (_levelFactor * _statRatio * (_attackingUnit.attackStat / 10)) + 2;
-    
-    return max(1, floor(_baseDamage * _typeMultiplier));
+    var _finalDamage = max(1, floor(_baseDamage * _typeMultiplier));
+	
+    return min(_defendingUnit.currentHp, _finalDamage);
 }
 
 

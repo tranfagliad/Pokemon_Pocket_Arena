@@ -60,7 +60,7 @@ CreateUnitAndPlaceOnMap(_team_one_unit_one, map, 3, 4);
 
 var _team_one_unit_two = {
 	uId: "0001", team: Team.TWO, name: "Bulbasaur", level: 5,
-	hp: 20, attackStat: 12, defenseStat: 7,
+	hp: 2, attackStat: 12, defenseStat: 7,
 	activeType: Type.GRASS,
 	moveRange: Range.STRAIGHT, moveDistance: 2,
 	attackRange: Range.STRAIGHT, attackDistance: 2,
