@@ -117,7 +117,7 @@
 #macro NOT_VERY_EFFECTIVE_TEXT "Not Very Effective"
 #macro SUPER_EFFECTIVE_TEXT    "Super Effective"
 
-#macro DAMAGE_TEXT_FRAMES         60
+#macro DAMAGE_TEXT_FRAMES         90
 #macro DAMAGE_TEXT_Y_OFFSET       50
 #macro DAMAGE_TEXT_VSPEED        0.3
 #macro DAMAGE_TEXT_ALPHA_CHANGE 0.01

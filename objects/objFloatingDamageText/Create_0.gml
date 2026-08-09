@@ -1,10 +1,10 @@
 
+text = "";
+color = c_white;
+
+
 alpha = DEFAULT_DRAW_ALPHA;
 alphaChange = DAMAGE_TEXT_ALPHA_CHANGE;
-
-text = "";
-
-color = c_white;
 
 vSpeed = DAMAGE_TEXT_VSPEED;
 

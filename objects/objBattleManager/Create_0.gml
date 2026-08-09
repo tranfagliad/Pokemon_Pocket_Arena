@@ -57,6 +57,10 @@ var _name = "Bulbasaur"
 var _type = Type.GRASS;
 
 
+var _uid2 = "0002";
+var _name2 = "Ivysaur"
+var _type2 = Type.GRASS;
+
 
 
 
@@ -70,22 +74,19 @@ var _team_one_unit_one = {
 CreateUnitAndPlaceOnMap(_team_one_unit_one, map, 3, 4);
 
 
-
-
-
 var _team_one_unit_two = {
-	uId: _uid, team: Team.TWO, name: _name, level: 5,
+	uId: _uid2, team: Team.TWO, name: _name2, level: 5,
 	hp: 2, attackStat: 12, defenseStat: 7,
-	activeType: _type,
+	activeType: _type2,
 	moveRange: Range.STRAIGHT, moveDistance: 2,
 	attackRange: Range.STRAIGHT, attackDistance: 2,
 };
 CreateUnitAndPlaceOnMap(_team_one_unit_two, map, 3, 2);
 
 var _team_one_unit_three = {
-	uId: _uid, team: Team.TWO, name: _name, level: 5,
+	uId: _uid2, team: Team.TWO, name: _name2, level: 5,
 	hp: 20, attackStat: 12, defenseStat: 7,
-	activeType: _type,
+	activeType: _type2,
 	moveRange: Range.STRAIGHT, moveDistance: 2,
 	attackRange: Range.STRAIGHT, attackDistance: 2,
 };
