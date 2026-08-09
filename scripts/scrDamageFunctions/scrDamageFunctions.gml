@@ -57,7 +57,7 @@ function GetDamageColor (_damageType)
 	switch (_damageType)
 	{
 		case DamageType.SUPER_EFFECTIVE: return c_red;
-		case DamageType.NOT_VERY_EFFECTIVE: return c_grey;
+		case DamageType.NOT_VERY_EFFECTIVE: return c_dkgray;
 		default: return c_white;
 	}
 }

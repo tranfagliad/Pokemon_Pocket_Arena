@@ -52,14 +52,14 @@ damageInfo = noone;
 
 
 
-var _uid = "0006";
-var _name = "Charizard"
-var _type = Type.FIRE;
+var _uid = "0007";
+var _name = "Squirtle"
+var _type = Type.WATER;
 
 
-var _uid2 = "0006";
-var _name2 = "Charizard"
-var _type2 = Type.FIRE;
+var _uid2 = "0007";
+var _name2 = "Squirtle"
+var _type2 = Type.WATER;
 
 
 

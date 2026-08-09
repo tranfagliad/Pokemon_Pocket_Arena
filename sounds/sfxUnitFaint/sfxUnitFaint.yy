@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"sfxUnitFaint",
   "parent":{
-    "name":"Battle",
-    "path":"folders/Sounds/SFX/Battle.yy",
+    "name":"Unit",
+    "path":"folders/Sounds/SFX/Battle/Unit.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

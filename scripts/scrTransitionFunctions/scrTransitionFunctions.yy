@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scrTransitions",
+  "%Name":"scrTransitionFunctions",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scrTransitions",
+  "name":"scrTransitionFunctions",
   "parent":{
     "name":"Misc",
     "path":"folders/Scripts/Misc.yy",
