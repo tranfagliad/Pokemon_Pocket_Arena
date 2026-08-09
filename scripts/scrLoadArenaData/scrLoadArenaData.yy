@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"scrFreeBattleOpponentData",
+  "%Name":"scrLoadArenaData",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scrFreeBattleOpponentData",
+  "name":"scrLoadArenaData",
   "parent":{
-    "name":"Battle",
-    "path":"folders/Scripts/Battle.yy",
+    "name":"Loading",
+    "path":"folders/Scripts/Loading.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

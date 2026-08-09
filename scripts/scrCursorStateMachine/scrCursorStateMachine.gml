@@ -87,7 +87,6 @@ function CursorStateFree ()
 }
 
 
-
 function CursorStateFrozen ()
 {
     hasChangedLocation = false;
@@ -109,6 +108,9 @@ function CursorStateFrozen ()
 		
     #endregion
 }
+
+
+// TODO: CursorStateWaitForAI (?)
 
 
 

@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scrLoadTypeData",
+  "%Name":"scrLoadFreeBattleOpponentData",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scrLoadTypeData",
+  "name":"scrLoadFreeBattleOpponentData",
   "parent":{
     "name":"Loading",
     "path":"folders/Scripts/Loading.yy",

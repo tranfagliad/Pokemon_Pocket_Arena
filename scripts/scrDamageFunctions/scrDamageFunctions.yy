@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scrDamageFunctions",
   "parent":{
-    "name":"Misc",
-    "path":"folders/Scripts/Misc.yy",
+    "name":"Battle",
+    "path":"folders/Scripts/Battle.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

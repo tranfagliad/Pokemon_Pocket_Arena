@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"scrArenaData",
+  "%Name":"scrCameraFunctions",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scrArenaData",
+  "name":"scrCameraFunctions",
   "parent":{
-    "name":"Battle",
-    "path":"folders/Scripts/Battle.yy",
+    "name":"Misc",
+    "path":"folders/Scripts/Misc.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

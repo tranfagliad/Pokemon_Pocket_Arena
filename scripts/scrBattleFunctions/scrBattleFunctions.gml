@@ -52,31 +52,6 @@ function CreateUnitAndPlaceOnMap (_unitInfo, _map, _mapX, _mapY)
 }
 
 
-
-function CalculateDamage (_attackingUnit, _defendingUnit)
-{
-    var _typeMultiplier = GetTypeAdvantageMultiplier(typeChart, _attackingUnit.activeType, _defendingUnit.activeType);
-    var _def = max(1, _defendingUnit.defenseStat);
-    
-    var _levelFactor = ((2 * _attackingUnit.level) / 5) + 2;
-    var _statRatio = _attackingUnit.attackStat / _def;
-    
-    var _baseDamage = (_levelFactor * _statRatio * (_attackingUnit.attackStat / 10)) + 2;
-    var _finalDamage = max(1, floor(_baseDamage * _typeMultiplier));
-	
-    return min(_defendingUnit.currentHp, _finalDamage);
-}
-
-
-
-function ShowFloatingDamageText (_damageAmount)
-{
-	var _damageText = instance_create_layer(attackTargetUnit.x, attackTargetUnit.y-DAMAGE_TEXT_Y_OFFSET, SYSTEM_LAYER, objFloatingDamageText);
-	_damageText.text = "-"+string(_damageAmount);
-}
-
-
-
 function ShowMoveRange (_unit)
 {
 	if (_unit == noone) { return; }
@@ -101,7 +76,6 @@ function ShowMoveRange (_unit)
 }
 
 
-
 function ShowAttackRange (_cellX, _cellY, _unit)
 {
 	if (_unit == noone) { return; }
@@ -124,7 +98,7 @@ function ShowAttackRange (_cellX, _cellY, _unit)
 }
 
 
-
+// Create the initial map
 function InitializeMap ()
 {
 	var _map = ds_grid_create(mapWidth, mapHeight);
@@ -145,7 +119,7 @@ function InitializeMap ()
 }
 
 
-
+// Destroy the entire map
 function CleanUpMap ()
 {
 	if (ds_exists(map, ds_type_grid))
@@ -161,7 +135,6 @@ function CleanUpMap ()
 		map = noone;
 	}
 }
-
 
 
 // Clear all flags
@@ -181,7 +154,6 @@ function ClearMapFlags (_map)
 }
 
 
-
 // Clear ONLY attack flags
 function ClearAttackFlags (_map)
 {
@@ -194,7 +166,6 @@ function ClearAttackFlags (_map)
         _cell.canAttack = false;
     }
 }
-
 
 
 // Updates the selected unit's direction based on cursor position

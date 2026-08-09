@@ -368,7 +368,7 @@ function BattleStateUnitAttacking ()
 			unitHasHit = true;
 			
 			ShowFloatingDamageText(damage);
-			ScreenShake(6, 12);
+			ScreenShake(6, 60);
 			// TODO: Play damage sound
 			
 			// Trigger target's hurt animation
