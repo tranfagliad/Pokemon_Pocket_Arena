@@ -105,9 +105,11 @@
 #macro UNIT_BLEND_TRANSITION_SPEED 0.1
 
 #macro NUM_TYPES 18
-#macro NOT_VERY_EFFECTIVE 0.5
-#macro NORMAL_EFFECTIVE   1.0
-#macro SUPER_EFFECTIVE    1.5
+#macro NOT_VERY_EFFECTIVE_MULT 0.5
+#macro NORMAL_EFFECTIVE_MULT   1.0
+#macro SUPER_EFFECTIVE_MULT    1.5
+#macro NOT_VERY_EFFECTIVE_TEXT "Not Very Effective"
+#macro SUPER_EFFECTIVE_TEXT    "Super Effective"
 
 #macro DAMAGE_TEXT_FRAMES         60
 #macro DAMAGE_TEXT_Y_OFFSET       50
@@ -116,5 +118,3 @@
 
 #macro MIN_LEVEL 1
 #macro MAX_LEVEL 9
-
-

@@ -8,15 +8,11 @@ function DrawUnitInfoCards ()
     
     if (selectedUnit != noone)
     {
-        if (_hoveredUnit != noone && _hoveredUnit.team != selectedUnit.team)
-        {
-            DrawSingleUnitCard(selectedUnit);
-            DrawSingleUnitCard(_hoveredUnit);
-        }
-        else if (_hoveredUnit != noone) { DrawSingleUnitCard(_hoveredUnit); }
-        else { DrawSingleUnitCard(selectedUnit); }
+		DrawSingleUnitInfoCard(selectedUnit);
+        if (_hoveredUnit != noone && _hoveredUnit.id != selectedUnit.id) { DrawSingleUnitInfoCard(_hoveredUnit); }
+		else if (attackTargetUnit != noone) { DrawSingleUnitInfoCard(attackTargetUnit); }
     }
-    else { DrawSingleUnitCard(_hoveredUnit); }
+    else { DrawSingleUnitInfoCard(_hoveredUnit); }
 }
 
 
@@ -44,7 +40,7 @@ function DrawMenus ()
 
 // Helper Functions
 
-function DrawSingleUnitCard (_unit)
+function DrawSingleUnitInfoCard (_unit)
 {
     if (_unit == noone || !instance_exists(_unit)) { return; }
     

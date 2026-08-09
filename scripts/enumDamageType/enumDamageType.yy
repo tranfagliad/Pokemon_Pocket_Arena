@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"Script23",
+  "%Name":"enumDamageType",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"Script23",
+  "name":"enumDamageType",
   "parent":{
     "name":"Misc",
     "path":"folders/Scripts/Enums/Misc.yy",
