@@ -368,8 +368,8 @@ function BattleStateUnitAttacking ()
 			unitHasHit = true;
 			
 			ShowFloatingDamageText(damageInfo);
+			PlayDamageSfx(damageInfo.type);
 			DamageScreenShake(damageInfo.type);
-			// TODO: Play damage sound
 			
 			// Trigger target's hurt animation
 			attackTargetUnit.facingDirection = (selectedUnit.facingDirection + (UNIT_DIRECTIONS / 2)) % UNIT_DIRECTIONS;

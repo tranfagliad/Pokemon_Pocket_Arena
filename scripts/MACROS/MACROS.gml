@@ -30,6 +30,10 @@
 #macro CENTER_SECTOR    22.5
 #macro FULL_REVOLUTION  360
 
+#macro DEFAULT_VOLUME_PERCENT 100
+#macro MIN_VOLUME_PERCENT       0
+#macro MAX_VOLUME_PERCENT     500
+
 #macro W_KEY ord("W")
 #macro A_KEY ord("A")
 #macro S_KEY ord("S")

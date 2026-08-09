@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"sfxHitSuperEffective",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":2,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":1.66,
+  "exportDir":"",
+  "name":"sfxHitSuperEffective",
+  "parent":{
+    "name":"Damage",
+    "path":"folders/Sounds/SFX/Battle/Damage.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"sfxHitSuperEffective.mp3",
+  "volume":1.0,
+}

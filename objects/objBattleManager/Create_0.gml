@@ -52,14 +52,14 @@ damageInfo = noone;
 
 
 
-var _uid = "0001";
-var _name = "Bulbasaur"
-var _type = Type.GRASS;
+var _uid = "0006";
+var _name = "Charizard"
+var _type = Type.FIRE;
 
 
-var _uid2 = "0002";
-var _name2 = "Ivysaur"
-var _type2 = Type.GRASS;
+var _uid2 = "0006";
+var _name2 = "Charizard"
+var _type2 = Type.FIRE;
 
 
 
