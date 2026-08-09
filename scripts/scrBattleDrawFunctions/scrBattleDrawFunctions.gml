@@ -194,7 +194,7 @@ function DrawUnitsComparison (_whoseTurn)
 	draw_set_colour(DEFAULT_DRAW_COLOR);
 	draw_set_alpha(DEFAULT_DRAW_ALPHA);
 	
-	draw_text(_drawX, _drawY, string(damage));
+	draw_text(_drawX, _drawY, string(damageInfo.amount));
 }
 
 function DrawSystemMenu ()

@@ -364,10 +364,10 @@ function BattleStateUnitAttacking ()
 		if (!unitHasHit && selectedUnit.image_index >= _impactFrame)
 		{
 			// Attack connects
-			attackTargetUnit.currentHp -= damage;
+			attackTargetUnit.currentHp -= damageInfo.amount;
 			unitHasHit = true;
 			
-			ShowFloatingDamageText(damage);
+			ShowFloatingDamageText(damageInfo.amount);
 			ScreenShake(6, 60);
 			// TODO: Play damage sound
 			
@@ -402,7 +402,7 @@ function BattleStateUnitAttacking ()
 	        objBattleCursor.visible = true;
 		
 			attackTargetUnit = noone;
-	        damage = 0;
+	        damageInfo = noone;
 			unitHasHit = false;
 		
 			UnselectUnit();
@@ -491,9 +491,9 @@ function GoToAttackConfirmation ()
 		attackTargetUnit = _cell.unit;
 		battleStateTemp = battleState;
 		unitOptionsIndex = AttackConfirmationOptions.CONFIRM;
+		damageInfo = GetDamageInfo(selectedUnit, attackTargetUnit);
 		CursorToFrozenState();
 		battleState = BattleStatePlayerTurnAttackConfirmation;
-		damage = CalculateDamage(selectedUnit, attackTargetUnit);
 	}
 }
 

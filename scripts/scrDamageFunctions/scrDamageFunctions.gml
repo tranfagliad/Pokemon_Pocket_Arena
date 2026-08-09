@@ -1,28 +1,29 @@
 
-function CalculateDamage (_attackingUnit, _defendingUnit)
+// Return a struct containing the damage amount and damage type (from enumDamageType) with the given attacking and defending units
+// Struct contains: { type: <Real>, amount: <Real> }
+function GetDamageInfo (_attackingUnit, _defendingUnit)
 {
-    var _typeAdvantage = GetTypeAdvantage(typeChart, _attackingUnit.activeType, _defendingUnit.activeType);
-	var _damageMultiplier = GetTypeDamageMultiplier(_typeAdvantage);
+	var _damageType = GetTypeAdvantage(typeChart, _attackingUnit.activeType, _defendingUnit.activeType);
+	var _damageAmount = CalculateDamage(_attackingUnit, _defendingUnit, _damageType);
+	return { type: _damageType, amount: _damageAmount };
+}
+
+
+// Given the attacking and defending units and the damage type, calculate the damage amount
+function CalculateDamage (_attackingUnit, _defendingUnit, _damageType)
+{
+	var _damageMultiplier = GetTypeDamageMultiplier(_damageType);
 	
-    var _def = max(1, _defendingUnit.defenseStat);
-    
     var _levelFactor = ((2 * _attackingUnit.level) / 5) + 2;
-    var _statRatio = _attackingUnit.attackStat / _def;
+    var _statRatio = _attackingUnit.attackStat / _defendingUnit.defenseStat;
     
     var _baseDamage = (_levelFactor * _statRatio * (_attackingUnit.attackStat / 10)) + 2;
-    var _finalDamage = max(1, floor(_baseDamage * _damageMultiplier));
-	
-    return min(_defendingUnit.currentHp, _finalDamage);
+    var _finalDamage = min(_defendingUnit.currentHp, max(1, floor(_baseDamage * _damageMultiplier)));
+    return _finalDamage;
 }
 
 
-function ShowFloatingDamageText (_damageAmount)
-{
-	var _damageText = instance_create_layer(attackTargetUnit.x, attackTargetUnit.y-DAMAGE_TEXT_Y_OFFSET, SYSTEM_LAYER, objFloatingDamageText);
-	_damageText.text = "-"+string(_damageAmount);
-}
-
-
+// Look up the type chart with the given attacker and defender types
 function GetTypeAdvantage (_typeChart, _attackerType, _defenderType)
 {
 	return ds_grid_get(_typeChart, _defenderType-1, _attackerType-1);
@@ -34,13 +35,18 @@ function GetTypeDamageMultiplier (_damageType)
 {
 	switch (_damageType)
 	{
-		case DamageType.NOT_VERY_EFFECTIVE:
-			return NOT_VERY_EFFECTIVE_MULT;
-		case DamageType.SUPER_EFFECTIVE:
-			return SUPER_EFFECTIVE_MULT;
-		default:
-			return NORMAL_EFFECTIVE_MULT;
+		case DamageType.NOT_VERY_EFFECTIVE: return NOT_VERY_EFFECTIVE_MULT;
+		case DamageType.SUPER_EFFECTIVE: return SUPER_EFFECTIVE_MULT;
+		default: return NORMAL_EFFECTIVE_MULT;
 	}
+}
+
+
+// Display the damage text during attack animation
+function ShowFloatingDamageText (_damageAmount)
+{
+	var _damageText = instance_create_layer(attackTargetUnit.x, attackTargetUnit.y-DAMAGE_TEXT_Y_OFFSET, SYSTEM_LAYER, objFloatingDamageText);
+	_damageText.text = "-"+string(_damageAmount);
 }
 
 
