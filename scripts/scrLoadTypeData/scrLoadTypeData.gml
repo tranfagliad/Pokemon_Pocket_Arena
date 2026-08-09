@@ -1,6 +1,53 @@
 
+// Load the type chart from file
+function LoadTypeChart ()
+{
+	var _filePath = MISC_DATA_BASE_PATH+"/"+TYPE_CHART_CSV;
+	
+	#region error checking
+		
+		if (!file_exists(_filePath))
+		{
+			show_debug_message("ERROR: Type Chart file not found: "+_filePath);
+			return ERROR;
+		}
+		
+	#endregion
+
+	var _typeChart = ds_grid_create(NUM_TYPES, NUM_TYPES);
+	
+	#region open, read, close the file, and build the type chart
+		
+		var _file = file_text_open_read(_filePath);
+		var _chartRow = 0;
+		if (!file_text_eof(_file)) { file_text_readln(_file) }   // Skip the column labels
+		while (!file_text_eof(_file))
+		{
+			var _line = file_text_readln(_file);
+			var _values = string_split(_line, ",");
+			array_delete(_values, 0, 1);   // Skip the row label
+			
+			for (var _chartCol = 0; _chartCol < NUM_TYPES; _chartCol++)
+			{
+				var _value = array_get(_values, _chartCol);
+				ds_grid_set(_typeChart, _chartCol, _chartRow, _value);
+			}
+			
+			_chartRow++;
+		}
+		file_text_close(_file);
+		
+	#endregion
+	
+	return _typeChart;
+}
+
+
+// FOR TESTING - Manually create type chart in memory
 function GetTypeChart ()
 {
+	#region manually create type chart in memory
+	
 	var _typeChart = ds_grid_create(NUM_TYPES, NUM_TYPES);
 	ds_grid_clear(_typeChart, DamageType.NORMAL_EFFECTIVE);
 	
@@ -215,6 +262,8 @@ function GetTypeChart ()
 	#endregion
 	
 	return _typeChart;
+	
+	#endregion
 }
 
 

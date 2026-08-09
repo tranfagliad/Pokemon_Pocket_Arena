@@ -43,6 +43,7 @@
   ],
   "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[
+    {"$GMIncludedFile":"","%Name":"type_chart.csv","CopyToMask":-1,"filePath":"datafiles/data/misc","name":"type_chart.csv","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"pokemon_evolutions.csv","CopyToMask":-1,"filePath":"datafiles/data/pokemon","name":"pokemon_evolutions.csv","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"hurt.png","CopyToMask":-1,"filePath":"datafiles/images/0001/hurt","name":"hurt.png","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"numFrames.txt","CopyToMask":-1,"filePath":"datafiles/images/0001/hurt","name":"numFrames.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},

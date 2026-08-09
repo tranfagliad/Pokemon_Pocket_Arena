@@ -1,5 +1,11 @@
 
+#macro ERROR -1
+
 #macro POKEMON_DATA_BASE_PATH "data/pokemon"
+#macro POKEMON_EVOLUTIONS_CSV "pokemon_evolutions.csv"
+
+#macro MISC_DATA_BASE_PATH "data/misc"
+#macro TYPE_CHART_CSV      "type_chart.csv"  
 
 #macro POKEMON_IMAGES_BASE_PATH "images/pokemon"
 #macro ICON_SPRITE "icon.png"
@@ -115,6 +121,9 @@
 #macro DAMAGE_TEXT_Y_OFFSET       50
 #macro DAMAGE_TEXT_VSPEED        0.3
 #macro DAMAGE_TEXT_ALPHA_CHANGE 0.01
+
+#macro DAMAGE_BASE_SCREEN_SHAKE_MAGNITUDE  6
+#macro DAMAGE_BASE_SCREEN_SHAKE_FRAMES    60
 
 #macro MIN_LEVEL 1
 #macro MAX_LEVEL 9

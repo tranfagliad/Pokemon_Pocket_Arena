@@ -367,8 +367,8 @@ function BattleStateUnitAttacking ()
 			attackTargetUnit.currentHp -= damageInfo.amount;
 			unitHasHit = true;
 			
-			ShowFloatingDamageText(damageInfo.amount);
-			ScreenShake(6, 60);
+			ShowFloatingDamageText(damageInfo);
+			DamageScreenShake(damageInfo.type);
 			// TODO: Play damage sound
 			
 			// Trigger target's hurt animation

@@ -4,7 +4,7 @@ alphaChange = DAMAGE_TEXT_ALPHA_CHANGE;
 
 text = "";
 
-color = c_red;
+color = c_white;
 
 vSpeed = DAMAGE_TEXT_VSPEED;
 

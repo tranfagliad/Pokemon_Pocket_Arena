@@ -28,7 +28,7 @@ function LoadDisplaySprite (_name)
 		if (!file_exists(_filePath))
 	    {
 	        show_debug_message("LoadDisplaySprite Error: File not found at " + _filePath);
-	        return -1;
+	        return ERROR;
 	    }
 		
 	#endregion
@@ -62,7 +62,7 @@ function LoadAnimation (_id, _animationType)
 		if (!file_exists(_imgPath) || !file_exists(_txtPath))
 		{
 			show_debug_message("LoadAnimation Error: Asset missing at " + _imgPath);
-			return -1;
+			return ERROR;
 		}
     
 	#endregion

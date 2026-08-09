@@ -43,11 +43,25 @@ function GetTypeDamageMultiplier (_damageType)
 
 
 // Display the damage text during attack animation
-function ShowFloatingDamageText (_damageAmount)
+function ShowFloatingDamageText (_damageInfo)
 {
 	var _damageText = instance_create_layer(attackTargetUnit.x, attackTargetUnit.y-DAMAGE_TEXT_Y_OFFSET, SYSTEM_LAYER, objFloatingDamageText);
-	_damageText.text = "-"+string(_damageAmount);
+	_damageText.text = "-"+string(_damageInfo.amount);
+	_damageText.color = GetDamageColor(_damageInfo.type);
 }
+
+
+// Returns the color for damage text with the given damage type
+function GetDamageColor (_damageType)
+{
+	switch (_damageType)
+	{
+		case DamageType.SUPER_EFFECTIVE: return c_red;
+		case DamageType.NOT_VERY_EFFECTIVE: return c_grey;
+		default: return c_white;
+	}
+}
+
 
 
 // Returns the row of multipliers of the given attacker type

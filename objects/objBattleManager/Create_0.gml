@@ -8,8 +8,7 @@ whoseTurn = Team.ONE;
 
 opponent = global.opponent;
 
-typeChart = GetTypeChart();
-
+typeChart = LoadTypeChart();
 
 mapName = global.battleArena.name;
 mapWidth = global.battleArena.width;
