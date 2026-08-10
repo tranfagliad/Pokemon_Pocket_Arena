@@ -52,14 +52,14 @@ damageInfo = noone;
 
 
 
-var _uid = "0007";
-var _name = "Squirtle"
-var _type = Type.WATER;
+var _uid = "0011";
+var _name = "Metapod"
+var _type = Type.BUG;
 
 
-var _uid2 = "0007";
-var _name2 = "Squirtle"
-var _type2 = Type.WATER;
+var _uid2 = "0011";
+var _name2 = "Metapod"
+var _type2 = Type.BUG;
 
 
 
@@ -91,3 +91,12 @@ var _team_one_unit_three = {
 	attackRange: Range.STRAIGHT, attackDistance: 2,
 };
 CreateUnitAndPlaceOnMap(_team_one_unit_three, map, 5, 4);
+
+var _team_one_unit_four = {
+	uId: _uid2, team: Team.TWO, name: _name2, level: 5,
+	hp: 20, attackStat: 12, defenseStat: 7,
+	activeType: _type2,
+	moveRange: Range.STRAIGHT, moveDistance: 2,
+	attackRange: Range.STRAIGHT, attackDistance: 2,
+};
+CreateUnitAndPlaceOnMap(_team_one_unit_four, map, 3, 6);
