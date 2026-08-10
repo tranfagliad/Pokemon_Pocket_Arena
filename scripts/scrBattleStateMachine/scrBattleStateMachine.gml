@@ -325,6 +325,8 @@ function BattleStatePlayerTurnAttackConfirmation ()
 					var _attackStartFrame = selectedUnit.facingDirection * _framesPerDir;
 					selectedUnit.image_index = _attackStartFrame;
 					
+					MoveBattleCursor(selectedUnit.x, selectedUnit.y);
+					
 					battleState = BattleStateUnitAttacking;
 					break;
 				
@@ -367,6 +369,8 @@ function BattleStateUnitAttacking ()
 			attackTargetUnit.currentHp -= damageInfo.amount;
 			unitHasHit = true;
 			
+			MoveBattleCursor(attackTargetUnit.x, attackTargetUnit.y);
+			
 			ShowFloatingDamageText(damageInfo);
 			PlayDamageSfx(damageInfo.type);
 			DamageScreenShake(damageInfo.type);
@@ -389,22 +393,19 @@ function BattleStateUnitAttacking ()
 			// Reset attacker sprite and disable
 			selectedUnit.sprite_index = selectedUnit.idleSprite;
 	        selectedUnit.image_speed  = IDLE_IMAGE_SPEED;
-	        selectedUnit.isEnabled   = false;
-		
+	        //selectedUnit.isEnabled    = false;
+			
 			// Reset target sprite
 			attackTargetUnit.sprite_index = attackTargetUnit.idleSprite;
 	        attackTargetUnit.image_speed  = IDLE_IMAGE_SPEED;
-		
-			objBattleCursor.x = selectedUnit.x;
-	        objBattleCursor.y = selectedUnit.y;
-	        objBattleCursor.mapX = selectedUnit.x div CELL_SIZE;
-	        objBattleCursor.mapY = selectedUnit.y div CELL_SIZE;
+			
+			MoveBattleCursor(selectedUnit.x, selectedUnit.y);
 	        objBattleCursor.visible = true;
-		
+			
 			attackTargetUnit = noone;
 	        damageInfo = noone;
 			unitHasHit = false;
-		
+			
 			UnselectUnit();
 		}
 		
@@ -436,10 +437,7 @@ function UnselectUnit ()
 function BackToUnitOptions ()
 {
 	selectedUnit.facingDirection = Direction.SOUTH;
-	objBattleCursor.x = selectedUnit.x;
-	objBattleCursor.y = selectedUnit.y;
-	objBattleCursor.mapX = objBattleCursor.x div CELL_SIZE;
-    objBattleCursor.mapY = objBattleCursor.y div CELL_SIZE;
+	MoveBattleCursor(selectedUnit.x, selectedUnit.y);
 	CursorToFrozenState();
 	battleState = BattleStatePlayerTurnUnitMenu;
 }
@@ -447,10 +445,7 @@ function BackToUnitOptions ()
 function BackToPostMoveUnitOptions ()
 {
 	selectedUnit.facingDirection = Direction.SOUTH;
-	objBattleCursor.x = selectedUnit.x;
-	objBattleCursor.y = selectedUnit.y;
-	objBattleCursor.mapX = objBattleCursor.x div CELL_SIZE;
-    objBattleCursor.mapY = objBattleCursor.y div CELL_SIZE;
+	MoveBattleCursor(selectedUnit.x, selectedUnit.y);
 	CursorToFrozenState();
 	battleState = BattleStatePlayerTurnPostMoveUnitMenu;
 }

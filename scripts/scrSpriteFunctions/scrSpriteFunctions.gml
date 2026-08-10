@@ -94,7 +94,3 @@ function LoadAnimation (_id, _animationType)
     
     return _animation;
 }
-
-
-
-

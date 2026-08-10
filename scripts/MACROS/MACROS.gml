@@ -11,10 +11,11 @@
 #macro ICON_SPRITE "icon.png"
 #macro DISPLAY_SPRITE "display.png"
 
-#macro IDLE   "idle"
-#macro WALK   "walk"
-#macro ATTACK "attack"
-#macro HURT   "hurt"
+#macro IDLE_ANIMATION   "idle"
+#macro WALK_ANIMATION   "walk"
+#macro ATTACK_ANIMATION "attack"
+#macro HURT_ANIMATION   "hurt"
+#macro FAINT_ANIMATION  "faint"
 
 #macro IDLE_IMAGE_SPEED   0.2
 #macro WALK_IMAGE_SPEED   0.3

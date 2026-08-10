@@ -52,14 +52,14 @@ damageInfo = noone;
 
 
 
-var _uid = "0011";
-var _name = "Metapod"
-var _type = Type.BUG;
+var _uid = "0001";
+var _name = ""
+var _type = Type.FIRE;
 
 
-var _uid2 = "0011";
-var _name2 = "Metapod"
-var _type2 = Type.BUG;
+var _uid2 = "0001";
+var _name2 = ""
+var _type2 = Type.FIRE;
 
 
 
@@ -69,9 +69,11 @@ var _team_one_unit_one = {
 	hp: 20, attackStat: 12, defenseStat: 7,
 	activeType: _type,
 	moveRange: Range.STRAIGHT, moveDistance: 2,
-	attackRange: Range.STRAIGHT, attackDistance: 2,
+	attackRange: Range.MATRIX, attackDistance: 2,
 };
 CreateUnitAndPlaceOnMap(_team_one_unit_one, map, 3, 4);
+
+
 
 
 var _team_one_unit_two = {
@@ -85,7 +87,7 @@ CreateUnitAndPlaceOnMap(_team_one_unit_two, map, 3, 2);
 
 var _team_one_unit_three = {
 	uId: _uid2, team: Team.TWO, name: _name2, level: 5,
-	hp: 20, attackStat: 12, defenseStat: 7,
+	hp: 2, attackStat: 12, defenseStat: 7,
 	activeType: _type2,
 	moveRange: Range.STRAIGHT, moveDistance: 2,
 	attackRange: Range.STRAIGHT, attackDistance: 2,
@@ -94,9 +96,56 @@ CreateUnitAndPlaceOnMap(_team_one_unit_three, map, 5, 4);
 
 var _team_one_unit_four = {
 	uId: _uid2, team: Team.TWO, name: _name2, level: 5,
-	hp: 20, attackStat: 12, defenseStat: 7,
+	hp: 2, attackStat: 12, defenseStat: 7,
 	activeType: _type2,
 	moveRange: Range.STRAIGHT, moveDistance: 2,
 	attackRange: Range.STRAIGHT, attackDistance: 2,
 };
 CreateUnitAndPlaceOnMap(_team_one_unit_four, map, 3, 6);
+
+var _team_one_unit_five = {
+	uId: _uid2, team: Team.TWO, name: _name2, level: 5,
+	hp: 2, attackStat: 12, defenseStat: 7,
+	activeType: _type2,
+	moveRange: Range.STRAIGHT, moveDistance: 2,
+	attackRange: Range.STRAIGHT, attackDistance: 2,
+};
+CreateUnitAndPlaceOnMap(_team_one_unit_five, map, 1, 4);
+
+var _team_one_unit_six = {
+	uId: _uid2, team: Team.TWO, name: _name2, level: 5,
+	hp: 2, attackStat: 12, defenseStat: 7,
+	activeType: _type2,
+	moveRange: Range.STRAIGHT, moveDistance: 2,
+	attackRange: Range.STRAIGHT, attackDistance: 2,
+};
+CreateUnitAndPlaceOnMap(_team_one_unit_five, map, 1, 2);
+
+var _team_one_unit_seven = {
+	uId: _uid2, team: Team.TWO, name: _name2, level: 5,
+	hp: 2, attackStat: 12, defenseStat: 7,
+	activeType: _type2,
+	moveRange: Range.STRAIGHT, moveDistance: 2,
+	attackRange: Range.STRAIGHT, attackDistance: 2,
+};
+CreateUnitAndPlaceOnMap(_team_one_unit_seven, map, 5, 2);
+
+var _team_one_unit_eight = {
+	uId: _uid2, team: Team.TWO, name: _name2, level: 5,
+	hp: 2, attackStat: 12, defenseStat: 7,
+	activeType: _type2,
+	moveRange: Range.STRAIGHT, moveDistance: 2,
+	attackRange: Range.STRAIGHT, attackDistance: 2,
+};
+CreateUnitAndPlaceOnMap(_team_one_unit_eight, map, 1, 6);
+
+var _team_one_unit_nine = {
+	uId: _uid2, team: Team.TWO, name: _name2, level: 5,
+	hp: 2, attackStat: 12, defenseStat: 7,
+	activeType: _type2,
+	moveRange: Range.STRAIGHT, moveDistance: 2,
+	attackRange: Range.STRAIGHT, attackDistance: 2,
+};
+CreateUnitAndPlaceOnMap(_team_one_unit_nine, map, 5, 6);
+
+

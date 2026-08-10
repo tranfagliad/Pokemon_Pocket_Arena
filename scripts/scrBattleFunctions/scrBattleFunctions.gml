@@ -20,16 +20,16 @@ function CreateUnitAndPlaceOnMap (_unitInfo, _map, _mapX, _mapY)
 		_unit.moveDistance = _unitInfo.moveDistance;
 		_unit.attackRange = _unitInfo.attackRange;
 		_unit.attackDistance = _unitInfo.attackDistance;
-	
+		
 	#endregion
 	
 	#region load field animations
 		
 		_unit.displaySprite = LoadDisplaySprite(_unit.uId);
-		_unit.idleSprite = LoadAnimation(_unit.uId, IDLE);
-		_unit.walkSprite = LoadAnimation(_unit.uId, WALK);
-		_unit.attackSprite = LoadAnimation(_unit.uId, ATTACK);
-		_unit.hurtSprite = LoadAnimation(_unit.uId, HURT);
+		_unit.idleSprite = LoadAnimation(_unit.uId, IDLE_ANIMATION);
+		_unit.walkSprite = LoadAnimation(_unit.uId, WALK_ANIMATION);
+		_unit.attackSprite = LoadAnimation(_unit.uId, ATTACK_ANIMATION);
+		_unit.hurtSprite = LoadAnimation(_unit.uId, HURT_ANIMATION);
 		
 	#endregion
 	

@@ -10,8 +10,8 @@
   "name":"objUnit",
   "overriddenProperties":[],
   "parent":{
-    "name":"BattleArena",
-    "path":"folders/Objects/BattleArena.yy",
+    "name":"Misc",
+    "path":"folders/Objects/BattleArena/Misc.yy",
   },
   "parentObjectId":null,
   "persistent":false,
