@@ -8,11 +8,9 @@
 
 #region 8-direction animation loop
 	
-	var _totalFrames  = sprite_get_number(sprite_index);
-	var _framesPerDir = _totalFrames / UNIT_DIRECTIONS;
-	
-	var _startFrame = facingDirection * _framesPerDir;
-	var _endFrame   = _startFrame + _framesPerDir;
+	var _framesPerDir = sprite_get_number(sprite_index) / UNIT_DIRECTIONS;
+	var _startFrame   = facingDirection * _framesPerDir;
+	var _endFrame     = _startFrame + _framesPerDir;
 	
 	if (image_index < _startFrame || image_index >= _endFrame) 
 	{

@@ -357,7 +357,8 @@ function BattleStateUnitAttacking ()
 		var _attackEndFrame = _attackStartFrame + _attackFramesPerDir;
 		var _attackFinished = (selectedUnit.image_index >= _attackEndFrame - selectedUnit.image_speed);
 		
-		var _impactFrame = _attackStartFrame + (_attackFramesPerDir * 0.5);
+		// Impact usually happens about 1 frame halfway through the attack animation
+		var _impactFrame = _attackStartFrame + (_attackFramesPerDir * 0.5) + 1;
 		
 	#endregion
 	
@@ -390,7 +391,7 @@ function BattleStateUnitAttacking ()
 		
 		if (_attackFinished)
 	    {
-			// Reset attacker sprite and disable
+			// Reset attacker sprite and disable the unit
 			selectedUnit.sprite_index = selectedUnit.idleSprite;
 	        selectedUnit.image_speed  = IDLE_IMAGE_SPEED;
 	        //selectedUnit.isEnabled    = false;
@@ -405,7 +406,6 @@ function BattleStateUnitAttacking ()
 			attackTargetUnit = noone;
 	        damageInfo = noone;
 			unitHasHit = false;
-			
 			UnselectUnit();
 		}
 		

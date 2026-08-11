@@ -23,7 +23,7 @@ battleStateTemp = noone;
 selectedUnit = noone;
 attackTargetUnit = noone;
 
-
+// TODO: Rework how these menus work
 unitOptions = [ UNIT_OPTION_MOVE, UNIT_OPTION_ATTACK, OPTION_CANCEL ];
 unitOptionsPostMove = [ UNIT_OPTION_ATTACK, UNIT_OPTION_GO_BACK, UNIT_OPTION_END ];
 attackConfirmationOptions = [ ATTACK_OPTION_CONFIRM, OPTION_CANCEL ];
@@ -38,7 +38,6 @@ unitOriginalMapX = RESET_CELL_COORDINATE;
 unitOriginalMapY = RESET_CELL_COORDINATE;
 
 
-unitIsAttacking = false;
 unitHasHit = false;
 damageInfo = noone;
 
@@ -52,12 +51,12 @@ damageInfo = noone;
 
 
 
-var _uid = "0143";
+var _uid = "0142";
 var _name = ""
 var _type = Type.FIRE;
 
 
-var _uid2 = "0143";
+var _uid2 = "0142";
 var _name2 = ""
 var _type2 = Type.FIRE;
 
