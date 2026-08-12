@@ -51,12 +51,12 @@ damageInfo = noone;
 
 
 
-var _uid = "0142";
+var _uid = "0042";
 var _name = ""
 var _type = Type.FIRE;
 
 
-var _uid2 = "0142";
+var _uid2 = "0042";
 var _name2 = ""
 var _type2 = Type.FIRE;
 
