@@ -110,6 +110,9 @@ function CursorStateFrozen ()
 }
 
 
+function CursorStatePaused () { /* Do Nothing */ }
+
+
 // TODO: CursorStateWaitForAI (?)
 
 
@@ -127,4 +130,19 @@ function CursorToFrozenState ()
 	objBattleCursor.cursorState = CursorStateFrozen;
 	objBattleCursor.image_index = 0;
 	objBattleCursor.image_speed = 0;
+}
+
+function CursorPause ()
+{
+	objBattleCursor.cursorState = CursorStatePaused;
+	objBattleCursor.image_index = 0;
+	objBattleCursor.image_speed = 0;
+	objBattleCursor.visible = false;
+}
+
+function CursorUnpause ()
+{
+	objBattleCursor.cursorState = CursorStateFree;
+	objBattleCursor.image_speed = 1;
+	objBattleCursor.visible = true;
 }

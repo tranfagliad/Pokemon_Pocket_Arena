@@ -3,28 +3,30 @@ function BattleStatePlayerTurnFree ()
 {
 	#region select unit
 	
-		if (objInputManager.pressed.select)
-	    {
-			var _cell = map[# objBattleCursor.mapX, objBattleCursor.mapY];
-		
-			if (_cell != undefined && _cell.unit != noone && _cell.unit.team == whoseTurn && _cell.unit.isEnabled)
-			{
-				selectedUnit = _cell.unit;
-				CursorToFrozenState();
-				battleState = BattleStatePlayerTurnUnitMenu;
-			}
-		}
+		if (objInputManager.pressed.select) { GoToUnitMenu(); }
 		
 	#endregion
 	
 	#region press start - go to system menu
 	
-		if (objInputManager.pressed.start)
-		{
-			CursorToFrozenState();
-			battleState = BattleStateSystemMenu;
-		}
+		if (objInputManager.pressed.start) { GoToSystemMenu(); }
 	
+	#endregion
+}
+
+
+function BattleStateSystemMenu ()
+{
+	#region menu navigation
+		
+		MenuNavigation();
+		
+	#endregion
+	
+	#region cancel button - back to free state
+		
+		if (objInputManager.pressed.cancel) { BackFromSystemMenu(); }
+		
 	#endregion
 }
 
@@ -33,17 +35,7 @@ function BattleStatePlayerTurnUnitMenu ()
 {
 	#region menu navigation
 		
-		if (objInputManager.pressed.down)
-		{
-			unitOptionsIndex++;
-            if (unitOptionsIndex > UnitOptions.CANCEL) { unitOptionsIndex = UnitOptions.MOVE; }
-		}
-		
-		if (objInputManager.pressed.up)
-        {
-            unitOptionsIndex--;
-            if (unitOptionsIndex < UnitOptions.MOVE) unitOptionsIndex = UnitOptions.CANCEL;
-        }
+		MenuNavigation();
 		
 	#endregion
 	
@@ -51,22 +43,18 @@ function BattleStatePlayerTurnUnitMenu ()
 	
 		if (objInputManager.pressed.select)
 		{
-			switch (unitOptionsIndex)
+			var _selectedOption = menuOptions[menuIndex];
+			switch (_selectedOption)
 			{
-				case UnitOptions.MOVE:
-					CursorToFreeState();
-					battleState = BattleStatePlayerTurnUnitMove;
-					ShowMoveRange(selectedUnit);
-					ShowAttackRange(objBattleCursor.mapX, objBattleCursor.mapY, selectedUnit);
+				case "Move":
+					GoToUnitMove();
 					break;
 					
-				case UnitOptions.ATTACK:
-					CursorToFreeState();
-					battleState = BattleStatePlayerTurnUnitAttack;
-					ShowAttackRange(objBattleCursor.mapX, objBattleCursor.mapY, selectedUnit);
+				case "Attack":
+					GoToUnitAttack();
 					break;
 					
-				case UnitOptions.CANCEL:
+				case "Cancel":
 					UnselectUnit();
 					break;
 				default: break;
@@ -85,66 +73,25 @@ function BattleStatePlayerTurnUnitMenu ()
 
 function BattleStatePlayerTurnUnitMove ()
 {
-	#region update facing and tile change updates
+	#region update facing and attack tiles when cursor moves to a new tile
 	
 		if (objBattleCursor.hasChangedLocation)
 		{
 			UpdateUnitFacingToCursor();
-			
-			var _targetX = objBattleCursor.mapX;
-			var _targetY = objBattleCursor.mapY;
-			var _targetCell = map[# _targetX, _targetY];
-			var _unitCellX = selectedUnit.x div CELL_SIZE;
-			var _unitCellY = selectedUnit.y div CELL_SIZE;
-		
-			ClearAttackFlags(map);
-			if (_targetCell.canMove || (_targetX == _unitCellX && _targetY == _unitCellY)) { ShowAttackRange(_targetX, _targetY, selectedUnit); }
+			UpdateAttackTiles();
 		}
 	
 	#endregion
 	
 	#region confirm move position
 	
-		if (objInputManager.pressed.select)
-		{
-			var _targetX = objBattleCursor.mapX;
-			var _targetY = objBattleCursor.mapY;
-			var _targetCell = map[# _targetX, _targetY];
-			
-			if (_targetCell != undefined && _targetCell.canMove)
-			{
-				var _unitCellX = selectedUnit.x div CELL_SIZE;
-				var _unitCellY = selectedUnit.y div CELL_SIZE;
-				
-				unitOriginalMapX = _unitCellX;
-				unitOriginalMapY = _unitCellY;
-				unitTargetMapX = _targetX;
-				unitTargetMapY = _targetY;
-				
-				map[# _unitCellX, _unitCellY].unit = noone;
-				_targetCell.unit = selectedUnit;
-				
-				CursorToFrozenState();
-				objBattleCursor.visible = false;
-				battleStateTemp = BattleStatePlayerTurnPostMoveUnitMenu;
-				battleState = BattleStateUnitMoving;
-				
-				ClearMapFlags(map);
-				selectedUnit.sprite_index = selectedUnit.walkSprite;
-				selectedUnit.image_speed = WALK_IMAGE_SPEED;
-				selectedUnit.image_index = 0;
-			}
-		}
+		if (objInputManager.pressed.select) { GoToUnitMoving(); }
 	
 	#endregion
 	
 	#region cancel button - go back to unit options
 	
-		if (objInputManager.pressed.cancel)
-		{
-			ClearMapFlags(map);
-			BackToUnitOptions();
-		}
+		if (objInputManager.pressed.cancel) { BackToUnitMenu(); }
 	
 	#endregion
 }
@@ -163,11 +110,10 @@ function BattleStateUnitMoving ()
 		selectedUnit.x += lengthdir_x(_moveSpeed, _direction);
 		selectedUnit.y += lengthdir_y(_moveSpeed, _direction);
 	}
-	else
+	else   // Move animation ends
 	{
 		selectedUnit.x = _targetX;
         selectedUnit.y = _targetY;
-		
 		unitTargetMapX = RESET_CELL_COORDINATE;
 		unitTargetMapY = RESET_CELL_COORDINATE;
 		
@@ -176,7 +122,11 @@ function BattleStateUnitMoving ()
 		selectedUnit.image_index = 0;
 		objBattleCursor.visible = true;
 		
-		unitOptionsIndex = UnitOptionsPostMove.ATTACK;
+		array_push(menuOptions, "Attack");
+		array_push(menuOptions, "Go Back");
+		array_push(menuOptions, "End");
+		menuIndex = 0;
+		
 		battleState = battleStateTemp;
 		battleStateTemp = noone;
 	}
@@ -199,11 +149,43 @@ function BattleStatePlayerTurnUnitAttack ()
 	
 	#region cancel button - go back to unit options
 	
-		if (objInputManager.pressed.cancel)
+		if (objInputManager.pressed.cancel) { BackToUnitMenu(); }
+	
+	#endregion
+}
+
+
+function BattleStatePlayerTurnAttackConfirmation ()
+{
+	#region menu navigation
+		
+		MenuNavigation();
+		
+	#endregion
+	
+	#region confirm attack target
+	
+		if (objInputManager.pressed.select)
 		{
-			ClearAttackFlags(map);
-			BackToUnitOptions();
+			var _selectedOption = menuOptions[menuIndex];
+			switch (_selectedOption)
+			{
+				case "Confirm":
+					GoToUnitAttacking();
+					break;
+				
+				case "Cancel":
+					BackFromAttackConfirmation();
+					break;
+				default: break;
+			}
 		}
+	
+	#endregion
+	
+	#region cancel button - go back to selecting a target
+	
+		if (objInputManager.pressed.cancel) { BackFromAttackConfirmation(); }
 	
 	#endregion
 }
@@ -213,17 +195,7 @@ function BattleStatePlayerTurnPostMoveUnitMenu ()
 {
 	#region menu navigation
 	
-		if (objInputManager.pressed.down)
-		{
-			unitOptionsIndex++;
-			if (unitOptionsIndex > UnitOptionsPostMove.END) { unitOptionsIndex = UnitOptionsPostMove.ATTACK; }
-		}
-		
-		if (objInputManager.pressed.up)
-		{
-			unitOptionsIndex--;
-			if (unitOptionsIndex < UnitOptionsPostMove.ATTACK) { unitOptionsIndex = UnitOptionsPostMove.END; }
-		}
+		MenuNavigation();
 	
 	#endregion
 	
@@ -231,21 +203,18 @@ function BattleStatePlayerTurnPostMoveUnitMenu ()
 	
 		if (objInputManager.pressed.select)
 		{
-			switch (unitOptionsIndex)
+			var _selectedOption = menuOptions[menuIndex];
+			switch (_selectedOption)
 			{
-				case UnitOptionsPostMove.ATTACK:
-					CursorToFreeState();
-					battleState = BattleStatePlayerTurnPostMoveUnitAttack;
-					var _unitMapX = selectedUnit.x div CELL_SIZE;
-					var _unitMapY = selectedUnit.y div CELL_SIZE;
-					ShowAttackRange(_unitMapX, _unitMapY, selectedUnit);
+				case "Attack":
+					GoToPostMoveUnitAttack();
 					break;
 				
-				case UnitOptionsPostMove.GO_BACK:
+				case "Go Back":
 					UndoUnitMove();
 					break;
 				
-				case UnitOptionsPostMove.END:
+				case "End":
 					selectedUnit.isEnabled = false;
 					UnselectUnit();
 					break;
@@ -279,69 +248,7 @@ function BattleStatePlayerTurnPostMoveUnitAttack ()
 	
 	#region cancel button - go back to unit options
 	
-		if (objInputManager.pressed.cancel)
-		{
-			ClearAttackFlags(map);
-			BackToPostMoveUnitOptions();
-		}
-	
-	#endregion
-}
-
-
-function BattleStatePlayerTurnAttackConfirmation ()
-{
-	#region menu navigation
-	
-		if (objInputManager.pressed.down)
-		{
-			unitOptionsIndex++;
-			if (unitOptionsIndex > AttackConfirmationOptions.CANCEL) { unitOptionsIndex = AttackConfirmationOptions.CONFIRM; }
-		}
-		
-		if (objInputManager.pressed.up)
-		{
-			unitOptionsIndex--;
-			if (unitOptionsIndex < AttackConfirmationOptions.CONFIRM) { unitOptionsIndex = AttackConfirmationOptions.CANCEL; }
-		}
-	
-	#endregion
-	
-	#region confirm attack target
-	
-		if (objInputManager.pressed.select)
-		{
-			switch (unitOptionsIndex)
-			{
-				case AttackConfirmationOptions.CONFIRM:
-					CursorToFrozenState();
-					objBattleCursor.visible = false;
-					ClearAttackFlags(map);
-					
-					selectedUnit.sprite_index = selectedUnit.attackSprite;
-					selectedUnit.image_speed = ATTACK_IMAGE_SPEED;
-					
-					var _framesPerDir = selectedUnit.image_number / UNIT_DIRECTIONS;
-					var _attackStartFrame = selectedUnit.facingDirection * _framesPerDir;
-					selectedUnit.image_index = _attackStartFrame;
-					
-					MoveBattleCursor(selectedUnit.x, selectedUnit.y);
-					
-					battleState = BattleStateUnitAttacking;
-					break;
-				
-				case AttackConfirmationOptions.CANCEL:
-					BackFromAttackConfirmation();
-					break;
-				default: break;
-			}
-		}
-	
-	#endregion
-	
-	#region cancel button - go back to selecting a target
-	
-		if (objInputManager.pressed.cancel) { BackFromAttackConfirmation(); }
+		if (objInputManager.pressed.cancel) { BackToPostMoveUnitMenu(); }
 	
 	#endregion
 }
@@ -364,9 +271,8 @@ function BattleStateUnitAttacking ()
 	
 	#region attack animation and target is hit
 	
-		if (!unitHasHit && selectedUnit.image_index >= _impactFrame)
+		if (!unitHasHit && selectedUnit.image_index >= _impactFrame)   // Attack connects
 		{
-			// Attack connects
 			attackTargetUnit.currentHp -= damageInfo.amount;
 			unitHasHit = true;
 			
@@ -413,41 +319,142 @@ function BattleStateUnitAttacking ()
 }
 
 
-function BattleStateSystemMenu ()
-{
-	if (objInputManager.pressed.cancel)
-	{
-		CursorToFreeState();
-		objBattleManager.battleState = BattleStatePlayerTurnFree;
-	}
-}
-
-
 
 // Helper Functions
+
+function MenuNavigation ()
+{
+	if (objInputManager.pressed.down)
+	{
+		menuIndex++;
+        if (menuIndex >= array_length(menuOptions)) { menuIndex = 0; }
+	}
+		
+	if (objInputManager.pressed.up)
+    {
+		menuIndex--;
+        if (menuIndex < 0) menuIndex = array_length(menuOptions)-1;
+    }
+}
+
+function ClearMenu ()
+{
+	array_delete(menuOptions, 0, array_length(menuOptions));
+	menuIndex = -1;
+}
 
 function UnselectUnit ()
 {
 	selectedUnit = noone;
-	unitOptionsIndex = UnitOptions.MOVE;
+	ClearMenu();
 	CursorToFreeState();
 	battleState = BattleStatePlayerTurnFree;
 }
 
-function BackToUnitOptions ()
+function GoToSystemMenu ()
 {
+	array_push(menuOptions, "End Turn" );
+	array_push(menuOptions, "Type Chart");
+	array_push(menuOptions, "Surrender");
+	array_push(menuOptions, "Cancel");
+	menuIndex = 0;
+			
+	CursorPause();
+	battleState = BattleStateSystemMenu;
+}
+
+function BackFromSystemMenu ()
+{
+	ClearMenu();
+	CursorUnpause();
+	objBattleManager.battleState = BattleStatePlayerTurnFree;
+}
+
+function GoToUnitMenu ()
+{
+	var _cell = map[# objBattleCursor.mapX, objBattleCursor.mapY];
+	if (_cell != undefined && _cell.unit != noone && _cell.unit.team == whoseTurn && _cell.unit.isEnabled)
+	{
+		selectedUnit = _cell.unit;
+				
+		array_push(menuOptions, "Move");
+		array_push(menuOptions, "Attack");
+		array_push(menuOptions, "Cancel");
+		menuIndex = 0;
+				
+		CursorToFrozenState();
+		battleState = BattleStatePlayerTurnUnitMenu;
+	}
+}
+
+function BackToUnitMenu ()
+{
+	ClearMapFlags(map);
 	selectedUnit.facingDirection = Direction.SOUTH;
 	MoveBattleCursor(selectedUnit.x, selectedUnit.y);
 	CursorToFrozenState();
 	battleState = BattleStatePlayerTurnUnitMenu;
 }
 
-function BackToPostMoveUnitOptions ()
+function GoToUnitMove ()
 {
-	selectedUnit.facingDirection = Direction.SOUTH;
-	MoveBattleCursor(selectedUnit.x, selectedUnit.y);
-	CursorToFrozenState();
-	battleState = BattleStatePlayerTurnPostMoveUnitMenu;
+	CursorToFreeState();
+	battleState = BattleStatePlayerTurnUnitMove;
+	ShowMoveRange(selectedUnit);
+	ShowAttackRange(objBattleCursor.mapX, objBattleCursor.mapY, selectedUnit);
+	// Do not change the menu options and index
+}
+
+function GoToUnitAttack ()
+{
+	CursorToFreeState();
+	battleState = BattleStatePlayerTurnUnitAttack;
+	ShowAttackRange(objBattleCursor.mapX, objBattleCursor.mapY, selectedUnit);
+	// Do not change the menu options and index
+}
+
+function UpdateAttackTiles ()
+{
+	var _targetX = objBattleCursor.mapX;
+	var _targetY = objBattleCursor.mapY;
+	var _targetCell = map[# _targetX, _targetY];
+	var _unitCellX = selectedUnit.x div CELL_SIZE;
+	var _unitCellY = selectedUnit.y div CELL_SIZE;
+		
+	ClearAttackFlags(map);
+	if (_targetCell.canMove || (_targetX == _unitCellX && _targetY == _unitCellY)) { ShowAttackRange(_targetX, _targetY, selectedUnit); }
+}
+
+function GoToUnitMoving ()
+{
+	var _targetX = objBattleCursor.mapX;
+	var _targetY = objBattleCursor.mapY;
+	var _targetCell = map[# _targetX, _targetY];
+	
+	if (_targetCell != undefined && _targetCell.canMove)
+	{
+		var _unitCellX = selectedUnit.x div CELL_SIZE;
+		var _unitCellY = selectedUnit.y div CELL_SIZE;
+		
+		unitOriginalMapX = _unitCellX;
+		unitOriginalMapY = _unitCellY;
+		unitTargetMapX = _targetX;
+		unitTargetMapY = _targetY;
+		
+		map[# _unitCellX, _unitCellY].unit = noone;
+		_targetCell.unit = selectedUnit;
+		
+		CursorToFrozenState();
+		objBattleCursor.visible = false;
+		battleStateTemp = BattleStatePlayerTurnPostMoveUnitMenu;
+		battleState = BattleStateUnitMoving;
+		
+		ClearMenu();
+		ClearMapFlags(map);
+		selectedUnit.sprite_index = selectedUnit.walkSprite;
+		selectedUnit.image_speed = WALK_IMAGE_SPEED;
+		selectedUnit.image_index = 0;
+	}
 }
 
 function UndoUnitMove ()
@@ -471,7 +478,12 @@ function UndoUnitMove ()
 	unitOriginalMapX = RESET_CELL_COORDINATE;
 	unitOriginalMapY = RESET_CELL_COORDINATE;
 	
-	unitOptionsIndex = UnitOptions.MOVE;
+	ClearMenu();
+	array_push(menuOptions, "Move");
+	array_push(menuOptions, "Attack");
+	array_push(menuOptions, "Cancel");
+	menuIndex = 0;
+	
 	CursorToFreeState();
 	ShowMoveRange(selectedUnit);
 	ShowAttackRange(objBattleCursor.mapX, objBattleCursor.mapY, selectedUnit);
@@ -485,7 +497,12 @@ function GoToAttackConfirmation ()
 	{
 		attackTargetUnit = _cell.unit;
 		battleStateTemp = battleState;
-		unitOptionsIndex = AttackConfirmationOptions.CONFIRM;
+		
+		ClearMenu();
+		array_push(menuOptions, "Confirm");
+		array_push(menuOptions, "Cancel");
+		menuIndex = 0;
+		
 		damageInfo = GetDamageInfo(selectedUnit, attackTargetUnit);
 		CursorToFrozenState();
 		battleState = BattleStatePlayerTurnAttackConfirmation;
@@ -494,12 +511,61 @@ function GoToAttackConfirmation ()
 
 function BackFromAttackConfirmation ()
 {
-	attackTargetUnit = noone;
-	if (battleStateTemp == BattleStatePlayerTurnUnitAttack) { unitOptionsIndex = UnitOptions.ATTACK; }
-	else if (battleStateTemp == BattleStatePlayerTurnPostMoveUnitAttack) { unitOptionsIndex = UnitOptionsPostMove.ATTACK; }
+	ClearMenu();
+	if (battleStateTemp == BattleStatePlayerTurnUnitAttack)
+	{
+		array_push(menuOptions, "Move");
+		array_push(menuOptions, "Attack");
+		array_push(menuOptions, "Cancel");
+		menuIndex = 1;
+	}
+	else if (battleStateTemp == BattleStatePlayerTurnPostMoveUnitAttack)
+	{
+		array_push(menuOptions, "Attack");
+		array_push(menuOptions, "Go Back");
+		array_push(menuOptions, "End");
+		menuIndex = 0;
+	}
 	
 	CursorToFreeState();
+	attackTargetUnit = noone;
 	battleState = battleStateTemp;
 	battleStateTemp = noone;
-	damage = 0;
+	damageInfo = noone;
+}
+
+function GoToUnitAttacking ()
+{
+	CursorToFrozenState();
+	objBattleCursor.visible = false;
+	ClearAttackFlags(map);
+	ClearMenu();
+					
+	selectedUnit.sprite_index = selectedUnit.attackSprite;
+	selectedUnit.image_speed = ATTACK_IMAGE_SPEED;
+					
+	var _framesPerDir = selectedUnit.image_number / UNIT_DIRECTIONS;
+	var _attackStartFrame = selectedUnit.facingDirection * _framesPerDir;
+	selectedUnit.image_index = _attackStartFrame;
+					
+	MoveBattleCursor(selectedUnit.x, selectedUnit.y);
+	battleState = BattleStateUnitAttacking;
+}
+
+function GoToPostMoveUnitAttack ()
+{
+	CursorToFreeState();
+	battleState = BattleStatePlayerTurnPostMoveUnitAttack;
+	var _unitMapX = selectedUnit.x div CELL_SIZE;
+	var _unitMapY = selectedUnit.y div CELL_SIZE;
+	ShowAttackRange(_unitMapX, _unitMapY, selectedUnit);
+}
+
+function BackToPostMoveUnitMenu ()
+{
+	ClearAttackFlags(map);
+	selectedUnit.facingDirection = Direction.SOUTH;
+	MoveBattleCursor(selectedUnit.x, selectedUnit.y);
+	CursorToFrozenState();
+	battleState = BattleStatePlayerTurnPostMoveUnitMenu;
 }

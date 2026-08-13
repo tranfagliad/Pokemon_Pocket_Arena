@@ -2,7 +2,6 @@
 teamOneUnits = ds_list_create();
 teamTwoUnits = ds_list_create();
 
-
 currentTurn = 0;
 whoseTurn = Team.ONE;
 
@@ -15,28 +14,20 @@ mapWidth = global.battleArena.width;
 mapHeight = global.battleArena.height;
 map = InitializeMap();
 
-
 battleState = BattleStatePlayerTurnFree;
 battleStateTemp = noone;
-
 
 selectedUnit = noone;
 attackTargetUnit = noone;
 
-// TODO: Rework how these menus work
-unitOptions = [ UNIT_OPTION_MOVE, UNIT_OPTION_ATTACK, OPTION_CANCEL ];
-unitOptionsPostMove = [ UNIT_OPTION_ATTACK, UNIT_OPTION_GO_BACK, UNIT_OPTION_END ];
-attackConfirmationOptions = [ ATTACK_OPTION_CONFIRM, OPTION_CANCEL ];
-
-unitOptionsIndex = UnitOptions.MOVE;
-
+menuOptions = array_create(0);
+menuIndex = -1;
 
 activeRangeTiles = ds_list_create();
 unitTargetMapX   = RESET_CELL_COORDINATE;
 unitTargetMapY   = RESET_CELL_COORDINATE;
 unitOriginalMapX = RESET_CELL_COORDINATE;
 unitOriginalMapY = RESET_CELL_COORDINATE;
-
 
 unitHasHit = false;
 damageInfo = noone;
@@ -51,12 +42,12 @@ damageInfo = noone;
 
 
 
-var _uid = "0042";
+var _uid = "0049";
 var _name = ""
 var _type = Type.FIRE;
 
 
-var _uid2 = "0042";
+var _uid2 = "0049";
 var _name2 = ""
 var _type2 = Type.FIRE;
 
@@ -147,4 +138,11 @@ var _team_one_unit_nine = {
 };
 CreateUnitAndPlaceOnMap(_team_one_unit_nine, map, 5, 6);
 
-
+var _team_one_unit_ten = {
+	uId: _uid2, team: Team.TWO, name: _name2, level: 5,
+	hp: 2, attackStat: 12, defenseStat: 7,
+	activeType: _type2,
+	moveRange: Range.STRAIGHT, moveDistance: 2,
+	attackRange: Range.STRAIGHT, attackDistance: 2,
+};
+CreateUnitAndPlaceOnMap(_team_one_unit_ten, map, 5, 7);

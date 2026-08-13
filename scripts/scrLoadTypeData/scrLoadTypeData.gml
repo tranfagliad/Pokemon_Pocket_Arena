@@ -25,9 +25,9 @@ function LoadTypeChart ()
 		{
 			var _line = file_text_readln(_file);
 			var _values = string_split(_line, ",");
-			array_delete(_values, 0, 1);   // Skip the row label
+			//array_delete(_values, 0, 1);   // Skip the row label
 			
-			for (var _chartCol = 0; _chartCol < NUM_TYPES; _chartCol++)
+			for (var _chartCol = 1; _chartCol <= NUM_TYPES; _chartCol++)
 			{
 				var _value = array_get(_values, _chartCol);
 				ds_grid_set(_typeChart, _chartCol, _chartRow, _value);

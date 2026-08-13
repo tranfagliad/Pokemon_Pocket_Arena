@@ -30,11 +30,9 @@
 #endregion
 
 #region draw move and attack tiles
-
+	
 	if (battleState == BattleStatePlayerTurnUnitMove ||
 		battleState == BattleStatePlayerTurnUnitAttack ||
 		battleState == BattleStatePlayerTurnPostMoveUnitAttack) { DrawRanges(); }
-	
-	if (battleState == BattleStateSystemMenu) { DrawSystemMenu(); }
-	
+		
 #endregion
