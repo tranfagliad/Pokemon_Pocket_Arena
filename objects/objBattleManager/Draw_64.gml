@@ -17,13 +17,27 @@
 		if (ds_list_empty(teamOneUnits)) {
 			draw_text(300, 25, "Empty");
 		}
-	
+		
 		draw_text(500, 10, "Team Two:")
 		for (var _i = 0; _i < ds_list_size(teamTwoUnits); _i++) {
 			draw_text(500, (15*_i)+25, ds_list_find_value(teamTwoUnits, _i).name);
 		}
 		if (ds_list_empty(teamTwoUnits)) {
 			draw_text(500, 25, "Empty");
+		}
+		
+		draw_text(700, 10, "Active Move Tiles:");
+		for (var _i = 0; _i < ds_list_size(activeMoveTiles); _i++) {
+			var _x = ds_list_find_value(activeMoveTiles, _i).mapX;
+			var _y = ds_list_find_value(activeMoveTiles, _i).mapY;
+			draw_text(700, (15*_i)+25, "{"+string(_x)+", "+string(_y)+"}");
+		}
+		
+		draw_text(900, 10, "Active Attack Tiles:");
+		for (var _i = 0; _i < ds_list_size(activeAttackTiles); _i++) {
+			var _x = ds_list_find_value(activeAttackTiles, _i).mapX;
+			var _y = ds_list_find_value(activeAttackTiles, _i).mapY;
+			draw_text(900, (15*_i)+25, "{"+string(_x)+", "+string(_y)+"}");
 		}
 		
 		if (selectedUnit != noone) {

@@ -23,7 +23,9 @@ attackTargetUnit = noone;
 menuOptions = array_create(0);
 menuIndex = -1;
 
-activeRangeTiles = ds_list_create();
+activeMoveTiles = ds_list_create();
+activeAttackTiles = ds_list_create();
+
 unitTargetMapX   = RESET_CELL_COORDINATE;
 unitTargetMapY   = RESET_CELL_COORDINATE;
 unitOriginalMapX = RESET_CELL_COORDINATE;
@@ -43,12 +45,12 @@ damageInfo = noone;
 
 
 var _uid = "0049";
-var _name = ""
+var _name = "Team One Unit"
 var _type = Type.FIRE;
 
 
 var _uid2 = "0049";
-var _name2 = ""
+var _name2 = "Team Two Unit"
 var _type2 = Type.FIRE;
 
 

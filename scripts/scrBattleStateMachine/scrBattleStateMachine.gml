@@ -415,13 +415,14 @@ function GoToUnitAttack ()
 
 function UpdateAttackTiles ()
 {
+	ClearAttackFlags(map);
+	
 	var _targetX = objBattleCursor.mapX;
 	var _targetY = objBattleCursor.mapY;
 	var _targetCell = map[# _targetX, _targetY];
 	var _unitCellX = selectedUnit.x div CELL_SIZE;
 	var _unitCellY = selectedUnit.y div CELL_SIZE;
-		
-	ClearAttackFlags(map);
+	
 	if (_targetCell.canMove || (_targetX == _unitCellX && _targetY == _unitCellY)) { ShowAttackRange(_targetX, _targetY, selectedUnit); }
 }
 

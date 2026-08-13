@@ -44,7 +44,7 @@ function CreateUnitAndPlaceOnMap (_unitInfo, _map, _mapX, _mapY)
 	
 	#region register on the team list and map
 		
-		var _team_list = (_unitInfo.team == Team.ONE) ? teamOneUnits : teamTwoUnits;
+		var _team_list = (_unit.team == Team.ONE) ? teamOneUnits : teamTwoUnits;
 		ds_list_add(_team_list, _unit);
 		_map[# _mapX, _mapY].unit = _unit;
 		
@@ -140,31 +140,37 @@ function CleanUpMap ()
 // Clear all flags
 function ClearMapFlags (_map)
 {
-    var _count = ds_list_size(activeRangeTiles);
+    var _count = ds_list_size(activeMoveTiles);
     for (var _i = 0; _i < _count; _i++)
     {
-        var _coord = activeRangeTiles[| _i];
+        var _coord = activeMoveTiles[| _i];
         var _cell = _map[# _coord.mapX, _coord.mapY];
-        
         _cell.canMove = false;
-        _cell.canAttack = false;
     }
+	ds_list_clear(activeMoveTiles);
     
-    ds_list_clear(activeRangeTiles);
+    _count = ds_list_size(activeAttackTiles);
+	for (var _i = 0; _i < _count; _i++)
+	{
+		var _coord = activeAttackTiles[| _i];
+        var _cell = _map[# _coord.mapX, _coord.mapY];
+		_cell.canAttack = false;
+	}
+	ds_list_clear(activeAttackTiles);
 }
 
 
 // Clear ONLY attack flags
 function ClearAttackFlags (_map)
 {
-    var _count = ds_list_size(activeRangeTiles);
+    var _count = ds_list_size(activeAttackTiles);
     for (var _i = 0; _i < _count; _i++)
     {
-        var _coord = activeRangeTiles[| _i];
-        var _cell = _map[# _coord.mapX, _coord.mapY];
-        
+        var _coord = ds_list_find_value(activeAttackTiles, _i);
+        var _cell = ds_grid_get(_map, _coord.mapX, _coord.mapY);
         _cell.canAttack = false;
     }
+	ds_list_clear(activeAttackTiles);
 }
 
 
@@ -242,7 +248,7 @@ function ScanDirection (_startX, _startY, _dirX, _dirY, _dist, _isAttack = false
             if (_cellUnit != noone) { break; }
             
             _cell.canMove = true;
-            ds_list_add(activeRangeTiles, { mapX: _targetX, mapY: _targetY });
+            ds_list_add(activeMoveTiles, { mapX: _targetX, mapY: _targetY });
         }
         else 
         {
@@ -252,14 +258,14 @@ function ScanDirection (_startX, _startY, _dirX, _dirY, _dist, _isAttack = false
                 else
                 {
                     _cell.canAttack = true;
-                    ds_list_add(activeRangeTiles, { mapX: _targetX, mapY: _targetY });
+                    ds_list_add(activeAttackTiles, { mapX: _targetX, mapY: _targetY });
                     break;
                 }
             }
             else
             {
                 _cell.canAttack = true;
-                ds_list_add(activeRangeTiles, { mapX: _targetX, mapY: _targetY }); 
+                ds_list_add(activeAttackTiles, { mapX: _targetX, mapY: _targetY }); 
             }
         }
     }
@@ -293,7 +299,7 @@ function ScanMatrixDirection (_startX, _startY, _dirX, _dirY, _isAttack = false,
     {
         if (_cellUnit2 != noone) { return; }
         _cell2.canMove = true;
-		ds_list_add(activeRangeTiles, { mapX: _targetX2, mapY: _targetY2 });
+		ds_list_add(activeMoveTiles, { mapX: _targetX2, mapY: _targetY2 });
     }
     // Attack Rules
     else
@@ -302,12 +308,12 @@ function ScanMatrixDirection (_startX, _startY, _dirX, _dirY, _isAttack = false,
         {
             if (_cellUnit2.team == _attackerTeam) { return; }
             _cell2.canAttack = true;
-			ds_list_add(activeRangeTiles, { mapX: _targetX2, mapY: _targetY2 });
+			ds_list_add(activeAttackTiles, { mapX: _targetX2, mapY: _targetY2 });
         }
         else
 		{
 			_cell2.canAttack = true;
-			ds_list_add(activeRangeTiles, { mapX: _targetX2, mapY: _targetY2 });
+			ds_list_add(activeAttackTiles, { mapX: _targetX2, mapY: _targetY2 });
 		}
     }
 }
