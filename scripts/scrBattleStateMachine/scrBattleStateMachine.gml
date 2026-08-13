@@ -46,15 +46,15 @@ function BattleStatePlayerTurnUnitMenu ()
 			var _selectedOption = menuOptions[menuIndex];
 			switch (_selectedOption)
 			{
-				case "Move":
+				case MENU_OPTION_MOVE:
 					GoToUnitMove();
 					break;
 					
-				case "Attack":
+				case MENU_OPTION_ATTACK:
 					GoToUnitAttack();
 					break;
 					
-				case "Cancel":
+				case MENU_OPTION_CANCEL:
 					UnselectUnit();
 					break;
 				default: break;
@@ -122,9 +122,9 @@ function BattleStateUnitMoving ()
 		selectedUnit.image_index = 0;
 		objBattleCursor.visible = true;
 		
-		array_push(menuOptions, "Attack");
-		array_push(menuOptions, "Go Back");
-		array_push(menuOptions, "End");
+		array_push(menuOptions, MENU_OPTION_ATTACK);
+		array_push(menuOptions, MENU_OPTION_GO_BACK);
+		array_push(menuOptions, MENU_OPTION_END);
 		menuIndex = 0;
 		
 		battleState = battleStateTemp;
@@ -170,11 +170,11 @@ function BattleStatePlayerTurnAttackConfirmation ()
 			var _selectedOption = menuOptions[menuIndex];
 			switch (_selectedOption)
 			{
-				case "Confirm":
+				case MENU_OPTION_CONFIRM:
 					GoToUnitAttacking();
 					break;
 				
-				case "Cancel":
+				case MENU_OPTION_CANCEL:
 					BackFromAttackConfirmation();
 					break;
 				default: break;
@@ -206,15 +206,15 @@ function BattleStatePlayerTurnPostMoveUnitMenu ()
 			var _selectedOption = menuOptions[menuIndex];
 			switch (_selectedOption)
 			{
-				case "Attack":
+				case MENU_OPTION_ATTACK:
 					GoToPostMoveUnitAttack();
 					break;
 				
-				case "Go Back":
+				case MENU_OPTION_GO_BACK:
 					UndoUnitMove();
 					break;
 				
-				case "End":
+				case MENU_OPTION_END:
 					selectedUnit.isEnabled = false;
 					UnselectUnit();
 					break;
@@ -353,10 +353,10 @@ function UnselectUnit ()
 
 function GoToSystemMenu ()
 {
-	array_push(menuOptions, "End Turn" );
-	array_push(menuOptions, "Type Chart");
-	array_push(menuOptions, "Surrender");
-	array_push(menuOptions, "Cancel");
+	array_push(menuOptions, MENU_OPTION_END_TURN);
+	array_push(menuOptions, MENU_OPTION_TYPE_CHART);
+	array_push(menuOptions, MENU_OPTION_SURRENDER);
+	array_push(menuOptions, MENU_OPTION_CANCEL);
 	menuIndex = 0;
 			
 	CursorPause();
@@ -377,9 +377,9 @@ function GoToUnitMenu ()
 	{
 		selectedUnit = _cell.unit;
 				
-		array_push(menuOptions, "Move");
-		array_push(menuOptions, "Attack");
-		array_push(menuOptions, "Cancel");
+		array_push(menuOptions, MENU_OPTION_MOVE);
+		array_push(menuOptions, MENU_OPTION_ATTACK);
+		array_push(menuOptions, MENU_OPTION_CANCEL);
 		menuIndex = 0;
 				
 		CursorToFrozenState();
@@ -479,9 +479,9 @@ function UndoUnitMove ()
 	unitOriginalMapY = RESET_CELL_COORDINATE;
 	
 	ClearMenu();
-	array_push(menuOptions, "Move");
-	array_push(menuOptions, "Attack");
-	array_push(menuOptions, "Cancel");
+	array_push(menuOptions, MENU_OPTION_MOVE);
+	array_push(menuOptions, MENU_OPTION_ATTACK);
+	array_push(menuOptions, MENU_OPTION_CANCEL);
 	menuIndex = 0;
 	
 	CursorToFreeState();
@@ -499,8 +499,8 @@ function GoToAttackConfirmation ()
 		battleStateTemp = battleState;
 		
 		ClearMenu();
-		array_push(menuOptions, "Confirm");
-		array_push(menuOptions, "Cancel");
+		array_push(menuOptions, MENU_OPTION_CONFIRM);
+		array_push(menuOptions, MENU_OPTION_CANCEL);
 		menuIndex = 0;
 		
 		damageInfo = GetDamageInfo(selectedUnit, attackTargetUnit);
@@ -514,16 +514,16 @@ function BackFromAttackConfirmation ()
 	ClearMenu();
 	if (battleStateTemp == BattleStatePlayerTurnUnitAttack)
 	{
-		array_push(menuOptions, "Move");
-		array_push(menuOptions, "Attack");
-		array_push(menuOptions, "Cancel");
+		array_push(menuOptions, MENU_OPTION_MOVE);
+		array_push(menuOptions, MENU_OPTION_ATTACK);
+		array_push(menuOptions, MENU_OPTION_CANCEL);
 		menuIndex = 1;
 	}
 	else if (battleStateTemp == BattleStatePlayerTurnPostMoveUnitAttack)
 	{
-		array_push(menuOptions, "Attack");
-		array_push(menuOptions, "Go Back");
-		array_push(menuOptions, "End");
+		array_push(menuOptions, MENU_OPTION_ATTACK);
+		array_push(menuOptions, MENU_OPTION_GO_BACK);
+		array_push(menuOptions, MENU_OPTION_END);
 		menuIndex = 0;
 	}
 	

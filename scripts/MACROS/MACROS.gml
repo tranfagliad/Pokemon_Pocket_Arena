@@ -82,19 +82,16 @@
 #macro INFO_CARD_MARGIN 20
 #macro INFO_CARD_ALPHA  0.6
 
-#macro UNIT_OPTION_MOVE    "Move"
-#macro UNIT_OPTION_ATTACK  "Attack"
-#macro UNIT_OPTION_GO_BACK "Go Back"
-#macro UNIT_OPTION_END     "End"
-
-#macro BATTLE_SYSTEM_OPTION_END_TURN   "End Turn"
-#macro BATTLE_SYSTEM_OPTION_TYPE_CHART "Type Chart"
-#macro BATTLE_SYSTEM_OPTION_SETTINGS   "Settings"
-#macro BATTLE_SYSTEM_OPTION_SURRENDER  "Surrender"
-
-#macro ATTACK_OPTION_CONFIRM "Confirm"
-
-#macro OPTION_CANCEL  "Cancel"
+#macro MENU_OPTION_MOVE       "Move"
+#macro MENU_OPTION_ATTACK     "Attack"
+#macro MENU_OPTION_GO_BACK    "Go Back"
+#macro MENU_OPTION_END        "End"
+#macro MENU_OPTION_END_TURN   "End Turn"
+#macro MENU_OPTION_TYPE_CHART "Type Chart"
+#macro MENU_OPTION_SETTINGS   "Settings"
+#macro MENU_OPTION_SURRENDER  "Surrender"
+#macro MENU_OPTION_CONFIRM    "Confirm"
+#macro MENU_OPTION_CANCEL     "Cancel"
 
 #macro UNIT_OPTION_BOX_WIDTH  160
 #macro UNIT_OPTION_BOX_HEIGHT  110
