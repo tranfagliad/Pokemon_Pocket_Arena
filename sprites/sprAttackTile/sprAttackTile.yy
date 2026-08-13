@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"UI",
-    "path":"folders/Sprites/BattleArena/UI.yy",
+    "name":"Tiles",
+    "path":"folders/Sprites/BattleArena/Tiles.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

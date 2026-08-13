@@ -133,15 +133,12 @@ function DrawRangeHelper ()
 
 function DrawUnitMenu ()
 {
-	var _drawX = (VIEWPORT_WIDTH / 2) - (UNIT_OPTION_BOX_WIDTH / 2);
-	var _drawY = (VIEWPORT_HEIGHT / 2) + (UNIT_OPTION_BOX_HEIGHT / 2);
-		
-	draw_set_colour(DEFAULT_DRAW_COLOR);
-	draw_sprite_stretched(sprNineSliceUI, 0, _drawX, _drawY, UNIT_OPTION_BOX_WIDTH, UNIT_OPTION_BOX_HEIGHT);
-		
 	draw_set_font(fntConsolas20);
-	draw_set_colour(c_black);
+	draw_set_colour(DEFAULT_DRAW_COLOR);
 	
+	var _drawX = (VIEWPORT_WIDTH / 2) - (UNIT_MENU_BOX_WIDTH / 2);
+	var _drawY = (VIEWPORT_HEIGHT / 2) + (UNIT_MENU_BOX_HEIGHT / 2);
+	draw_sprite_stretched(sprNineSliceUI, whoseTurn, _drawX, _drawY, UNIT_MENU_BOX_WIDTH, UNIT_MENU_BOX_HEIGHT);
 	for (var _i = 0; _i < array_length(menuOptions); _i++)
 	{
 		var _option = menuOptions[_i];
@@ -155,59 +152,47 @@ function DrawUnitMenu ()
 
 function DrawAttackConfirmationMenu ()
 {
-	var _menuWidth = UNIT_OPTION_BOX_WIDTH + 80;
-	var _drawX = (VIEWPORT_WIDTH / 2) - (_menuWidth / 2);
-	var _drawY = (VIEWPORT_HEIGHT / 2) + (UNIT_OPTION_BOX_HEIGHT / 2);
-	
-	draw_set_colour(DEFAULT_DRAW_COLOR);
-	draw_sprite_stretched(sprNineSliceUI, 0, _drawX, _drawY, _menuWidth, UNIT_OPTION_BOX_HEIGHT);
-	
 	draw_set_font(fntConsolas20);
-	draw_set_colour(c_black);
+	draw_set_colour(DEFAULT_DRAW_COLOR);
 	
-	draw_text(_drawX + 10, _drawY + 5, "Attack Target?");
+	var _menuWidth = UNIT_MENU_BOX_WIDTH + 80;
+	var _drawX = (VIEWPORT_WIDTH / 2) - (_menuWidth / 2);
+	var _drawY = (VIEWPORT_HEIGHT / 2) + (UNIT_MENU_BOX_HEIGHT / 2);
+	draw_sprite_stretched(sprNineSliceUI, whoseTurn, _drawX, _drawY, _menuWidth, UNIT_MENU_BOX_HEIGHT);
+	draw_text(_drawX+10, _drawY+5, "Attack Target?");
 	for (var _i = 0; _i < array_length(menuOptions); _i++)
 	{
 		var _option = menuOptions[_i];
 		var _optionStr = (_i == menuIndex) ? "->" + _option : _option;
 		draw_text(_drawX + 10, (30 * _i) + _drawY + 40, _optionStr);
 	}
+	
+	draw_set_font(fntConsolas12);
+	draw_set_colour(DEFAULT_DRAW_COLOR);
 }
 
 function DrawUnitsComparison (_whoseTurn)
 {
-	var _boxWidth  = UNITS_COMPARISON_BOX_WIDTH;
-	var _boxHeight = UNITS_COMPARISON_BOX_HEIGHT;
-	var _boxBottomMargin = UNITS_COMPARISON_BOX_BOTTOM_MARGIN;
-	
-	var _drawX = (VIEWPORT_WIDTH / 2) - (_boxWidth / 2);
-	var _drawY = VIEWPORT_HEIGHT - _boxHeight - _boxBottomMargin;
-	
-	var _boxColor = c_blue;
-	if (_whoseTurn == Team.TWO) { _boxColor = c_red; }
-	
-	draw_set_colour(_boxColor);
-	draw_set_alpha(INFO_CARD_ALPHA);
-	
-	draw_rectangle(_drawX, _drawY, _drawX+_boxWidth, _drawY+_boxHeight, false);
-	
+	draw_set_font(fntConsolas20);
 	draw_set_colour(DEFAULT_DRAW_COLOR);
-	draw_set_alpha(DEFAULT_DRAW_ALPHA);
 	
+	var _drawX = (VIEWPORT_WIDTH / 2) - (UNITS_COMPARISON_BOX_WIDTH / 2);
+	var _drawY = VIEWPORT_HEIGHT - UNITS_COMPARISON_BOX_HEIGHT - UNITS_COMPARISON_BOX_BOTTOM_MARGIN;
+	draw_sprite_stretched(sprNineSliceUI, whoseTurn, _drawX, _drawY, UNITS_COMPARISON_BOX_WIDTH, UNIT_MENU_BOX_HEIGHT);
 	draw_text(_drawX, _drawY, string(damageInfo.amount));
+	
+	draw_set_font(fntConsolas12);
+	draw_set_colour(DEFAULT_DRAW_COLOR);
 }
 
 function DrawSystemMenu ()
 {
-	var _drawX = (VIEWPORT_WIDTH / 2) - (UNIT_OPTION_BOX_WIDTH / 2);
-	var _drawY = (VIEWPORT_HEIGHT / 2) + (UNIT_OPTION_BOX_HEIGHT / 2);
-	
-	draw_set_colour(DEFAULT_DRAW_COLOR);
-	draw_sprite_stretched(sprNineSliceUI, 0, _drawX, _drawY, UNIT_OPTION_BOX_WIDTH, UNIT_OPTION_BOX_HEIGHT);
-	
 	draw_set_font(fntConsolas20);
-	draw_set_colour(c_black);
+	draw_set_colour(DEFAULT_DRAW_COLOR);
 	
+	var _drawX = (VIEWPORT_WIDTH / 2) - (SYSTEM_MENU_BOX_WIDTH / 2);
+	var _drawY = (VIEWPORT_HEIGHT / 2) - (SYSTEM_MENU_BOX_HEIGHT / 2);
+	draw_sprite_stretched(sprNineSliceUI, whoseTurn, _drawX, _drawY, SYSTEM_MENU_BOX_WIDTH, SYSTEM_MENU_BOX_HEIGHT);
 	for (var _i = 0; _i < array_length(menuOptions); _i++)
 	{
 		var _optionStr = (_i == menuIndex) ? "->" + menuOptions[_i] : menuOptions[_i];

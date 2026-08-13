@@ -89,8 +89,6 @@ function CursorStateFree ()
 
 function CursorStateFrozen ()
 {
-    hasChangedLocation = false;
-    
     #region cursor snap
 		
 		if (objBattleManager.selectedUnit != noone && objBattleManager.attackTargetUnit == noone)
@@ -127,6 +125,7 @@ function CursorToFreeState ()
 
 function CursorToFrozenState ()
 {
+	hasChangedLocation = false;
 	objBattleCursor.cursorState = CursorStateFrozen;
 	objBattleCursor.image_index = 0;
 	objBattleCursor.image_speed = 0;
