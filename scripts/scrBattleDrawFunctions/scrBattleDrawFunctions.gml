@@ -110,20 +110,24 @@ function DrawSingleUnitInfoCard (_unit)
 
 function DrawRangeHelper ()
 {
-	for (var _col = 0; _col < mapWidth; _col++)
+	// Draw Move Range
+	var _count = ds_list_size(activeMoveTiles);
+	for (var _i = 0; _i < _count; _i++)
 	{
-		for (var _row = 0; _row < mapHeight; _row++)
-		{
-			var _cell = map[# _col, _row];
-			if (_cell.canMove || _cell.canAttack)
-			{
-				var _drawX = (_col * CELL_SIZE) + CENTER_CELL;
-				var _drawY = (_row * CELL_SIZE) + CENTER_CELL;
-				
-				if (_cell.canMove) { draw_sprite(sprMoveTile, 0, _drawX, _drawY); }
-				if (_cell.canAttack) { draw_sprite(sprAttackTile, 0, _drawX, _drawY); }
-			}
-		}
+		var _coord = ds_list_find_value(activeMoveTiles, _i);
+		var _drawX = (_coord.mapX * CELL_SIZE) + CENTER_CELL;
+		var _drawY = (_coord.mapY * CELL_SIZE) + CENTER_CELL;
+		draw_sprite(sprMoveTile, 0, _drawX, _drawY);
+	}
+	
+	// Draw Attack Range
+	_count = ds_list_size(activeAttackTiles);
+	for (var _i = 0; _i < _count; _i++)
+	{
+		var _coord = ds_list_find_value(activeAttackTiles, _i);
+		var _drawX = (_coord.mapX * CELL_SIZE) + CENTER_CELL;
+		var _drawY = (_coord.mapY * CELL_SIZE) + CENTER_CELL;
+		draw_sprite(sprAttackTile, 0, _drawX, _drawY);
 	}
 }
 
