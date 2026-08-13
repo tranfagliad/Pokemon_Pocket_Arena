@@ -23,6 +23,33 @@ function BattleStateSystemMenu ()
 		
 	#endregion
 	
+	if (objInputManager.pressed.select)
+	{
+		var _selectedOption = menuOptions[menuIndex];
+		switch (_selectedOption)
+		{
+			case MENU_OPTION_END_TURN:
+				break;
+			
+			case MENU_OPTION_TYPE_CHART:
+				break;
+			
+			case MENU_OPTION_SETTINGS:
+				break;
+			
+			case MENU_OPTION_HELP:
+				break;
+			
+			case MENU_OPTION_SURRENDER:
+				break;
+			
+			case MENU_OPTION_CANCEL:
+				BackFromSystemMenu();
+				break;
+			default: break;
+		}
+	}
+	
 	#region cancel button - back to free state
 		
 		if (objInputManager.pressed.cancel) { BackFromSystemMenu(); }
@@ -355,6 +382,8 @@ function GoToSystemMenu ()
 {
 	array_push(menuOptions, MENU_OPTION_END_TURN);
 	array_push(menuOptions, MENU_OPTION_TYPE_CHART);
+	array_push(menuOptions, MENU_OPTION_SETTINGS);
+	array_push(menuOptions, MENU_OPTION_HELP);
 	array_push(menuOptions, MENU_OPTION_SURRENDER);
 	array_push(menuOptions, MENU_OPTION_CANCEL);
 	menuIndex = 0;

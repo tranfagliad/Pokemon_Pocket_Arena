@@ -12,7 +12,7 @@
 	
 		draw_text(300, 10, "Team One:")
 		for (var _i = 0; _i < ds_list_size(teamOneUnits); _i++) {
-			draw_text(300, (15*_i)+25, ds_list_find_value(teamOneUnits, _i).name);
+			draw_text(300, (15*_i)+25, ds_list_find_value(teamOneUnits, _i).unit.name);
 		}
 		if (ds_list_empty(teamOneUnits)) {
 			draw_text(300, 25, "Empty");
@@ -20,7 +20,7 @@
 		
 		draw_text(500, 10, "Team Two:")
 		for (var _i = 0; _i < ds_list_size(teamTwoUnits); _i++) {
-			draw_text(500, (15*_i)+25, ds_list_find_value(teamTwoUnits, _i).name);
+			draw_text(500, (15*_i)+25, ds_list_find_value(teamTwoUnits, _i).unit.name);
 		}
 		if (ds_list_empty(teamTwoUnits)) {
 			draw_text(500, 25, "Empty");

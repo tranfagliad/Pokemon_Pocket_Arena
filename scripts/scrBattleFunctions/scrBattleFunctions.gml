@@ -45,7 +45,7 @@ function CreateUnitAndPlaceOnMap (_unitInfo, _map, _mapX, _mapY)
 	#region register on the team list and map
 		
 		var _team_list = (_unit.team == Team.ONE) ? teamOneUnits : teamTwoUnits;
-		ds_list_add(_team_list, _unit);
+		ds_list_add(_team_list, { unit: _unit, alive: true });
 		_map[# _mapX, _mapY].unit = _unit;
 		
 	#endregion

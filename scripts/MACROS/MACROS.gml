@@ -88,13 +88,14 @@
 #macro MENU_OPTION_END        "End"
 #macro MENU_OPTION_END_TURN   "End Turn"
 #macro MENU_OPTION_TYPE_CHART "Type Chart"
+#macro MENU_OPTION_HELP       "Help"
 #macro MENU_OPTION_SETTINGS   "Settings"
 #macro MENU_OPTION_SURRENDER  "Surrender"
 #macro MENU_OPTION_CONFIRM    "Confirm"
 #macro MENU_OPTION_CANCEL     "Cancel"
 
 #macro SYSTEM_MENU_BOX_WIDTH  210
-#macro SYSTEM_MENU_BOX_HEIGHT 140
+#macro SYSTEM_MENU_BOX_HEIGHT 200
 #macro UNIT_MENU_BOX_WIDTH  160
 #macro UNIT_MENU_BOX_HEIGHT 110
 
