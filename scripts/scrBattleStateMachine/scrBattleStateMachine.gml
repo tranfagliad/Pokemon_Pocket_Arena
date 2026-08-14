@@ -321,8 +321,8 @@ function BattleStateUnitAttacking ()
 			var _targetStartFrame = attackTargetUnit.facingDirection * _targetFramesPerDir;
 			attackTargetUnit.sprite_index = attackTargetUnit.hurtAnimation.sprite;
 			attackTargetUnit.shadowAnimation = attackTargetUnit.hurtAnimation.shadow;
-			attackTargetUnit.image_speed  = HURT_IMAGE_SPEED;
-			attackTargetUnit.image_index  = _targetStartFrame;
+			attackTargetUnit.image_speed = HURT_IMAGE_SPEED;
+			attackTargetUnit.image_index = _targetStartFrame;
 		}
 	
 	#endregion
@@ -331,11 +331,12 @@ function BattleStateUnitAttacking ()
 		
 		if (_attackFinished)
 	    {
-			// Reset attacker sprite and disable the unit
+			// Reset attacker sprite
 			selectedUnit.sprite_index = selectedUnit.idleAnimation.sprite;
 			selectedUnit.shadowAnimation = selectedUnit.idleAnimation.shadow;
 	        selectedUnit.image_speed = IDLE_IMAGE_SPEED;
-	        selectedUnit.isEnabled = false;
+	        
+			//selectedUnit.isEnabled = false;
 			
 			// Reset target sprite
 			attackTargetUnit.sprite_index = attackTargetUnit.idleAnimation.sprite;
@@ -543,10 +544,6 @@ function GoToUnitMoving ()
 		selectedUnit.sprite_index = selectedUnit.walkAnimation.sprite;
 		selectedUnit.shadowAnimation = selectedUnit.walkAnimation.shadow;
 		selectedUnit.image_speed = WALK_IMAGE_SPEED;
-		
-		//var _framesPerDir = selectedUnit.walkAnimation.sprite.image_number / UNIT_DIRECTIONS;
-		//var _startFrame = selectedUnit.facingDirection * _framesPerDir;
-		//selectedUnit.image_index = _startFrame;
 		selectedUnit.image_index = 0;
 		
 		CursorToFrozenState();

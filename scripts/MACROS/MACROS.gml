@@ -68,6 +68,8 @@
 #macro DEFAULT_DRAW_ROTATION 0
 #macro DEFAULT_DRAW_COLOR c_white
 
+#macro SHADOW_ALPHA 0.5
+
 #macro SYSTEM_LAYER       "System"
 #macro TRANSITION_LAYER   "Transition"
 #macro UNITS_LAYER        "Units"
