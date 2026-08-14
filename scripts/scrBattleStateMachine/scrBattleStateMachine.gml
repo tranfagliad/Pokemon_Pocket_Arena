@@ -291,8 +291,8 @@ function BattleStateUnitAttacking ()
 		var _attackEndFrame = _attackStartFrame + _attackFramesPerDir;
 		var _attackFinished = (selectedUnit.image_index >= _attackEndFrame - selectedUnit.image_speed);
 		
-		// Impact usually happens about 1 frame halfway through the attack animation
-		var _impactFrame = _attackStartFrame + (_attackFramesPerDir * 0.5) + 1;
+		// Impact usually happens about halfway through the attack animation
+		var _impactFrame = _attackStartFrame + (_attackFramesPerDir * 0.5);
 		
 	#endregion
 	

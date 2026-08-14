@@ -52,6 +52,37 @@ function DrawRanges ()
 }
 
 
+function DrawPlayerInfo (_whoseTurn)
+{
+	if (_whoseTurn == Team.NONE) { return; }
+	
+	var _cardColor = (_whoseTurn == Team.ONE) ? c_blue : c_red;
+	
+	draw_set_colour(_cardColor);
+    draw_set_alpha(INFO_CARD_ALPHA);
+	draw_rectangle(PLAYER_INFO_CARD_X, PLAYER_INFO_CARD_Y, PLAYER_INFO_CARD_WIDTH, PLAYER_INFO_CARD_Y+PLAYER_INFO_CARD_HEIGHT, false);
+	draw_set_colour(DEFAULT_DRAW_COLOR);
+    draw_set_alpha(DEFAULT_DRAW_ALPHA);
+	
+	draw_set_font(fntConsolas20);
+	if (_whoseTurn == Team.ONE)
+	{
+		draw_text(PLAYER_INFO_CARD_X+5, PLAYER_INFO_CARD_Y+5, playerOne.name);
+	}
+	else
+	{
+		draw_text(PLAYER_INFO_CARD_X+5, PLAYER_INFO_CARD_Y+5, playerTwo.name);
+	}
+	
+	draw_set_font(fntConsolas12);
+	
+	
+	
+	
+	
+}
+
+
 
 // Helper Functions
 
@@ -65,17 +96,9 @@ function DrawSingleUnitInfoCard (_unit)
     
     #region draw card background
         
-        if (_unit.team == Team.ONE)
-        {
-            _drawX = 0;
-            _cardColor = c_blue;
-        }
-        else if (_unit.team == Team.TWO)
-        {
-            _drawX = VIEWPORT_WIDTH - INFO_CARD_WIDTH;
-            _cardColor = c_red;
-        }
-        
+		_drawX = (_unit.team == Team.ONE) ? 0 : (VIEWPORT_WIDTH-INFO_CARD_WIDTH);
+		_cardColor = (_unit.team == Team.ONE) ? c_blue : c_red;
+		
         draw_set_colour(_cardColor);
         draw_set_alpha(INFO_CARD_ALPHA);
         draw_rectangle(_drawX, _drawY, _drawX + INFO_CARD_WIDTH, _drawY + INFO_CARD_HEIGHT, false);

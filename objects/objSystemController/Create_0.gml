@@ -23,7 +23,9 @@
 
 #region battle
 	
-	global.opponent = noone;
+	global.playerOne = { name: "Daniel" };   // For Testing
+	//global.playerOne = noone;
+	global.playerTwo = noone;
 	global.battleArena = noone;
 	
 #endregion

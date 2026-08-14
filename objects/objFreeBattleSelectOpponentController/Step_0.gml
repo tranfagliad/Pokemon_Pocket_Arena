@@ -8,10 +8,9 @@ if (!global.midTransition)
 		if (objInputManager.pressed.cancel) { TransitionStart(rmMainMenu, seqFadeOut, seqFadeIn) }
 		if (objInputManager.pressed.select)
 		{
-			global.opponent = trainerData[selectedIndex];
-			global.battleArena = arenaData[global.opponent.arena];
-			//show_debug_message("Selected Opponent: "+global.opponent.name);
-			//show_debug_message("Arena: "+global.battleArena.name);
+			global.playerTwo = trainerData[selectedIndex];
+			global.battleArena = arenaData[global.playerTwo.arena];
+			
 			// TODO: Change this to Pokemon Team Select Screen
 			TransitionStart(global.battleArena.map, seqFadeOut, seqFadeIn);
 		}

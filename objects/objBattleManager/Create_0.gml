@@ -1,11 +1,12 @@
 
+playerOne = global.playerOne;
+playerTwo = global.playerTwo;
+
 teamOneUnits = ds_list_create();
 teamTwoUnits = ds_list_create();
 
 currentTurn = 0;
 whoseTurn = Team.ONE;
-
-opponent = global.opponent;
 
 typeChart = LoadTypeChart();
 
@@ -44,12 +45,11 @@ damageInfo = noone;
 
 
 
-var _uid = "0053a";
+var _uid = "0130";
 var _name = "Team One Unit"
 var _type = Type.FIRE;
 
-
-var _uid2 = "0053a";
+var _uid2 = "0130";
 var _name2 = "Team Two Unit"
 var _type2 = Type.FIRE;
 
