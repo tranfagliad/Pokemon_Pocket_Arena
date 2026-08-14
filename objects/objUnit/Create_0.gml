@@ -28,13 +28,17 @@
 #endregion
 
 #region unit sprites
-
+	
+	sprite_index = noone;
+	shadowAnimation = noone;
+	
 	displaySprite = noone;
 	iconSprite = noone;
-	idleSprite = noone;
-	walkSprite = noone;
-	attackSprite = noone;
-	hurtSprite = noone;
-	faintSprite = noone;
+	
+	idleAnimation = noone;
+	walkAnimation = noone;
+	attackAnimation = noone;
+	hurtAnimation = noone;
+	faintAnimation = noone;
 	
 #endregion

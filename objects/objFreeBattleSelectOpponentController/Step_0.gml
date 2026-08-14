@@ -10,7 +10,8 @@ if (!global.midTransition)
 		{
 			global.playerTwo = trainerData[selectedIndex];
 			global.battleArena = arenaData[global.playerTwo.arena];
-			global.opponentIsAI = true;
+			//global.opponentIsAI = true;
+			global.opponentIsAI = false;   // FOR TESTING
 			
 			// TODO: Change this to Pokemon Team Select Screen
 			TransitionStart(global.battleArena.map, seqFadeOut, seqFadeIn);

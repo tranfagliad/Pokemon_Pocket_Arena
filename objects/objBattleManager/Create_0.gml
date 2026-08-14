@@ -1,7 +1,7 @@
 
 playerOne = global.playerOne;
 playerTwo = global.playerTwo;
-oppponentIsAI = global.opponentIsAI;
+opponentIsAI = global.opponentIsAI;
 
 teamOneUnits = ds_list_create();
 teamTwoUnits = ds_list_create();
@@ -45,13 +45,13 @@ damageInfo = noone;
 
 
 
-var _uid = "0130";
+var _uid = "0001";
 var _name = "Team One Unit"
-var _type = Type.FIRE;
+var _type = Type.GRASS;
 
-var _uid2 = "0130";
+var _uid2 = "0001";
 var _name2 = "Team Two Unit"
-var _type2 = Type.FIRE;
+var _type2 = Type.GRASS;
 
 
 

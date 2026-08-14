@@ -26,16 +26,19 @@ function CreateUnitAndPlaceOnMap (_unitInfo, _map, _mapX, _mapY)
 	#region load field animations
 		
 		_unit.displaySprite = LoadDisplaySprite(_unit.uId);
-		_unit.idleSprite = LoadAnimation(_unit.uId, IDLE_ANIMATION);
-		_unit.walkSprite = LoadAnimation(_unit.uId, WALK_ANIMATION);
-		_unit.attackSprite = LoadAnimation(_unit.uId, ATTACK_ANIMATION);
-		_unit.hurtSprite = LoadAnimation(_unit.uId, HURT_ANIMATION);
+		
+		_unit.idleAnimation = LoadUnitMapAnimation(_unit.uId, IDLE_ANIMATION);
+		_unit.walkAnimation = LoadUnitMapAnimation(_unit.uId, WALK_ANIMATION);
+		_unit.attackAnimation = LoadUnitMapAnimation(_unit.uId, ATTACK_ANIMATION);
+		_unit.hurtAnimation = LoadUnitMapAnimation(_unit.uId, HURT_ANIMATION);
+		_unit.faintAnimation = LoadUnitMapAnimation(_unit.uId, FAINT_ANIMATION);
 		
 	#endregion
 	
 	#region other details
 		
-		_unit.sprite_index = _unit.idleSprite;
+		_unit.sprite_index = _unit.idleAnimation.sprite;
+		_unit.shadowAnimation = _unit.idleAnimation.shadow;
 		_unit.image_speed = IDLE_IMAGE_SPEED;
 		_unit.x = (_mapX * CELL_SIZE) + CENTER_CELL;
 		_unit.y = (_mapY * CELL_SIZE) + CENTER_CELL;

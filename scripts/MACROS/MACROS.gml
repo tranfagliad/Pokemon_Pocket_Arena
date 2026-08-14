@@ -16,6 +16,7 @@
 #macro ATTACK_ANIMATION "attack"
 #macro HURT_ANIMATION   "hurt"
 #macro FAINT_ANIMATION  "faint"
+#macro SHADOW_ANIMATION "shadow"
 
 #macro IDLE_IMAGE_SPEED   0.2
 #macro WALK_IMAGE_SPEED   0.3

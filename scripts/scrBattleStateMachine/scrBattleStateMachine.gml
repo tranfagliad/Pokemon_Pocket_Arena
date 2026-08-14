@@ -23,33 +23,37 @@ function BattleStatePlayerTurnSystemMenu ()
 		
 	#endregion
 	
-	if (objInputManager.pressed.select)
-	{
-		var _selectedOption = menuOptions[menuIndex];
-		switch (_selectedOption)
+	#region menu selection
+		
+		if (objInputManager.pressed.select)
 		{
-			case MENU_OPTION_END_TURN:
-				GoToEndTurnConfirmation();
-				break;
+			var _selectedOption = menuOptions[menuIndex];
+			switch (_selectedOption)
+			{
+				case MENU_OPTION_END_TURN:
+					GoToEndTurnConfirmation();
+					break;
 			
-			case MENU_OPTION_TYPE_CHART:
-				break;
+				case MENU_OPTION_TYPE_CHART:
+					break;
 			
-			case MENU_OPTION_SETTINGS:
-				break;
+				case MENU_OPTION_SETTINGS:
+					break;
 			
-			case MENU_OPTION_HELP:
-				break;
+				case MENU_OPTION_HELP:
+					break;
 			
-			case MENU_OPTION_SURRENDER:
-				break;
+				case MENU_OPTION_SURRENDER:
+					break;
 			
-			case MENU_OPTION_CANCEL:
-				BackFromSystemMenu();
-				break;
-			default: break;
+				case MENU_OPTION_CANCEL:
+					BackFromSystemMenu();
+					break;
+				default: break;
+			}
 		}
-	}
+		
+	#endregion
 	
 	#region cancel button - back to free state
 		
@@ -145,7 +149,8 @@ function BattleStateUnitMoving ()
 		unitTargetMapX = RESET_CELL_COORDINATE;
 		unitTargetMapY = RESET_CELL_COORDINATE;
 		
-		selectedUnit.sprite_index = selectedUnit.idleSprite;
+		selectedUnit.sprite_index = selectedUnit.idleAnimation.sprite;
+		selectedUnit.shadowAnimation = selectedUnit.idleAnimation.shadow;
 		selectedUnit.image_speed = IDLE_IMAGE_SPEED;
 		selectedUnit.image_index = 0;
 		objBattleCursor.visible = true;
@@ -314,7 +319,8 @@ function BattleStateUnitAttacking ()
 			attackTargetUnit.facingDirection = (selectedUnit.facingDirection + (UNIT_DIRECTIONS / 2)) % UNIT_DIRECTIONS;
 			var _targetFramesPerDir = attackTargetUnit.image_number / UNIT_DIRECTIONS;
 			var _targetStartFrame = attackTargetUnit.facingDirection * _targetFramesPerDir;
-			attackTargetUnit.sprite_index = attackTargetUnit.hurtSprite;
+			attackTargetUnit.sprite_index = attackTargetUnit.hurtAnimation.sprite;
+			attackTargetUnit.shadowAnimation = attackTargetUnit.hurtAnimation.shadow;
 			attackTargetUnit.image_speed  = HURT_IMAGE_SPEED;
 			attackTargetUnit.image_index  = _targetStartFrame;
 		}
@@ -326,12 +332,14 @@ function BattleStateUnitAttacking ()
 		if (_attackFinished)
 	    {
 			// Reset attacker sprite and disable the unit
-			selectedUnit.sprite_index = selectedUnit.idleSprite;
-	        selectedUnit.image_speed  = IDLE_IMAGE_SPEED;
-	        selectedUnit.isEnabled    = false;
+			selectedUnit.sprite_index = selectedUnit.idleAnimation.sprite;
+			selectedUnit.shadowAnimation = selectedUnit.idleAnimation.shadow;
+	        selectedUnit.image_speed = IDLE_IMAGE_SPEED;
+	        selectedUnit.isEnabled = false;
 			
 			// Reset target sprite
-			attackTargetUnit.sprite_index = attackTargetUnit.idleSprite;
+			attackTargetUnit.sprite_index = attackTargetUnit.idleAnimation.sprite;
+			attackTargetUnit.shadowAnimation = attackTargetUnit.idleAnimation.shadow;
 	        attackTargetUnit.image_speed  = IDLE_IMAGE_SPEED;
 			
 			MoveBattleCursor(selectedUnit.x, selectedUnit.y);
@@ -389,7 +397,10 @@ function BattleStateSwitchTurnsTransition ()
 	EnableAllUnits(whoseTurn);
 	whoseTurn = (whoseTurn == Team.ONE) ? Team.TWO : Team.ONE;
 	CursorUnpause();
-	battleState = BattleStatePlayerTurnFree;
+	if (!opponentIsAI)
+	{
+		battleState = BattleStatePlayerTurnFree;
+	}
 }
 
 
@@ -527,16 +538,21 @@ function GoToUnitMoving ()
 		map[# _unitCellX, _unitCellY].unit = noone;
 		_targetCell.unit = selectedUnit;
 		
+		ClearMenu();
+		ClearMapFlags(map);
+		selectedUnit.sprite_index = selectedUnit.walkAnimation.sprite;
+		selectedUnit.shadowAnimation = selectedUnit.walkAnimation.shadow;
+		selectedUnit.image_speed = WALK_IMAGE_SPEED;
+		
+		//var _framesPerDir = selectedUnit.walkAnimation.sprite.image_number / UNIT_DIRECTIONS;
+		//var _startFrame = selectedUnit.facingDirection * _framesPerDir;
+		//selectedUnit.image_index = _startFrame;
+		selectedUnit.image_index = 0;
+		
 		CursorToFrozenState();
 		objBattleCursor.visible = false;
 		battleStateTemp = BattleStatePlayerTurnPostMoveUnitMenu;
 		battleState = BattleStateUnitMoving;
-		
-		ClearMenu();
-		ClearMapFlags(map);
-		selectedUnit.sprite_index = selectedUnit.walkSprite;
-		selectedUnit.image_speed = WALK_IMAGE_SPEED;
-		selectedUnit.image_index = 0;
 	}
 }
 
@@ -551,7 +567,8 @@ function UndoUnitMove ()
 	selectedUnit.x = (unitOriginalMapX * CELL_SIZE) + CENTER_CELL;
 	selectedUnit.y = (unitOriginalMapY * CELL_SIZE) + CENTER_CELL;
 	selectedUnit.facingDirection = Direction.SOUTH;
-	selectedUnit.sprite_index = selectedUnit.idleSprite;
+	selectedUnit.sprite_index = selectedUnit.idleAnimation.sprite;
+	selectedUnit.shadowAnimation = selectedUnit.idleAnimation.shadow;
 	
 	objBattleCursor.x = selectedUnit.x;
 	objBattleCursor.y = selectedUnit.y;
@@ -624,7 +641,8 @@ function GoToUnitAttacking ()
 	ClearAttackFlags(map);
 	ClearMenu();
 					
-	selectedUnit.sprite_index = selectedUnit.attackSprite;
+	selectedUnit.sprite_index = selectedUnit.attackAnimation.sprite;
+	selectedUnit.shadowAnimation = selectedUnit.attackAnimation.shadow;
 	selectedUnit.image_speed = ATTACK_IMAGE_SPEED;
 					
 	var _framesPerDir = selectedUnit.image_number / UNIT_DIRECTIONS;

@@ -47,22 +47,24 @@ function LoadDisplaySprite (_name)
 
 
 
-function LoadAnimation (_id, _animationType)
+// Given the animation type (idle, walk, etc.), returns { sprite, shadow }
+function LoadUnitMapAnimation (_id, _animationType)
 {
 	#region file paths
 		
-		var _basePath = POKEMON_IMAGES_BASE_PATH+"/"+_id+"/"+_animationType;
-		var _imgPath = _basePath+"/"+_animationType+".png";
-		var _txtPath = _basePath+"/"+NUM_FRAMES_TXT;
+		var _basePath   = POKEMON_IMAGES_BASE_PATH+"/"+_id+"/"+_animationType;
+		var _imgPath    = _basePath+"/"+_animationType+".png";
+		var _shadowPath = _basePath+"/"+SHADOW_ANIMATION+".png";
+		var _txtPath    = _basePath+"/"+NUM_FRAMES_TXT;
 		
 	#endregion
 	
     #region error checking
 		
-		if (!file_exists(_imgPath) || !file_exists(_txtPath))
+		if (!file_exists(_imgPath) || !file_exists(_shadowPath) || !file_exists(_txtPath))
 		{
-			show_debug_message("LoadAnimation Error: Asset missing at " + _imgPath);
-			return ERROR;
+			show_debug_message("LoadAnimation Error: Asset missing for " + _animationType);
+			return noone;
 		}
     
 	#endregion
@@ -88,9 +90,10 @@ function LoadAnimation (_id, _animationType)
 		var _xOrigin = floor(_frameWidth / 2);
 		var _yOrigin = floor(_totalHeight / 2);
 		
-		var _animation = sprite_add(_imgPath, _totalFrames, false, false, _xOrigin, _yOrigin);
+		var _sprite = sprite_add(_imgPath, _totalFrames, false, false, _xOrigin, _yOrigin);
+		var _shadow = sprite_add(_shadowPath, _totalFrames, false, false, _xOrigin, _yOrigin);
 		
     #endregion
     
-    return _animation;
+    return { sprite: _sprite, shadow: _shadow };
 }
