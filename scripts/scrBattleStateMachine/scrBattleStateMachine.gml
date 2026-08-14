@@ -15,7 +15,7 @@ function BattleStatePlayerTurnFree ()
 }
 
 
-function BattleStateSystemMenu ()
+function BattleStatePlayerTurnSystemMenu ()
 {
 	#region menu navigation
 		
@@ -29,6 +29,7 @@ function BattleStateSystemMenu ()
 		switch (_selectedOption)
 		{
 			case MENU_OPTION_END_TURN:
+				GoToEndTurnConfirmation();
 				break;
 			
 			case MENU_OPTION_TYPE_CHART:
@@ -346,6 +347,41 @@ function BattleStateUnitAttacking ()
 }
 
 
+function BattleStatePlayerTurnEndTurnConfirmation ()
+{
+	#region menu navigation
+	
+		MenuNavigation();
+	
+	#endregion
+	
+	#region menu selection
+		
+		if (objInputManager.pressed.select)
+		{
+			var _selectedOption = menuOptions[menuIndex];
+			switch (_selectedOption)
+			{
+				case MENU_OPTION_CONFIRM:
+					break;
+				
+				case MENU_OPTION_CANCEL:
+					BackFromEndTurnConfirmation();
+					break;
+				default: break;
+			}
+		}
+		
+	#endregion
+	
+	#region cancel button - go back to system menu
+		
+		if (objInputManager.pressed.cancel) { BackFromEndTurnConfirmation(); }
+		
+	#endregion
+}
+
+
 
 // Helper Functions
 
@@ -360,7 +396,7 @@ function MenuNavigation ()
 	if (objInputManager.pressed.up)
     {
 		menuIndex--;
-        if (menuIndex < 0) menuIndex = array_length(menuOptions)-1;
+        if (menuIndex < 0) { menuIndex = array_length(menuOptions)-1; }
     }
 }
 
@@ -389,7 +425,7 @@ function GoToSystemMenu ()
 	menuIndex = 0;
 			
 	CursorPause();
-	battleState = BattleStateSystemMenu;
+	battleState = BattleStatePlayerTurnSystemMenu;
 }
 
 function BackFromSystemMenu ()
@@ -599,3 +635,31 @@ function BackToPostMoveUnitMenu ()
 	CursorToFrozenState();
 	battleState = BattleStatePlayerTurnPostMoveUnitMenu;
 }
+
+function GoToEndTurnConfirmation ()
+{
+	ClearMenu();
+	array_push(menuOptions, MENU_OPTION_CONFIRM);
+	array_push(menuOptions, MENU_OPTION_CANCEL);
+	menuIndex = 0;
+	battleState = BattleStatePlayerTurnEndTurnConfirmation;
+}
+
+function BackFromEndTurnConfirmation ()
+{
+	ClearMenu();
+	array_push(menuOptions, MENU_OPTION_END_TURN);
+	array_push(menuOptions, MENU_OPTION_TYPE_CHART);
+	array_push(menuOptions, MENU_OPTION_SETTINGS);
+	array_push(menuOptions, MENU_OPTION_HELP);
+	array_push(menuOptions, MENU_OPTION_SURRENDER);
+	array_push(menuOptions, MENU_OPTION_CANCEL);
+	menuIndex = 0;
+	battleState = BattleStatePlayerTurnSystemMenu;
+}
+
+
+
+
+
+

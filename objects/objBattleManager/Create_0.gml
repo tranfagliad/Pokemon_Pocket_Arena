@@ -1,6 +1,7 @@
 
 playerOne = global.playerOne;
 playerTwo = global.playerTwo;
+oppponentIsAI = global.opponentIsAI;
 
 teamOneUnits = ds_list_create();
 teamTwoUnits = ds_list_create();

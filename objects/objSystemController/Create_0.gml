@@ -26,6 +26,7 @@
 	global.playerOne = { name: "Daniel" };   // For Testing
 	//global.playerOne = noone;
 	global.playerTwo = noone;
+	global.opponentIsAI = false;
 	global.battleArena = noone;
 	
 #endregion

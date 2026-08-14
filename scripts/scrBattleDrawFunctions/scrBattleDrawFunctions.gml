@@ -30,8 +30,12 @@ function DrawMenus ()
 			DrawUnitsComparison(whoseTurn);
 			break;
 			
-		case BattleStateSystemMenu:
+		case BattleStatePlayerTurnSystemMenu:
 			DrawSystemMenu();
+			break;
+			
+		case BattleStatePlayerTurnEndTurnConfirmation:
+			DrawEndTurnConfirmationMenu();
 			break;
 		default: break;
 	}
@@ -220,6 +224,27 @@ function DrawSystemMenu ()
 	{
 		var _optionStr = (_i == menuIndex) ? "->" + menuOptions[_i] : menuOptions[_i];
 		draw_text(_drawX + 10, (30 * _i) + _drawY + 5, _optionStr);
+	}
+	
+	draw_set_font(fntConsolas12);
+	draw_set_colour(DEFAULT_DRAW_COLOR);
+}
+
+function DrawEndTurnConfirmationMenu ()
+{
+	draw_set_font(fntConsolas20);
+	draw_set_colour(DEFAULT_DRAW_COLOR);
+	
+	var _menuWidth = UNIT_MENU_BOX_WIDTH + 10;
+	var _drawX = (VIEWPORT_WIDTH / 2) - (_menuWidth / 2);
+	var _drawY = (VIEWPORT_HEIGHT / 2) - (UNIT_MENU_BOX_HEIGHT / 2);
+	draw_sprite_stretched(sprNineSliceUI, whoseTurn, _drawX, _drawY, _menuWidth, UNIT_MENU_BOX_HEIGHT);
+	draw_text(_drawX+10, _drawY+5, "End Turn?");
+	for (var _i = 0; _i < array_length(menuOptions); _i++)
+	{
+		var _option = menuOptions[_i];
+		var _optionStr = (_i == menuIndex) ? "->" + _option : _option;
+		draw_text(_drawX + 10, (30 * _i) + _drawY + 40, _optionStr);
 	}
 	
 	draw_set_font(fntConsolas12);
