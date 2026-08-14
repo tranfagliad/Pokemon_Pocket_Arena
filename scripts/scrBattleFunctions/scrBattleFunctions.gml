@@ -45,7 +45,7 @@ function CreateUnitAndPlaceOnMap (_unitInfo, _map, _mapX, _mapY)
 	#region register on the team list and map
 		
 		var _team_list = (_unit.team == Team.ONE) ? teamOneUnits : teamTwoUnits;
-		ds_list_add(_team_list, { unit: _unit, alive: true });
+		ds_list_add(_team_list, _unit);
 		_map[# _mapX, _mapY].unit = _unit;
 		
 	#endregion
@@ -95,6 +95,22 @@ function ShowAttackRange (_cellX, _cellY, _unit)
 			break;
 		default: break;
 	}
+}
+
+
+function DisableAllUnits (_team)
+{
+	var _unitList = (_team == Team.ONE) ? teamOneUnits : teamTwoUnits;
+	var _listSize = ds_list_size(_unitList);
+	for (var _i = 0; _i < _listSize; _i++) { ds_list_find_value(_unitList, _i).isEnabled = false; }
+}
+
+
+function EnableAllUnits (_team)
+{
+	var _unitList = (_team == Team.ONE) ? teamOneUnits : teamTwoUnits;
+	var _listSize = ds_list_size(_unitList);
+	for (var _i = 0; _i < _listSize; _i++) { ds_list_find_value(_unitList, _i).isEnabled = true; }
 }
 
 

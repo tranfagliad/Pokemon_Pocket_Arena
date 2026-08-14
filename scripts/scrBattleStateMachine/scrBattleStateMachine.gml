@@ -328,7 +328,7 @@ function BattleStateUnitAttacking ()
 			// Reset attacker sprite and disable the unit
 			selectedUnit.sprite_index = selectedUnit.idleSprite;
 	        selectedUnit.image_speed  = IDLE_IMAGE_SPEED;
-	        //selectedUnit.isEnabled    = false;
+	        selectedUnit.isEnabled    = false;
 			
 			// Reset target sprite
 			attackTargetUnit.sprite_index = attackTargetUnit.idleSprite;
@@ -363,6 +363,7 @@ function BattleStatePlayerTurnEndTurnConfirmation ()
 			switch (_selectedOption)
 			{
 				case MENU_OPTION_CONFIRM:
+					battleState = BattleStateSwitchTurnsTransition;
 					break;
 				
 				case MENU_OPTION_CANCEL:
@@ -380,6 +381,22 @@ function BattleStatePlayerTurnEndTurnConfirmation ()
 		
 	#endregion
 }
+
+function BattleStateSwitchTurnsTransition ()
+{
+	ClearMenu();
+	menuIndex = 0;
+	EnableAllUnits(whoseTurn);
+	whoseTurn = (whoseTurn == Team.ONE) ? Team.TWO : Team.ONE;
+	CursorUnpause();
+	battleState = BattleStatePlayerTurnFree;
+}
+
+
+
+
+
+
 
 
 

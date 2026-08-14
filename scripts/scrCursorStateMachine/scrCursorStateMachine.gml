@@ -108,7 +108,7 @@ function CursorStateFrozen ()
 }
 
 
-function CursorStatePaused () { /* Do Nothing */ }
+function CursorStatePaused () { /* Invisible, do Nothing */ }
 
 
 // TODO: CursorStateWaitForAI (?)

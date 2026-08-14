@@ -21,6 +21,7 @@
 	
 	image_speed = IDLE_IMAGE_SPEED;
 	facingDirection = Direction.SOUTH;
+	isAlive = true;
 	isEnabled = true;
 	colorBlend = UNIT_ENABLED_BLEND;
 	

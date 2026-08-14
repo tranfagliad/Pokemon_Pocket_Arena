@@ -6,7 +6,6 @@ oppponentIsAI = global.opponentIsAI;
 teamOneUnits = ds_list_create();
 teamTwoUnits = ds_list_create();
 
-currentTurn = 0;
 whoseTurn = Team.ONE;
 
 typeChart = LoadTypeChart();
