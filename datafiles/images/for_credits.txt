@@ -1,0 +1,31 @@
+Bulbasaur: alternate
+Ivysaur: alternate
+Venusaur: alternate
+Charmander: regular
+Charmeleon: regular
+Charizard: alternate
+Squirtle: regular
+Wartortle: alternate
+Blastoise: alternate
+Caterpie: regular
+Metapod: regular
+Butterfree: alternate
+Weedle: regular
+Kakuna: regular
+Beedrill: regular
+Pidgey: 
+Pidgeotto: 
+Pidgeot: regular
+Rattata: alternate
+Raticate: alternate
+
+
+
+
+
+
+
+Dragonair: regular
+Dragonite: alternate
+Mewtwo: regular
+Mew: alternate
