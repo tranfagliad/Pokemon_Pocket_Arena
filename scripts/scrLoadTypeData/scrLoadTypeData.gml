@@ -19,21 +19,22 @@ function LoadTypeChart ()
 	#region open, read, close the file, and build the type chart
 		
 		var _file = file_text_open_read(_filePath);
-		var _chartRow = 0;
+		var _row = 0;
 		if (!file_text_eof(_file)) { file_text_readln(_file) }   // Skip the column labels
 		while (!file_text_eof(_file))
 		{
 			var _line = file_text_readln(_file);
+			//show_debug_message(_line);
 			var _values = string_split(_line, ",");
-			//array_delete(_values, 0, 1);   // Skip the row label
+			//show_debug_message(_values);
 			
-			for (var _chartCol = 1; _chartCol <= NUM_TYPES; _chartCol++)
+			for (var _column = 1; _column <= NUM_TYPES; _column++)
 			{
-				var _value = array_get(_values, _chartCol);
-				ds_grid_set(_typeChart, _chartCol, _chartRow, _value);
+				var _value = array_get(_values, _column);
+				ds_grid_set(_typeChart, _column-1, _row, _value);
 			}
 			
-			_chartRow++;
+			_row++;
 		}
 		file_text_close(_file);
 		

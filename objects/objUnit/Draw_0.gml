@@ -1,7 +1,10 @@
 
+// Draw team indicator
+if (team == Team.ONE) { draw_sprite_ext(sprTeamIndicator, image_index, x, y, image_xscale, image_yscale, image_angle, c_blue, image_alpha); }
+else { draw_sprite_ext(sprTeamIndicator, image_index, x, y, image_xscale, image_yscale, image_angle, c_red, image_alpha); }
+
 // Draw shadow
-if (team == Team.ONE) { draw_sprite_ext(shadowAnimation, image_index, x, y, image_xscale, image_yscale, image_angle, c_blue, SHADOW_ALPHA); }
-else { draw_sprite_ext(shadowAnimation, image_index, x, y, image_xscale, image_yscale, image_angle, c_red, SHADOW_ALPHA); }
+draw_sprite_ext(shadowAnimation, image_index, x, y, image_xscale, image_yscale, image_angle, c_white, SHADOW_ALPHA);
 
 // Draw sprite
 var _blendColor = merge_color(c_dkgray, c_white, colorBlend);

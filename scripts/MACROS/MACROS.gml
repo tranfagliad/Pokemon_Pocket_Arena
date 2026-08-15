@@ -15,7 +15,6 @@
 #macro WALK_ANIMATION   "walk"
 #macro ATTACK_ANIMATION "attack"
 #macro HURT_ANIMATION   "hurt"
-#macro FAINT_ANIMATION  "faint"
 #macro SHADOW_ANIMATION "shadow"
 
 #macro IDLE_IMAGE_SPEED   0.2
@@ -92,7 +91,7 @@
 
 #macro MENU_OPTION_MOVE       "Move"
 #macro MENU_OPTION_ATTACK     "Attack"
-#macro MENU_OPTION_GO_BACK    "Go Back"
+#macro MENU_OPTION_BACK    "Back"
 #macro MENU_OPTION_END        "End"
 #macro MENU_OPTION_END_TURN   "End Turn"
 #macro MENU_OPTION_TYPE_CHART "Type Chart"

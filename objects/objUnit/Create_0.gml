@@ -39,6 +39,5 @@
 	walkAnimation = noone;
 	attackAnimation = noone;
 	hurtAnimation = noone;
-	faintAnimation = noone;
 	
 #endregion

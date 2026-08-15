@@ -156,8 +156,8 @@ function BattleStateUnitMoving ()
 		objBattleCursor.visible = true;
 		
 		array_push(menuOptions, MENU_OPTION_ATTACK);
-		array_push(menuOptions, MENU_OPTION_GO_BACK);
 		array_push(menuOptions, MENU_OPTION_END);
+		array_push(menuOptions, MENU_OPTION_BACK);
 		menuIndex = 0;
 		
 		battleState = battleStateTemp;
@@ -243,13 +243,13 @@ function BattleStatePlayerTurnPostMoveUnitMenu ()
 					GoToPostMoveUnitAttack();
 					break;
 				
-				case MENU_OPTION_GO_BACK:
-					UndoUnitMove();
-					break;
-				
 				case MENU_OPTION_END:
 					selectedUnit.isEnabled = false;
 					UnselectUnit();
+					break;
+				
+				case MENU_OPTION_BACK:
+					UndoUnitMove();
 					break;
 				default: break;
 			}
@@ -619,8 +619,8 @@ function BackFromAttackConfirmation ()
 	else if (battleStateTemp == BattleStatePlayerTurnPostMoveUnitAttack)
 	{
 		array_push(menuOptions, MENU_OPTION_ATTACK);
-		array_push(menuOptions, MENU_OPTION_GO_BACK);
 		array_push(menuOptions, MENU_OPTION_END);
+		array_push(menuOptions, MENU_OPTION_BACK);
 		menuIndex = 0;
 	}
 	

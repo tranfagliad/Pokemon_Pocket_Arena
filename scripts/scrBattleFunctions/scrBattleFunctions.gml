@@ -31,7 +31,6 @@ function CreateUnitAndPlaceOnMap (_unitInfo, _map, _mapX, _mapY)
 		_unit.walkAnimation = LoadUnitMapAnimation(_unit.uId, WALK_ANIMATION);
 		_unit.attackAnimation = LoadUnitMapAnimation(_unit.uId, ATTACK_ANIMATION);
 		_unit.hurtAnimation = LoadUnitMapAnimation(_unit.uId, HURT_ANIMATION);
-		_unit.faintAnimation = LoadUnitMapAnimation(_unit.uId, FAINT_ANIMATION);
 		
 	#endregion
 	
