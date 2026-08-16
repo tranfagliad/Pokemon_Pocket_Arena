@@ -45,13 +45,13 @@ damageInfo = noone;
 
 
 
-var _uid = "0148";
+var _uid = "0028a";
 var _name = "Team One Unit"
-var _type = Type.DRAGON;
+var _type = Type.GROUND;
 
-var _uid2 = "0148";
+var _uid2 = "0028a";
 var _name2 = "Team Two Unit"
-var _type2 = Type.DRAGON;
+var _type2 = Type.GROUND;
 
 
 

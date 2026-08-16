@@ -13,13 +13,25 @@ Butterfree: alternate
 Weedle: regular
 Kakuna: regular
 Beedrill: regular
-Pidgey: 
-Pidgeotto: 
+Pidgey: regular
+Pidgeotto: regular
 Pidgeot: regular
 Rattata: alternate
 Raticate: alternate
-
-
+Spearow: regular
+Fearow: regular
+Ekans: regular
+Arbok: regular
+Pikachu: regular
+Raichu: regular
+Sandshrew: regular
+Sandslash: regular
+Nidoran F: regular
+Nidorina: 
+Nidoqueen: 
+Nidoran M: 
+Nidorino: 
+Nidoking: 
 
 
 
