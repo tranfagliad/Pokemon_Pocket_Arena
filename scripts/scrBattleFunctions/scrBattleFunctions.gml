@@ -212,6 +212,9 @@ function UpdateUnitFacingToCursor ()
         var _angle = point_direction(_unitPxX, _unitPxY, _cursorPxX, _cursorPxY);
         selectedUnit.facingDirection = Get8WayDirection(_angle);
     }
+	
+	// Force facing SOUTH if the cursor hovers over the selected unit
+	if (_cursorX == _unitCellX && _cursorY == _unitCellY) { selectedUnit.facingDirection = Direction.SOUTH; }
 }
 
 

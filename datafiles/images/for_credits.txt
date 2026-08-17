@@ -27,16 +27,29 @@ Raichu: regular
 Sandshrew: regular
 Sandslash: regular
 Nidoran F: regular
-Nidorina: 
-Nidoqueen: 
-Nidoran M: 
-Nidorino: 
-Nidoking: 
+Nidorina: alternate
+Nidoqueen: alternate
+Nidoran M: alternate
+Nidorino: alternate
+Nidoking: regular
+Clefairy: regular
+Clefable: alternate
+Vulpix: alternate
+Ninetales: alternate
+Jigglypuff: regular
+Wigglytuff: alternate
 
 
 
 
 
+
+
+
+Articuno: regular
+Zapdos: regular
+Moltres: alternate
+Dratini: regular
 Dragonair: regular
 Dragonite: alternate
 Mewtwo: regular
