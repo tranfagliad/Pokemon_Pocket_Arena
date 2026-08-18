@@ -48,6 +48,7 @@ function LoadDisplaySprite (_name)
 
 
 // Given the animation type (idle, walk, etc.), returns { sprite, shadow }
+// TODO: Optimize so that each sprite is loaded only once per UID instead of once per unit instance
 function LoadUnitMapAnimation (_id, _animationType)
 {
 	#region file paths

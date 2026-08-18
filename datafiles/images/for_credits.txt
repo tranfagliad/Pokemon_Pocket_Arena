@@ -38,6 +38,13 @@ Vulpix: alternate
 Ninetales: alternate
 Jigglypuff: regular
 Wigglytuff: alternate
+Zubat: regular
+Golbat: regular
+Oddish: regular
+Gloom: regular
+Vileplume: alternate
+Paras: alternate
+Parasect: 
 
 
 
@@ -45,7 +52,8 @@ Wigglytuff: alternate
 
 
 
-
+Aerodactyl: regular
+Snorlax: alternate
 Articuno: regular
 Zapdos: regular
 Moltres: alternate
