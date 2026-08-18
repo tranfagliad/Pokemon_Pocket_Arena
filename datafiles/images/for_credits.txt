@@ -44,7 +44,11 @@ Oddish: regular
 Gloom: regular
 Vileplume: alternate
 Paras: alternate
-Parasect: 
+Parasect: regular
+Venonat: regular
+Venomoth: alternate
+Diglett: regular
+Dugtrio: 
 
 
 
