@@ -48,7 +48,18 @@ Parasect: regular
 Venonat: regular
 Venomoth: alternate
 Diglett: regular
-Dugtrio: 
+Dugtrio: regular
+Meowth: regular
+Persian: regular
+Psyduck: 
+Golduck: 
+Mankey: 
+Primeape: 
+Growlithe: alternate
+Arcanine: alternate
+Poliwag: regular
+Poliwhirl: 
+Poliwrath: 
 
 
 
@@ -56,6 +67,11 @@ Dugtrio:
 
 
 
+
+Omanyte: 
+Omastar: 
+Kabuto: regular
+Kabutops: alternate
 Aerodactyl: regular
 Snorlax: alternate
 Articuno: regular
