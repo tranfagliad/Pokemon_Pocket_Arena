@@ -1,3 +1,5 @@
+https://sprites.pmdcollab.org/
+
 Bulbasaur: alternate
 Ivysaur: alternate
 Venusaur: alternate
@@ -51,25 +53,46 @@ Diglett: regular
 Dugtrio: regular
 Meowth: regular
 Persian: regular
-Psyduck: 
-Golduck: 
-Mankey: 
-Primeape: 
+Psyduck: regular
+Golduck: alternate
+Mankey: alternate
+Primeape: alternate
 Growlithe: alternate
 Arcanine: alternate
 Poliwag: regular
-Poliwhirl: 
-Poliwrath: 
+Poliwhirl: regular
+Poliwrath: regular
+Abra: regular
+Kadabra: regular
+Alakazam: regular
+Machop: regular
+Machoke: regular
+Machamp: regular
+Bellsprout: alternate
+Weepinbell: alternate
+Victreebel: 
+Tentacool: 
+Tentacruel: 
+Geodude: 
+Graveler: 
+Golem: 
+Ponyta: 
+Rapidash: 
+Slowpoke: 
+Slowbro: 
 
 
 
 
 
 
-
-
-Omanyte: 
-Omastar: 
+Eevee: 
+Vaporeon: 
+Jolteon: 
+Flareon: 
+Porygon: 
+Omanyte: regular
+Omastar: regular
 Kabuto: regular
 Kabutops: alternate
 Aerodactyl: regular
